@@ -1,8 +1,8 @@
 <template>
     <section class="container" v-if="loading">
         <!-- skeleton -->
-        <section class="relative pt-[56%] w-full">
-            <div class="absolute top-0 right-0 w-full h-full bg_skeleton"></div>
+        <section class="relative pt-[56%] w-full mb-8">
+            <div class="absolute top-0 right-0 w-full h-full bg_skeleton rounded-b-custom"></div>
         </section>
     </section>
     <!-- if we have error -->
@@ -11,7 +11,7 @@
         <p class="text-center text-base caption_color font-medium"> ارور: {{ error }} </p>
     </section>
     <!-- Render your component content here -->
-    <main class="container" v-else>
+    <main class="" v-else>
         <Slider />
 
     </main>
