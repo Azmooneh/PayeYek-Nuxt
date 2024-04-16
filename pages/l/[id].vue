@@ -11,7 +11,7 @@
         <p class="text-center text-base caption_color font-medium"> ارور: {{ error }} </p>
     </section>
     <!-- Render your component content here -->
-    <main class="" v-else>
+    <main v-else>
         <Slider />
 
     </main>
