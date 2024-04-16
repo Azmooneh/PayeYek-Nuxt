@@ -32,6 +32,7 @@ export default {
         const companies = ref([]);
         const companiesLoaded = ref(false);
         const route = useRoute();
+        
 
         definePageMeta({
             layout: 'landing',

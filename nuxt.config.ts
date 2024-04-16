@@ -2,13 +2,16 @@
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  
   css: ['~/assets/css/main.css'],
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+
   hooks: {
     "pages:extend"(pages) {
       pages.push(
@@ -20,7 +23,7 @@ export default defineNuxtConfig({
       );
     },
   },
-  
+
   srcDir: "./",
 
   runtimeConfig: {
@@ -29,4 +32,9 @@ export default defineNuxtConfig({
       apiBase: 'https://paye1.com/api', // can be overridden by NUXT_PUBLIC_API_BASE environment variable
     }
   },
+
+  modules: [
+    '@pinia/nuxt',
+  ],
+
 })
