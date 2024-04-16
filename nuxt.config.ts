@@ -38,4 +38,8 @@ export default defineNuxtConfig({
     'nuxt-swiper',
   ],
 
+  plugins: [
+    "~/plugins/Vue3Lottie.client.ts"
+  ],
+
 })

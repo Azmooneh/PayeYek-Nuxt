@@ -1,5 +1,5 @@
 <template>
-    <section :class="'bg-[#f2f2f2] min-h-screen ' + companyTheme + ' ' + companyRadius">
+    <section :class="'bg-[#f2f2f2] min-h-screen font-iran ' + companyTheme + ' ' + companyRadius">
         <slot />
 
     </section>

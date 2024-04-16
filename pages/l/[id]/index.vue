@@ -1,9 +1,7 @@
 <template>
     <section class="container" v-if="loading">
         <!-- skeleton -->
-        <section class="relative pt-[56%] w-full mb-8">
-            <div class="absolute top-0 right-0 w-full h-full bg_skeleton rounded-b-custom"></div>
-        </section>
+        <sliderSkeleton />
     </section>
     <!-- if we have error -->
     <section v-else-if="error" class="flex_center w-full h-screen flex-col gap-4">
@@ -13,7 +11,7 @@
     <!-- Render your component content here -->
     <main v-else>
         <Slider />
-
+        <Theme1 />
     </main>
 </template>
 
@@ -22,11 +20,15 @@ import { getApiRequest } from '~/helper/common';
 import { useCompanyData, useStyles } from '~/store/index';
 import { ref, onMounted } from 'vue';
 import Slider from '~/components/companyLanding/Slider/index';
+import sliderSkeleton from '~/components/companyLanding/Slider/skeleton';
+import Theme1 from '~/components/companyLanding/quickAccessPanel/theme1';
 
 export default {
     name: 'Company',
     components: {
         Slider,
+        sliderSkeleton,
+        Theme1,
     },
     setup() {
         const route = useRoute();
