@@ -1,3 +1,106 @@
 @tailwind base;
 @tailwind components;
+
+/* Font IRANSansX */
+@layer components {
+    @font-face {
+        font-family: IRANSansX;
+        font-style: normal;
+        font-weight: 100; /* font-thin -> font-weight: 100; */
+        src: url('../fonts/woff/IRANSansX-Thin.woff') format('woff'),
+        url('../fonts/woff2/IRANSansX-Thin.woff2') format('woff2');
+    }
+
+    @font-face {
+        font-family: IRANSansX;
+        font-style: normal;
+        font-weight: 200; /* font-extralight -> font-weight: 200; */
+        src: url('../fonts/woff/IRANSansX-UltraLight.woff') format('woff'),
+        url('../fonts/woff2/IRANSansX-UltraLight.woff2') format('woff2');
+    }
+
+    @font-face {
+        font-family: IRANSansX;
+        font-style: normal;
+        font-weight: 300; /* font-light -> font-weight: 300; */
+        src: url('../fonts/woff/IRANSansX-Light.woff') format('woff'),
+        url('../fonts/woff2/IRANSansX-Light.woff2') format('woff2');
+    }
+
+    @font-face {
+        font-family: IRANSansX;
+        font-style: normal;
+        font-weight: normal; /* font-normal -> font-weight: 400; */
+        src: url('../fonts/woff/IRANSansX-Regular.woff') format('woff'),
+        url('../fonts/woff2/IRANSansX-Regular.woff2') format('woff2');
+    }
+
+    @font-face {
+        font-family: IRANSansX;
+        font-style: normal;
+        font-weight: 500; /* font-medium -> font-weight: 500; */
+        src: url('../fonts/woff/IRANSansX-Medium.woff') format('woff'),
+        url('../fonts/woff2/IRANSansX-Medium.woff2') format('woff2');
+    }
+
+    @font-face {
+        font-family: IRANSansX;
+        font-style: normal;
+        font-weight: 600;  /* font-semibold -> font-weight: 600; */
+        src: url('../fonts/woff/IRANSansX-DemiBold.woff') format('woff'),
+        url('../fonts/woff2/IRANSansX-DemiBold.woff2') format('woff2');
+    }
+
+    @font-face {
+        font-family: IRANSansX;
+        font-style: normal;
+        font-weight: bold; /* font-bold -> font-weight: 700; */
+        src: url('../fonts/woff/IRANSansX-Bold.woff') format('woff'),
+        url('../fonts/woff2/IRANSansX-Bold.woff2') format('woff2');
+    }
+
+    @font-face {
+        font-family: IRANSansX;
+        font-style: normal;
+        font-weight: 800; /* font-extrabold -> font-weight: 800; */
+        src: url('../fonts/woff/IRANSansX-ExtraBold.woff') format('woff'),
+        url('../fonts/woff2/IRANSansX-ExtraBold.woff2') format('woff2');
+    }
+
+    @font-face {
+        font-family: IRANSansX;
+        font-style: normal;
+        font-weight: 900; /* font-black -> font-weight: 900; */
+        src: url('../fonts/woff/IRANSansX-Black.woff') format('woff'),
+        url('../fonts/woff2/IRANSansX-Black.woff2') format('woff2');
+    }
+}
+
+@layer components {
+    .flex_center{
+        @apply flex items-center justify-center;
+    }
+
+    .caption_color{
+        @apply text-label-700;
+    }
+
+    .bg_skeleton{
+        @apply bg-[#d8d8d8] animate-pulse;
+    }
+
+    /* .skeleton{
+        @apply bg-gradient-to-r from-[rgba(156,156,156,0.1)] via-[rgba(156,156,156,0.2)] to-[rgba(156,156,156,0.1)];
+    } */
+}
+
 @tailwind utilities;
+@layer utilities{
+    .bg_skeleton_size{
+        background-size: 1200px 104px;
+    }
+}
+
+body{
+    direction: rtl;
+}
