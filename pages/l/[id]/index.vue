@@ -4,6 +4,8 @@
         <sliderSkeleton />
         <!-- quick access panel skeleton -->
         <SkeletonQuickAccess />
+        <!-- products -->
+        <productSkeleton />
     </section>
     <!-- if we have error -->
     <section v-else-if="error" class="flex_center w-full h-screen flex-col gap-4">
@@ -27,6 +29,7 @@ import sliderSkeleton from '~/components/companyLanding/Slider/skeleton';
 import Theme1 from '~/components/companyLanding/quickAccessPanel/theme1';
 import SkeletonQuickAccess from '~/components/companyLanding/quickAccessPanel/skeletonQuickAccess';
 import Products from '~/components/companyLanding/products/index';
+import productSkeleton from '~/components/companyLanding/products/productSkeleton';
 
 export default {
     name: 'Company',
@@ -36,6 +39,7 @@ export default {
         Theme1,
         Products,
         SkeletonQuickAccess,
+        productSkeleton,
     },
     setup() {
         const route = useRoute();

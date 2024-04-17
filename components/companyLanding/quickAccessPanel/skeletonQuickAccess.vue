@@ -18,6 +18,6 @@
 
 <script>
 export default {
-    name: 'SkeletonQuickAccess',
+    name: 'Skeleton Quick Access',
 }
 </script>
