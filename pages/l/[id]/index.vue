@@ -72,14 +72,34 @@ export default {
         const companyStore = useCompanyData();
         const styleStore = useStyles();
         const companySlug = ref(route.params.id);
-        const loading = ref(true)
-        const error = ref(null)
+        const loading = ref(true);
+        const error = ref(null);
+        const pageTitle = ref('پایه یک');
+        const pageDescription = ref('پایه یک، تنها مرجع تخصصی برای آشنایی با انواع خودروهای سنگین');
+        const ogPageDescription = ref('پایه یک، اولین و تنها مرجع تخصصی در ایران است که به انواع ماشین های سنگین می پردازد و در تلاش است به سوالات بازار، پاسخی جامع دهد.');
+        
+        useHead({
+            title: pageTitle.value,
+            ogTitle: pageTitle.value,
+            meta: [
+                { name: 'description', content: pageDescription.value },
+                { name: 'ogDescription', content: ogPageDescription.value }
+            ],
+            link: {
+                rel: 'canonical',
+                href: `https://www.paye1.com${route.path}`
+            }
+        })
 
         const loadData = async () => {
             try {
                 const response = await getApiRequest(`l/${companySlug.value}`)
                 await styleStore.saveStyles(response.styles) // Wait for saveStyles to finish
                 await companyStore.saveCompanyData(response) // Then save company data
+                pageTitle.value = response.title;
+                pageDescription.value = response.description;
+                ogPageDescription.value = response.description;
+                console.log(response);
             } catch (err) {
                 error.value = err.message || 'سرور به مشکل خورده است.'
             } finally {
