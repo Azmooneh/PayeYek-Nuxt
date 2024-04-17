@@ -1,5 +1,5 @@
 <template>
-    <section class="mb-6 lg:mb-8 container">
+    <section class="mb-6 lg:mb-8 container" v-if="slides && slides.length > 0">
         <Swiper v-bind="settings" :modules="[SwiperPagination, SwiperAutoplay, SwiperNavigation]" :class="'land_slider slider_type_1 ' + sliderStyle">
             <SwiperSlide v-for="(slide, index) in slides" :key="index">
                 <NuxtLink :to="slide.link" class="relative w-full pt-[56%] block rounded-b-custom overflow-hidden">

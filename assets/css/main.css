@@ -284,6 +284,10 @@ body{
     direction: rtl;
 }
 
+.container{
+    @apply 2xl:max-w-7xl
+}
+
 
 /* slider styles starts */
 .slider_type_1 .swiper-button-prev, .slider_type_1 .swiper-button-next {
