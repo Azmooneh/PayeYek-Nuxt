@@ -46,7 +46,6 @@ export default {
         const productList = ref(companyStore.products);
         const borderStyle = ref("");
 
-        console.log(styleStore.styles);
         switch (styleStore.styles.border_type) {
             case 0:
                 switch (styleStore.styles.product_card_type) {

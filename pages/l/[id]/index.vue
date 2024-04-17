@@ -6,6 +6,7 @@
         <SkeletonQuickAccess />
         <!-- products -->
         <productSkeleton />
+        <!-- articles -->
     </section>
     <!-- if we have error -->
     <section v-else-if="error" class="flex_center w-full h-screen flex-col gap-4">
@@ -17,6 +18,7 @@
         <Slider />
         <Theme1 />
         <Products />
+        <Articles />
     </main>
 </template>
 
@@ -30,6 +32,7 @@ import Theme1 from '~/components/companyLanding/quickAccessPanel/theme1';
 import SkeletonQuickAccess from '~/components/companyLanding/quickAccessPanel/skeletonQuickAccess';
 import Products from '~/components/companyLanding/products/index';
 import productSkeleton from '~/components/companyLanding/products/productSkeleton';
+import Articles from '~/components/companyLanding/articles/index';
 
 export default {
     name: 'Company',
@@ -40,6 +43,7 @@ export default {
         Products,
         SkeletonQuickAccess,
         productSkeleton,
+        Articles,
     },
     setup() {
         const route = useRoute();
