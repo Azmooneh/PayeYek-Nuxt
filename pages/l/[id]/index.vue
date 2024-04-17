@@ -1,5 +1,6 @@
 <template>
     <section class="container" v-if="loading">
+        <HeaderSkeleton />
         <!-- slider skeleton -->
         <SliderSkeleton />
         <!-- quick access panel skeleton -->
@@ -34,6 +35,7 @@ import { getApiRequest } from '~/helper/common';
 import { useCompanyData, useStyles } from '~/store/index';
 import { ref } from 'vue';
 import Header from '~/components/layout/header/index.vue';
+import HeaderSkeleton from '~/components/layout/header/headerSkeleton.vue';
 import Sidebar from '~/components/layout/sidebar/index.vue';
 import Slider from '~/components/companyLanding/Slider/index';
 import SliderSkeleton from '~/components/companyLanding/Slider/skeleton';
@@ -51,6 +53,7 @@ export default {
     name: 'Company',
     components: {
         Header,
+        HeaderSkeleton,
         Sidebar,
         Slider,
         SliderSkeleton,
