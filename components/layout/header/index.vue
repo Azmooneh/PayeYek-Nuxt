@@ -42,15 +42,8 @@
         <!-- visible on desktop -->
         <section class="hidden lg:block h-16 bg-[#f5f5f5]">
             <section class="flex_between container h-full">
-                <nav class="flex text-stone-700 text-base mb-16 *:h-10 *:px-4 *:rounded-custom *:bg-[#f5f5f5] *:w-full *:flex *:items-center flex-col lg:flex-row lg:items-center lg:*:h-auto lg:*:px-8 lg:*:rounded-none lg:*:w-auto lg:*:bg-transparent lg:mb-0 gap-4 lg:*:border-l lg:*:border-l-[#ccc] lg:gap-0 lg:*:leading-5">
-                    <NuxtLink class="focus:bg-[#eaeaea] lg:hover:text-stone-900 lg:focus:bg-transparent font-medium lg:first:pr-0 lg:last:pl-0 lg:last:border-l-0" to="/"> خانه </NuxtLink>
-                    <NuxtLink class="focus:bg-[#eaeaea] lg:hover:text-stone-900 lg:focus:bg-transparent font-medium lg:first:pr-0 lg:last:pl-0 lg:last:border-l-0" :to="`/l/${slug}/products`"> محصولات </NuxtLink>
-                    <NuxtLink class="focus:bg-[#eaeaea] lg:hover:text-stone-900 lg:focus:bg-transparent font-medium lg:first:pr-0 lg:last:pl-0 lg:last:border-l-0" :to="`/l/${slug}/sales`"> نمایندگی فروش </NuxtLink>
-                    <NuxtLink class="focus:bg-[#eaeaea] lg:hover:text-stone-900 lg:focus:bg-transparent font-medium lg:first:pr-0 lg:last:pl-0 lg:last:border-l-0" :to="`/l/${slug}/products?f=sell`"> اطلاعیه </NuxtLink>
-                    <NuxtLink class="focus:bg-[#eaeaea] lg:hover:text-stone-900 lg:focus:bg-transparent font-medium lg:first:pr-0 lg:last:pl-0 lg:last:border-l-0" :to="`/l/${slug}/about`"> درباره ما </NuxtLink>
-                </nav>
-                <!-- <x-layout.landing.navbar :land="$land" class-names="flex" />
-                <x-layout.landing.social /> -->
+                <Navbar classNames="flex" />
+                <Socialmedia />
             </section>
         </section>
     </header>
@@ -59,9 +52,15 @@
 <script>
 import { NuxtLink } from "#components";
 import { useCommon, useCompanyData } from '~/store/index';
+import Navbar from "~/components/layout/header/children/navbar.vue";
+import Socialmedia from '~/components/common/socialmedia/index.vue';
 
 export default {
     name: 'Header',
+    components: {
+        Navbar,
+        Socialmedia,
+    },
     setup(){
         const layoutStore = useCommon();
         const companyStore = useCompanyData();
