@@ -30,6 +30,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     apiSecret: '', // can be overridden by NUXT_API_SECRET environment variable
+    baseUrl: 'https://paye1.com/api',
     public: {
       apiBase: 'https://paye1.com/api', // can be overridden by NUXT_PUBLIC_API_BASE environment variable
     }

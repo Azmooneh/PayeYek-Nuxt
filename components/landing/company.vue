@@ -18,5 +18,8 @@ export default {
         companyList: Array,
         status: Boolean,
     },
+    setup(props){
+        console.log(computed(() => props.companyList));
+    }
 }
 </script>
