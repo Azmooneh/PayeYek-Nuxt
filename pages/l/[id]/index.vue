@@ -1,12 +1,13 @@
 <template>
     <section class="container" v-if="loading">
         <!-- slider skeleton -->
-        <sliderSkeleton />
+        <SliderSkeleton />
         <!-- quick access panel skeleton -->
         <SkeletonQuickAccess />
         <!-- products -->
-        <productSkeleton />
+        <ProductSkeleton />
         <!-- articles -->
+        <ArticlesSkeleton />
     </section>
     <!-- if we have error -->
     <section v-else-if="error" class="flex_center w-full h-screen flex-col gap-4">
@@ -27,23 +28,25 @@ import { getApiRequest } from '~/helper/common';
 import { useCompanyData, useStyles } from '~/store/index';
 import { ref, onMounted } from 'vue';
 import Slider from '~/components/companyLanding/Slider/index';
-import sliderSkeleton from '~/components/companyLanding/Slider/skeleton';
+import SliderSkeleton from '~/components/companyLanding/Slider/skeleton';
 import Theme1 from '~/components/companyLanding/quickAccessPanel/theme1';
 import SkeletonQuickAccess from '~/components/companyLanding/quickAccessPanel/skeletonQuickAccess';
 import Products from '~/components/companyLanding/products/index';
-import productSkeleton from '~/components/companyLanding/products/productSkeleton';
+import ProductSkeleton from '~/components/companyLanding/products/productSkeleton';
 import Articles from '~/components/companyLanding/articles/index';
+import ArticlesSkeleton from '~/components/companyLanding/articles/articlesSkeleton';
 
 export default {
     name: 'Company',
     components: {
         Slider,
-        sliderSkeleton,
+        SliderSkeleton,
         Theme1,
         Products,
         SkeletonQuickAccess,
-        productSkeleton,
+        ProductSkeleton,
         Articles,
+        ArticlesSkeleton,
     },
     setup() {
         const route = useRoute();

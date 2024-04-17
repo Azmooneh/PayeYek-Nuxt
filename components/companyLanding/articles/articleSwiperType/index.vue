@@ -3,7 +3,7 @@
         :breakpoints="breakpoints" :navigation="true" :pagination="{ clickable: true }">
         <swiper-slide v-for="(article, index) in articleList.slice(0,8)" :key="index"
             :class="'swiper-slide flex flex-col flex-none overflow-hidden rounded-custom ' + borderStyle + (evenOdd == 1 ? ' evenOdd_cards' : ' bg-white')">
-            <div class="relative w-full pt-[62%]">
+            <div class="relative w-full pt-[56%]">
                 <img :src="article.image" :alt="article.title"
                     class="absolute top-0 left-0 object-cover w-full h-full" />
             </div>
