@@ -52,25 +52,6 @@ export default {
 
         console.log(videoList.value);
 
-        // const showVideoByThumbnail = e => {
-        //     const videoHolder = document.getElementById('ifame-box')
-        //     const videocontainer = document.getElementById('ifame-container')
-        //     const videoHtml = e.parentElement
-        //     const videoFromServer = videoHtml.dataset.videolink
-        //     videoHolder.innerHTML = videoFromServer
-        //     videocontainer.classList.remove("hidden")
-        //     videocontainer.classList.add("flex_center")
-        // }
-        
-        // const hideVideoByThumbnail = e => {
-        //     const iframe = e.childNodes[0].childNodes[1].childNodes[1]
-        //     const refreshSrc = iframe.src
-        //     iframe.src = refreshSrc
-        //     const videocontainer = document.getElementById('ifame-container')
-        //     videocontainer.classList.remove("flex_center")
-        //     videocontainer.classList.add("hidden")
-        // }
-
         const showVideoByThumbnail = (link) => {
             videoModal.value = link
         }

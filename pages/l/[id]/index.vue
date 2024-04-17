@@ -8,6 +8,8 @@
         <ProductSkeleton />
         <!-- articles -->
         <ArticlesSkeleton />
+        <!-- videos -->
+        <VideosSkeleton />
     </section>
     <!-- if we have error -->
     <section v-else-if="error" class="flex_center w-full h-screen flex-col gap-4">
@@ -37,6 +39,7 @@ import ProductSkeleton from '~/components/companyLanding/products/productSkeleto
 import Articles from '~/components/companyLanding/articles/index';
 import ArticlesSkeleton from '~/components/companyLanding/articles/articlesSkeleton';
 import Videos from '~/components/companyLanding/videos/index';
+import VideosSkeleton from '~/components/companyLanding/videos/VideosSkeleton.vue';
 
 export default {
     name: 'Company',
@@ -50,6 +53,7 @@ export default {
         Articles,
         ArticlesSkeleton,
         Videos,
+        VideosSkeleton,
     },
     setup() {
         const route = useRoute();
