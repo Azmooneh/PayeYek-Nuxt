@@ -49,8 +49,6 @@ export default {
         const slides = ref(companyStore.slides);
         const sliderStyle = ref("");
 
-        console.log(slides.value);
-        // console.log(styleStore.styles);
         const sliderType = type => {
             switch (type) {
                 case 1:

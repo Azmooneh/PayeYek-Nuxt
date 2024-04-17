@@ -40,6 +40,13 @@ export default {
       borderRadius: {
         'custom': 'var(--theme-radius)',
       },
+      boxShadow: {
+        'focus': '0 0 4px',
+        'lg': '0 2px 8px',
+        'glass': 'inset 0 1px 4px',
+        // 'normal': 'var(--theme-normal)',
+        // 'focus': 'var(--theme-focus)',
+      },
       dropShadow: {
         'red': '0 2px 8px rgba(185,28,28,0.3)',
         'white': '0 2px 8px rgba(255,255,255,0.3)',

@@ -50,8 +50,6 @@ export default {
         const videoList = ref(companyStore.videos);
         const videoModal = ref("");
 
-        console.log(videoList.value);
-
         const showVideoByThumbnail = (link) => {
             videoModal.value = link
         }
@@ -61,6 +59,7 @@ export default {
         }
 
         return {
+            slug: companyStore.companyData.slug,
             videoList,
             showVideoByThumbnail,
             hideVideoByThumbnail,

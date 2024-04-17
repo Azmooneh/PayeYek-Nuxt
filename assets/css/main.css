@@ -236,6 +236,10 @@
         @apply flex items-center justify-center;
     }
 
+    .flex_between{
+        @apply flex items-center justify-between;
+    }
+
     .caption_color{
         @apply text-label-700;
     }

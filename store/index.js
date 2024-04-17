@@ -38,3 +38,16 @@ export const useStyles = defineStore('Styles', {
         },
     },
 })
+
+export const useCommon = defineStore('Common', {
+    state: () => {
+        return {
+            menuVisiblityStatus: false,
+        }
+    },
+    actions: {
+        toggleMenuStatus(status){
+            this.menuVisiblityStatus = status;
+        },
+    },
+})

@@ -49,8 +49,6 @@ export default {
         const articleList = ref(companyStore.articles);
         const borderStyle = ref("");
 
-        console.log(articleList.value);
-
         const renderDate = (string) => {
             return new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium' }).format(new Date(string))
         }

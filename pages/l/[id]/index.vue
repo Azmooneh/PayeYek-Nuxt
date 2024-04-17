@@ -18,18 +18,21 @@
     </section>
     <!-- Render your component content here -->
     <main v-else>
+        <Header />
         <Slider />
         <Theme1 />
         <Products />
         <Articles />
         <Videos />
+        <Contact />
     </main>
 </template>
 
 <script>
 import { getApiRequest } from '~/helper/common';
 import { useCompanyData, useStyles } from '~/store/index';
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
+import Header from '~/components/layout/header/Header.vue';
 import Slider from '~/components/companyLanding/Slider/index';
 import SliderSkeleton from '~/components/companyLanding/Slider/skeleton';
 import Theme1 from '~/components/companyLanding/quickAccessPanel/theme1';
@@ -40,10 +43,12 @@ import Articles from '~/components/companyLanding/articles/index';
 import ArticlesSkeleton from '~/components/companyLanding/articles/articlesSkeleton';
 import Videos from '~/components/companyLanding/videos/index';
 import VideosSkeleton from '~/components/companyLanding/videos/VideosSkeleton.vue';
+import Contact from '~/components/companyLanding/contact/index.vue';
 
 export default {
     name: 'Company',
     components: {
+        Header,
         Slider,
         SliderSkeleton,
         Theme1,
@@ -54,6 +59,7 @@ export default {
         ArticlesSkeleton,
         Videos,
         VideosSkeleton,
+        Contact,
     },
     setup() {
         const route = useRoute();

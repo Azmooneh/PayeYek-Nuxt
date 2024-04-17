@@ -1,5 +1,7 @@
 <template>
     <section :class="'min-h-screen font-iran ' + companyTheme + ' ' + companyRadius">
+        
+
         <slot />
 
     </section>
@@ -7,7 +9,8 @@
 
 <script>
 import { useStyles } from '~/store/index';
-import { ref, watch } from 'vue'
+import { ref, watch } from 'vue';
+
 
 export default {
     name: 'layout',
