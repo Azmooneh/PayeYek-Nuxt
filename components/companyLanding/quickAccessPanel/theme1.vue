@@ -1,6 +1,6 @@
 <template>
     <section
-        class="grid default_container grid-cols-1 sm:grid-cols-2 mb-12 gap-4 lg:gap-5 lg:rounded-none lg:*:rounded-custom *:rounded-custom sm:*:rounded-none sm:rounded-custom sm:overflow-hidden sm:gap-0 *:bg-[#f5f5f5] *:flex_center *:flex-col *:text-stone-700">
+        class="grid container grid-cols-1 sm:grid-cols-2 mb-12 gap-4 lg:gap-5 lg:rounded-none lg:*:rounded-custom *:rounded-custom sm:*:rounded-none sm:rounded-custom sm:overflow-hidden sm:gap-0 *:bg-[#f5f5f5] *:flex_center *:flex-col *:text-stone-700">
         <!-- branches -->
         <NuxtLink :to="`/l/${slug}/sales`" class="h-40">
         <svg class="size-8 stroke-normal mb-3" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,7 +38,7 @@ export default {
     // },
     setup(){
         const companyStore = useCompanyData();
-        console.log(companyStore.companyData);
+        // console.log(companyStore.companyData);
 
         return {
             slug: companyStore.companyData.slug
