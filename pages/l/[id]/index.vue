@@ -20,6 +20,7 @@
         <Theme1 />
         <Products />
         <Articles />
+        <Videos />
     </main>
 </template>
 
@@ -35,6 +36,7 @@ import Products from '~/components/companyLanding/products/index';
 import ProductSkeleton from '~/components/companyLanding/products/productSkeleton';
 import Articles from '~/components/companyLanding/articles/index';
 import ArticlesSkeleton from '~/components/companyLanding/articles/articlesSkeleton';
+import Videos from '~/components/companyLanding/videos/index';
 
 export default {
     name: 'Company',
@@ -47,6 +49,7 @@ export default {
         ProductSkeleton,
         Articles,
         ArticlesSkeleton,
+        Videos,
     },
     setup() {
         const route = useRoute();

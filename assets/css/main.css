@@ -149,6 +149,10 @@
     .rounded_2xl{
         --theme-radius: 16px;
     }
+
+    .iframe_styles > * {
+        width: 100%;
+    }
 }
 @tailwind components;
 

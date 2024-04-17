@@ -42,4 +42,5 @@ export default defineNuxtConfig({
     "~/plugins/Vue3Lottie.client.ts"
   ],
 
+
 })
