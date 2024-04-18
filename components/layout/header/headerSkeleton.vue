@@ -10,7 +10,7 @@
                         <div class="aspect-square h-full bg_skeleton rounded-full"></div>
                     </div>
                     <div class="hidden sm:flex gap-1 flex-col justify-center max-w-48">
-                        <p class="h-5 lg:h-6 w-20 rounded-full bg_skeleton"> {{ title }} </p>
+                        <p class="h-5 lg:h-6 w-20 rounded-full bg_skeleton"></p>
                         <p class="h-2.5 lg:h-4 w-12 rounded-md lg:rounded-lg bg_skeleton"></p>
                     </div>
                 </div>

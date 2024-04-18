@@ -51,22 +51,14 @@ export default {
             }
         })
 
-        // console.log(useRuntimeConfig().public.apiBase);
         const loadData = () => {
             companiesLoaded.value = false;
-
             useFetch(`${useRuntimeConfig().public.apiBase}/l/pages`, {
                 method: 'get',
             }).then(response => {
                 companies.value = response.data.value;
                 companiesLoaded.value = true;
             })
-
-            // getApiRequest('l/pages').then(response => {
-            //     console.log(response.data.value);
-            //     companies.value = response.data.value;
-            //     companiesLoaded.value = true;
-            // })
         }
 
         loadData();

@@ -16,6 +16,7 @@ export default {
     extend: {
       fontFamily: {
         iran: "IRANSansX, serif",
+        yekan: "IRANYekanX, serif",
       },
       colors: {
         label: {

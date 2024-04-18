@@ -1,5 +1,5 @@
 <template>
-    <section :class="'min-h-screen font-iran ' + companyTheme + ' ' + companyRadius">
+    <section :class="'min-h-screen font-yekan ' + companyTheme + ' ' + companyRadius">
         
 
         <slot />

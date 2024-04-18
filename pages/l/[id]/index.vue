@@ -93,13 +93,15 @@ export default {
 
         const loadData = async () => {
             try {
-                const response = await getApiRequest(`l/${companySlug.value}`)
-                await styleStore.saveStyles(response.styles) // Wait for saveStyles to finish
-                await companyStore.saveCompanyData(response) // Then save company data
-                pageTitle.value = response.title;
-                pageDescription.value = response.description;
-                ogPageDescription.value = response.description;
-                console.log(response);
+                // const response = await getApiRequest(`l/${companySlug.value}`)
+                const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}`)
+                console.log(response.data.value);
+                await styleStore.saveStyles(response.data.value.styles) // Wait for saveStyles to finish
+                await companyStore.saveCompanyData(response.data.value) // Then save company data
+                pageTitle.value = response.data.value.title;
+                pageDescription.value = response.data.value.description;
+                ogPageDescription.value = response.data.value.description;
+                // console.log(response);
             } catch (err) {
                 error.value = err.message || 'سرور به مشکل خورده است.'
             } finally {

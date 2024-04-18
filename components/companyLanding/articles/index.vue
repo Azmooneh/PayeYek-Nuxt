@@ -60,6 +60,7 @@ export default {
         }
 
         return {
+            slug: companyStore.companyData.slug,
             parentStyle,
             containerStyle,
             articleCardType: styleStore.styles.article_card_type,
