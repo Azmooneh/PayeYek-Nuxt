@@ -19,7 +19,12 @@ export default defineNuxtConfig({
           name: "home",
           path: "/",
           file: "/pages/index.vue",
-        }
+        },
+        {
+          name: "Company",
+          path: '/l/:id',
+          file: "/pages/l/[id]/index.vue",
+        },
       );
     },
   },

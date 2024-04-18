@@ -34,7 +34,9 @@ export const useStyles = defineStore('Styles', {
     },
     actions: {
         saveStyles(data){
+            // console.log(this.styles);
             this.styles = data;
+            // console.log(this.styles);
         },
     },
 })

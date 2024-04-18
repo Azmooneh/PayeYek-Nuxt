@@ -1,24 +1,24 @@
 <template>
-    <section :class="'min-h-screen font-yekan ' + companyTheme + ' ' + companyRadius">
-        
+    <!-- <section :class="'min-h-screen font-yekan ' + companyTheme + ' ' + companyRadius"> -->
+    <section :class="computedClass">
 
         <slot />
-
-        <Footer />
+        <!-- <Footer /> -->
     </section>
 </template>
 
 <script>
 import { useStyles } from '~/store/index';
 import { ref, watch } from 'vue';
-import Footer from '~/components/layout/footer/index.vue';
+// import Footer from '~/components/layout/footer/index.vue';
+
 
 
 export default {
     name: 'layout',
-    components: {
-        Footer,
-    },
+    // components: {
+    //     Footer,
+    // },
     setup() {
         const styleStore = useStyles();
         const companyTheme = ref("");
@@ -116,25 +116,53 @@ export default {
             }
         }
 
-        watch(() => styleStore.styles.land_id, (newVal) => {
-            checkTheme(newVal);
-        });
+        // watch(() => styleStore.styles.land_id, (newVal) => {
+        //     checkTheme(newVal);
+        // });
 
-        if (styleStore.styles.land_id) {
-            checkTheme(styleStore.styles.land_id);
+        // if (styleStore.styles.land_id) {
+        //     console.log("if statement");
+        //     // console.log(styleStore.styles.land_id);
+        //     checkTheme(styleStore.styles.land_id);
+        // }
+
+        // watch(() => styleStore.styles.radius, (newVal) => {
+        //     console.log("watch statement");
+        //     checkRadius(newVal);
+        // });
+
+        // if (styleStore.styles.radius) {
+        //     checkRadius(styleStore.styles.radius);
+        // }
+
+        const checkThemeAndRadius = () => {
+            if (styleStore.styles.land_id) {
+                checkTheme(styleStore.styles.land_id);
+            }
+            if (styleStore.styles.radius) {
+                checkRadius(styleStore.styles.radius);
+            }
         }
 
-        watch(() => styleStore.styles.radius, (newVal) => {
-            checkRadius(newVal);
+        watch(() => [styleStore.styles.land_id, styleStore.styles.radius], ([newLandId, newRadius]) => {
+            checkTheme(newLandId);
+            checkRadius(newRadius);
         });
 
-        if (styleStore.styles.radius) {
-            checkRadius(styleStore.styles.radius);
-        }
+        const computedClass = ref('');
 
+        watch([companyTheme, companyRadius], () => {
+            computedClass.value = `min-h-screen font-yekan ${companyTheme.value} ${companyRadius.value}`;
+        });
+        
+        
+        checkThemeAndRadius();
+        
+        console.log(companyTheme.value, companyRadius.value);
         return {
             companyTheme,
             companyRadius,
+            computedClass,
         }
     }
 }

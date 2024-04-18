@@ -12,7 +12,7 @@
                 </div>
             </div>
 
-            <section class="w-full" v-if="articleCardType == 5">
+            <section class="w-full">
                 <articleSwiperType />
             </section>
         </section>

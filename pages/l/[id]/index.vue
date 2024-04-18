@@ -13,12 +13,12 @@
         <VideosSkeleton />
     </section>
     <!-- if we have error -->
-    <section v-else-if="error" class="flex_center w-full h-screen flex-col gap-4">
+    <section v-else-if="error" class="flex-col w-full h-screen gap-4 flex_center">
         <iframe src="https://lottie.host/embed/fa73d967-9d5d-40c4-ba37-d8dc01185d88/XVqCFf2DuQ.json"></iframe>
-        <p class="text-center text-base caption_color font-medium"> ارور: {{ error }} </p>
+        <p class="text-base font-medium text-center caption_color"> ارور: {{ error }} </p>
     </section>
     <!-- Render your component content here -->
-    <main v-else class="min-h-[calc(100vh-340px)]">
+    <main v-else-if="!loading" class="min-h-[calc(100vh-340px)]">
         <Header />
         <Sidebar />
         <Slider />
@@ -27,6 +27,7 @@
         <Articles />
         <Videos />
         <Contact />
+        <Footer />
     </main>
 </template>
 
@@ -48,6 +49,7 @@ import ArticlesSkeleton from '~/components/companyLanding/articles/articlesSkele
 import Videos from '~/components/companyLanding/videos/index';
 import VideosSkeleton from '~/components/companyLanding/videos/VideosSkeleton.vue';
 import Contact from '~/components/companyLanding/contact/index.vue';
+import Footer from '~/components/layout/footer/index.vue';
 
 export default {
     name: 'Company',
@@ -66,6 +68,7 @@ export default {
         Videos,
         VideosSkeleton,
         Contact,
+        Footer,
     },
     setup() {
         const route = useRoute();
@@ -92,12 +95,13 @@ export default {
         })
 
         const loadData = async () => {
+            loading.value = true;
             try {
                 // const response = await getApiRequest(`l/${companySlug.value}`)
                 const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}`)
                 // console.log(response.data.value);
-                await styleStore.saveStyles(response.data.value.styles) // Wait for saveStyles to finish
-                await companyStore.saveCompanyData(response.data.value) // Then save company data
+                styleStore.saveStyles(response.data.value.styles) // Wait for saveStyles to finish
+                companyStore.saveCompanyData(response.data.value) // Then save company data
                 pageTitle.value = response.data.value.title;
                 pageDescription.value = response.data.value.description;
                 ogPageDescription.value = response.data.value.description;

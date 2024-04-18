@@ -10,15 +10,16 @@
                 </svg>
             </button>
         </div>
-        <!-- items -->
         <div class="flex flex-col gap-4 overflow-hidden duration-300"
             :class="toggleDropdown ? 'py-4 md:py-0 max-h-60 md:max-h-full' : 'py-0 max-h-0 md:max-h-full'">
-            <NuxtLink v-for="(page, index) in data.items" :key="index" :to="page.slug"> {{ page.title }} </NuxtLink>
+            <NuxtLink v-for="(page, index) in data.items" :key="index" :to="`/l/${slug}/products?f=${page.slug}`"> {{ page.title }} </NuxtLink>
         </div>
     </section>
 </template>
 
 <script>
+import { useCompanyData } from '~/store/index';
+
 export default {
     name: 'Categories',
     props: {
@@ -26,6 +27,7 @@ export default {
     },
     setup(props) {
         const toggleDropdown = ref(false);
+        const companyStore = useCompanyData();
         // console.log(props.data);
 
         const toggleState = () => {
@@ -33,6 +35,7 @@ export default {
         }
 
         return {
+            slug: companyStore.companyData.slug,
             toggleDropdown,
             toggleState,
         }

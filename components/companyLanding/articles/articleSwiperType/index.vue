@@ -1,7 +1,6 @@
 <template>
-    <swiper class="w-full swiper articleSliderTypeFive" :speed="750" :modules="[SwiperPagination, SwiperAutoplay, SwiperNavigation]" :slides-per-view="3" :spece-between="20"
-        :breakpoints="breakpoints" :navigation="true" :pagination="{ clickable: true }">
-        <swiper-slide v-for="(article, index) in articleList.slice(0,8)" :key="index"
+    <Swiper class="w-full swiper articleSliderTypeFive" v-bind="settings" :modules="[SwiperPagination, SwiperAutoplay, SwiperNavigation]">
+        <SwiperSlide v-for="(article, index) in articleList.slice(0, 8)" :key="index"
             :class="'swiper-slide flex flex-col flex-none overflow-hidden rounded-custom ' + borderStyle + (evenOdd == 1 ? ' evenOdd_cards' : ' bg-white')">
             <div class="relative w-full pt-[56%]">
                 <img :src="article.image" :alt="article.title"
@@ -23,8 +22,8 @@
                     classNames="mx-auto text-white bg-stone-700 text-lg font-medium flex_center h-10 w-32 rounded-custom">
                     بیشتر </NuxtLink>
             </div>
-        </swiper-slide>
-    </swiper>
+        </SwiperSlide>
+    </Swiper>
 </template>
 
 <script>
@@ -33,17 +32,42 @@ import { useCompanyData, useStyles } from '~/store/index';
 
 export default {
     name: 'Slider Article',
-    setup(){
-        const breakpoints = {
-            320: {
-                slidesPerView: "auto",
-                spaceBetween: 20,
+    setup() {
+        const settings = {
+            slidesPerView: 3,
+            spaceBetween: 20,
+            pagination: true,
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
             },
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 20,
+            navigation: true,
+            speed: 750,
+            pagination: {
+                clickable: true,
             },
-        }
+            breakpoints: {
+                320: {
+                    slidesPerView: "auto",
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+            }
+        };
+        // const breakpoints = {
+        //     320: {
+        //         slidesPerView: "auto",
+        //         spaceBetween: 20,
+        //     },
+        //     1024: {
+        //         slidesPerView: 3,
+        //         spaceBetween: 20,
+        //     },
+        // }
         const companyStore = useCompanyData();
         const styleStore = useStyles();
         const articleList = ref(companyStore.articles);
@@ -63,14 +87,15 @@ export default {
             case 2:
                 borderStyle.value = "drop-shadow-base";
                 break;
-        
+
             default:
                 break;
         }
 
         return {
             slug: companyStore.companyData.slug,
-            breakpoints,
+            // breakpoints,
+            settings,
             articleList,
             renderDate,
             borderStyle,

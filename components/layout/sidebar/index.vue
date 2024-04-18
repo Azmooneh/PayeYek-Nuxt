@@ -40,7 +40,7 @@ export default {
             layoutStore.toggleMenuStatus(status);
         }
 
-        console.log(layoutStore.menuVisiblityStatus);
+        // console.log(layoutStore.menuVisiblityStatus);
 
         watch(() => layoutStore.menuVisiblityStatus, (n, o) => {
             menuStatus.value = n
