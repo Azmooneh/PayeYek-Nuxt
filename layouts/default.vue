@@ -4,16 +4,21 @@
 
         <slot />
 
+        <Footer />
     </section>
 </template>
 
 <script>
 import { useStyles } from '~/store/index';
 import { ref, watch } from 'vue';
+import Footer from '~/components/layout/footer/index.vue';
 
 
 export default {
     name: 'layout',
+    components: {
+        Footer,
+    },
     setup() {
         const styleStore = useStyles();
         const companyTheme = ref("");

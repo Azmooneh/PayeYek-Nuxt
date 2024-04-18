@@ -1,6 +1,6 @@
 <template>
-    <section class="mb-4 lg:mb-16 relative z-[1] container">
-        <div class="">
+    <section class="mb-4 lg:mb-16 relative z-[1] container" v-if="productList.length">
+        <div>
             <h3 class="mb-2 text-base sm:text-lg font-medium text-center text-stone-700"> محصولات شرکت آرین دیزل </h3>
             <hr class="w-60 sm:w-96 border-normal mb-6 lg:mb-0 mx-auto" />
             <!-- show all -->

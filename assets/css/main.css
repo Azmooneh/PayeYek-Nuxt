@@ -375,6 +375,10 @@ body{
     direction: rtl;
 }
 
+*{
+    @apply transition-all
+}
+
 .container{
     @apply 2xl:max-w-7xl
 }

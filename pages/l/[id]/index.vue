@@ -18,7 +18,7 @@
         <p class="text-center text-base caption_color font-medium"> ارور: {{ error }} </p>
     </section>
     <!-- Render your component content here -->
-    <main v-else>
+    <main v-else class="min-h-[calc(100vh-340px)]">
         <Header />
         <Sidebar />
         <Slider />
@@ -95,7 +95,7 @@ export default {
             try {
                 // const response = await getApiRequest(`l/${companySlug.value}`)
                 const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}`)
-                console.log(response.data.value);
+                // console.log(response.data.value);
                 await styleStore.saveStyles(response.data.value.styles) // Wait for saveStyles to finish
                 await companyStore.saveCompanyData(response.data.value) // Then save company data
                 pageTitle.value = response.data.value.title;

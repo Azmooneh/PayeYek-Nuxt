@@ -1,6 +1,6 @@
 <template>
-    <section class="mb-4 sm:mb-8 lg:mb-16 relative z-[3] container" id="video-player-container">
-        <div class="">
+    <section class="mb-4 sm:mb-8 lg:mb-16 relative z-[3] container" id="video-player-container" v-if="videoList.length">
+        <div>
             <h3 class="mb-2 text-base sm:text-lg font-medium text-center text-stone-700"> ویدیو ها </h3>
             <hr class="w-60 sm:w-96 border-normal mb-6 lg:mb-0 mx-auto" />
             <!-- show all -->

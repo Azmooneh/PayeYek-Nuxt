@@ -20,7 +20,7 @@
                     <span class="sr-only">Toggle sidebar</span>
                 </button>
                 <!-- logo -->
-                <NuxtLink to="/" class="sm:flex sm:items-center sm:gap-2">
+                <NuxtLink :to="`/l/${slug}`" class="sm:flex sm:items-center sm:gap-2">
                     <div class="h-14 sm:h-[72px]">
                         <img :src="logo" :alt="title" class="object-contain h-full" />
                     </div>

@@ -1,5 +1,5 @@
 <template>
-    <section :class="'mb-4 lg:mb-16 relative container ' + parentStyle">
+    <section :class="'mb-4 lg:mb-16 relative container ' + parentStyle" v-if="articles.length">
         <section :class="containerStyle">
             <div>
                 <h3 class="mb-2 text-base sm:text-lg font-medium text-center text-stone-700"> آخرین اخبار و اطلاعیه ها </h3>
@@ -33,7 +33,7 @@ export default {
     setup(){
         const companyStore = useCompanyData();
         const styleStore = useStyles();
-        const productList = ref(companyStore.products);
+        const articles = ref(companyStore.articles);
         const parentStyle = ref("");
         const containerStyle = ref("");
 
@@ -64,6 +64,7 @@ export default {
             parentStyle,
             containerStyle,
             articleCardType: styleStore.styles.article_card_type,
+            articles,
         }
     }
 }
