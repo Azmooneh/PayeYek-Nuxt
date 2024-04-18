@@ -19,7 +19,7 @@
                     {{ article.description }}
                 </p>
                 <NuxtLink :to="'/l/' + slug + '/articles/' + article.slug"
-                    classNames="mx-auto text-white bg-stone-700 text-lg font-medium flex_center h-10 w-32 rounded-custom">
+                    class="w-32 h-10 mx-auto text-lg font-medium text-white bg-stone-700 flex_center rounded-custom">
                     بیشتر </NuxtLink>
             </div>
         </SwiperSlide>
