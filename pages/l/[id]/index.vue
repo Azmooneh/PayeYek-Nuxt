@@ -18,7 +18,7 @@
         <p class="text-base font-medium text-center caption_color"> ارور: {{ error }} </p>
     </section>
     <!-- Render your component content here -->
-    <main v-else-if="!loading" class="min-h-[calc(100vh-340px)]">
+    <main v-else class="min-h-[calc(100vh-340px)]">
         <Header />
         <Sidebar />
         <Slider />
