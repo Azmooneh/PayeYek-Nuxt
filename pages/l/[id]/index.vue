@@ -94,6 +94,8 @@ export default {
             }
         })
 
+        console.log("1" + loading.value);
+
         const loadData = async () => {
             loading.value = true;
             try {
@@ -111,6 +113,7 @@ export default {
             } finally {
                 loading.value = false
             }
+            console.log("2" + loading.value);
         }
 
         loadData();
