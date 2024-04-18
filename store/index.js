@@ -45,11 +45,16 @@ export const useCommon = defineStore('Common', {
     state: () => {
         return {
             menuVisiblityStatus: false,
+            footerData: null,
         }
     },
     actions: {
         toggleMenuStatus(status){
             this.menuVisiblityStatus = status;
         },
+        saveFooterData(data){
+            this.footerData = data;
+            console.log(this.footerData);
+        }
     },
 })

@@ -1,5 +1,5 @@
 <template>
-    <section class="container" v-if="loading">
+    <section class="container" v-if="watchLoading">
         <HeaderSkeleton />
         <!-- slider skeleton -->
         <SliderSkeleton />
@@ -27,7 +27,7 @@
         <Articles />
         <Videos />
         <Contact />
-        <Footer />
+        <!-- <Footer /> -->
     </main>
 </template>
 
@@ -80,7 +80,7 @@ export default {
         const pageTitle = ref('پایه یک');
         const pageDescription = ref('پایه یک، تنها مرجع تخصصی برای آشنایی با انواع خودروهای سنگین');
         const ogPageDescription = ref('پایه یک، اولین و تنها مرجع تخصصی در ایران است که به انواع ماشین های سنگین می پردازد و در تلاش است به سوالات بازار، پاسخی جامع دهد.');
-        
+        const watchLoading = ref(true);
         useHead({
             title: pageTitle.value,
             ogTitle: pageTitle.value,
@@ -94,16 +94,16 @@ export default {
             }
         })
 
-        console.log("1" + loading.value);
+        // console.log("1" + loading.value);
 
         const loadData = async () => {
-            loading.value = true;
             try {
+                loading.value = true;
                 // const response = await getApiRequest(`l/${companySlug.value}`)
                 const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}`)
                 // console.log(response.data.value);
-                styleStore.saveStyles(response.data.value.styles) // Wait for saveStyles to finish
-                companyStore.saveCompanyData(response.data.value) // Then save company data
+                await styleStore.saveStyles(response.data.value.styles) // Wait for saveStyles to finish
+                await companyStore.saveCompanyData(response.data.value) // Then save company data
                 pageTitle.value = response.data.value.title;
                 pageDescription.value = response.data.value.description;
                 ogPageDescription.value = response.data.value.description;
@@ -113,13 +113,18 @@ export default {
             } finally {
                 loading.value = false
             }
-            console.log("2" + loading.value);
+            // console.log("2" + loading.value);
         }
 
         loadData();
 
+        watch(() => loading.value, (n, o) => {
+            watchLoading.value = n
+        })
+
         return {
             loading,
+            watchLoading,
             error
         }
     }
