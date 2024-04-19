@@ -18,6 +18,12 @@
             </section>
 
         </section>
+
+        <section class="flex-col gap-10 flex_center md:flex-row-reverse md:justify-between default_container">
+            <Socialmedia :isInFooter="true" />
+
+            <p class="text-xs font-normal text-center text-white sm:text-sm"> تمامی حقوق این سایت متعلق به نام برند است. © {{ new Intl.DateTimeFormat("fa",{year:"numeric"}).format(Date.now()) }} </p>
+        </section>
     </footer>
 </template>
 
@@ -25,12 +31,14 @@
 import { useCompanyData, useStyles, useCommon } from '~/store/index';
 import Sections from './children/sections/sections.vue';
 import Categories from './children/categories/index.vue';
+import Socialmedia from '~/components/common/socialmedia/index.vue';
 
 export default {
     name: 'Footer',
     components: {
         Sections,
         Categories,
+        Socialmedia,
     },
     setup() {
         const route = useRoute();
