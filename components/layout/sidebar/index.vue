@@ -38,10 +38,10 @@ export default {
         const menuStatus = ref(layoutStore.menuVisiblityStatus);
         const isFilled = ref(computed(() => {
             if(!!companyStore.companyData.slug){
-                console.log("not");
+                // console.log("not");
                 return true;
             } else {
-                console.log("not");
+                // console.log("not");
                 return false;
             }
         }));

@@ -60,10 +60,10 @@ export default {
         const title = ref(computed(() => companyStore.companyData.title));
         const isFilled = ref(computed(() => {
             if(!!companyStore.companyData.slug){
-                console.log("not");
+                // console.log("not");
                 return true;
             } else {
-                console.log("not");
+                // console.log("not");
                 return false;
             }
         }));
