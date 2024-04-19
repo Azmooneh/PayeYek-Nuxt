@@ -1,5 +1,5 @@
 <template>
-    <aside :class="menuStatus ? 'translate-x-0' : 'translate-x-[100%]'"
+    <aside v-if="isFilled" :class="menuStatus ? 'translate-x-0' : 'translate-x-[100%]'"
         class="fixed top-0 ltr:left-0 rtl:right-0 z-[6] flex flex-col pb-5 px-4 w-64 h-screen pt-6 transition-transform -translate-x-full bg-white border-r border-gray-200 lg:hidden">
         <!-- close menu -->
         <button type="button" class="p-1 mb-2 mr-auto cursor-pointer"
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { useCommon } from '~/store/index';
+import { useCommon, useCompanyData } from '~/store/index';
 import Navbar from "~/components/layout/header/children/navbar.vue";
 import Socialmedia from '~/components/common/socialmedia/index.vue';
 
@@ -34,7 +34,17 @@ export default {
     },
     setup(){
         const layoutStore = useCommon();
+        const companyStore = useCompanyData();
         const menuStatus = ref(layoutStore.menuVisiblityStatus);
+        const isFilled = ref(computed(() => {
+            if(!!companyStore.companyData.slug){
+                console.log("not");
+                return true;
+            } else {
+                console.log("not");
+                return false;
+            }
+        }));
 
         const toggleMenu = (status) => {
             layoutStore.toggleMenuStatus(status);
@@ -49,6 +59,7 @@ export default {
         return {
             toggleMenu,
             menuStatus,
+            isFilled,
         }
     }
 }

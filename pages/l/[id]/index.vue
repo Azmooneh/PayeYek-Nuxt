@@ -21,7 +21,7 @@
     <main v-else class="min-h-[calc(100vh-340px)]">
         <!-- <Header />
         <Sidebar /> -->
-        <!-- <Slider /> -->
+        <Slider />
         <Theme1 />
         <Products />
         <Articles />

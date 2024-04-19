@@ -3,10 +3,10 @@
     <section :class="computedClass">
         <Header />
         
-        <!-- <Sidebar /> -->
+        <Sidebar />
 
         <slot />
-        
+
         <Footer />
     </section>
 </template>
