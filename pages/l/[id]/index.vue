@@ -1,6 +1,6 @@
 <template>
     <section class="container" v-if="watchLoading">
-        <HeaderSkeleton />
+        <!-- <HeaderSkeleton /> -->
         <!-- slider skeleton -->
         <SliderSkeleton />
         <!-- quick access panel skeleton -->
@@ -19,9 +19,9 @@
     </section>
     <!-- Render your component content here -->
     <main v-else class="min-h-[calc(100vh-340px)]">
-        <Header />
-        <Sidebar />
-        <Slider />
+        <!-- <Header />
+        <Sidebar /> -->
+        <!-- <Slider /> -->
         <Theme1 />
         <Products />
         <Articles />

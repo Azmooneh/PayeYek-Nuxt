@@ -1,5 +1,5 @@
 <template>
-    <header class="sticky top-0 z-[4] drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)] bg-white">
+    <header class="sticky top-0 z-[4] drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)] bg-white" v-if="isFilled">
         <section class="container flex items-center justify-between h-16 gap-5 sm:h-20">
             <div class="flex items-center gap-2">
                 <!-- hamburger menu -->
@@ -55,6 +55,20 @@ export default {
     setup(){
         const layoutStore = useCommon();
         const companyStore = useCompanyData();
+        const slug = ref(computed(() => companyStore.companyData.slug));
+        const logo = ref(computed(() => companyStore.companyData.logo));
+        const title = ref(computed(() => companyStore.companyData.title));
+        const isFilled = ref(computed(() => {
+            if(!!companyStore.companyData.slug){
+                console.log("not");
+                return true;
+            } else {
+                console.log("not");
+                return false;
+            }
+        }));
+        // slug.value = computed(() => companyStore.companyData.slug).value;
+        // console.log(slug.value);
 
         const toggleMenu = (status) => {
             layoutStore.toggleMenuStatus(status);
@@ -72,11 +86,15 @@ export default {
         }
 
         return {
-            slug: companyStore.companyData.slug,
-            logo: companyStore.companyData.logo,
-            title: companyStore.companyData.title,
+            // slug: companyStore.companyData.slug,
+            // logo: companyStore.companyData.logo,
+            // title: companyStore.companyData.title,
+            slug,
+            logo,
+            title,
             toggleMenu,
             generateEnName,
+            isFilled,
         }
     }
 }

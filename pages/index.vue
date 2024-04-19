@@ -16,8 +16,10 @@
 <script>
 import company from '~/components/landing/company.vue';
 import skeleton from '~/components/landing/skeleton.vue';
-import { getApiRequest } from '~/helper/common';
+// import { getApiRequest } from '~/helper/common';
 import { ref } from 'vue';
+import { onBeforeRouteLeave } from '#vue-router';
+import { useCompanyData, useCommon } from '~/store/index';
 
 export default {
     name: 'home',
@@ -29,6 +31,8 @@ export default {
         const pageTitle = ref('پایه یک');
         const pageDescription = ref('پایه یک، تنها مرجع تخصصی برای آشنایی با انواع خودروهای سنگین');
         const ogPageDescription = ref('پایه یک، اولین و تنها مرجع تخصصی در ایران است که به انواع ماشین های سنگین می پردازد و در تلاش است به سوالات بازار، پاسخی جامع دهد.');
+        const companyStore = useCompanyData();
+        const layoutStore = useCommon();
         const companies = ref([]);
         const companiesLoaded = ref(false);
         const route = useRoute();
@@ -62,6 +66,20 @@ export default {
         }
 
         loadData();
+
+        const clearStoreData = () => {
+            companyStore.companyData = {};
+            companyStore.slides = null;
+            companyStore.products = null;
+            companyStore.articles = null;
+            companyStore.videos = null;
+            layoutStore.footerData = null;
+        };
+
+        onBeforeRouteLeave((to, from, next) => {
+            clearStoreData();
+            next();
+        });
 
         return {
             companies,

@@ -65,10 +65,12 @@ export default {
         }
 
         if (route.params.id) {
+            // console.log("footer if => ", route.params.id);
             loadData(route.params.id);
         }
-
+        
         watch(() => route.params.id, (n, o) => {
+            // console.log("footer watch => ", n);
             loadData(n);
         })
 

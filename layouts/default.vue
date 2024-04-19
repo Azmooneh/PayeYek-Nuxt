@@ -1,8 +1,12 @@
 <template>
     <!-- <section :class="'min-h-screen font-yekan ' + companyTheme + ' ' + companyRadius"> -->
     <section :class="computedClass">
+        <Header />
+        
+        <!-- <Sidebar /> -->
 
         <slot />
+        
         <Footer />
     </section>
 </template>
@@ -11,13 +15,16 @@
 import { useStyles } from '~/store/index';
 import { ref, watch } from 'vue';
 import Footer from '~/components/layout/footer/index.vue';
+import Header from '~/components/layout/header/index.vue';
 
-
+import Sidebar from '~/components/layout/sidebar/index.vue';
 
 export default {
     name: 'layout',
     components: {
         Footer,
+        Header,
+        Sidebar,
     },
     setup() {
         const styleStore = useStyles();
@@ -158,7 +165,7 @@ export default {
         
         checkThemeAndRadius();
         
-        console.log(companyTheme.value, companyRadius.value);
+        // console.log(companyTheme.value, companyRadius.value);
         return {
             companyTheme,
             companyRadius,
