@@ -1,10 +1,10 @@
 <template>
     <main class="container pt-20 pb-6 sm:pb-10 font-iran">
         <img src="https://paye1.com/assets/landing/logo.png" alt="paye1" class="h-24 mx-auto mb-10 sm:mb-14" />
-        <p class="max-w-md px-4 mx-auto mb-10 leading-9 text-justify text-gray-800">
+        <h1 class="max-w-md px-4 mx-auto mb-10 leading-9 text-justify text-gray-800">
             پایه یک، تنها مرجع تخصصی برای آشنایی با انواع خودروهای سنگین
             <strong class="text-red-700"> بزودی در دسترس شما خواهد بود... </strong>
-        </p>
+        </h1>
         <section class="grid max-w-5xl grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4 lg:mx-auto">
             <company :companyList="companies" v-if="companiesLoaded" />
             <!-- skeleton -->

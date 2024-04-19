@@ -5,7 +5,7 @@
         <div class="rounded-full size-24 p-2 bg-[#f2f2f2] border border-[#e5e5e5]">
             <img :src="company.logo" :alt="company.title" class="h-full" />
         </div>
-        <p class="text-sm font-medium text-center md:text-base caption_color"> {{ company.title }} </p>
+        <h3 class="text-sm font-medium text-center md:text-base caption_color"> {{ company.title }} </h3>
     </NuxtLink>
 </template>
 
