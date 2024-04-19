@@ -1,6 +1,6 @@
 <template>
     <section class="relative pt-20 bg-stone-200 pb-14 lg:pt-16 lg:pb-24">
-        <button class="absolute left-1/2 -translate-x-1/2 top-[-34px] group" id="scrollToTopBtn" type="button" @click="scrollToTopSmoothly">
+        <div class="absolute left-1/2 -translate-x-1/2 top-[-34px] group" @click="scrollToTopSmoothly">
             <svg width="137" height="70" viewBox="0 0 137 70" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M129.267 35C97.7671 35 105.767 70 70.7671 70C35.7671 70 39.7671 35 9.76701 35C-27.233 35 51.4371 0 70.7671 0C90.0971 0 158.767 35 129.267 35Z"
@@ -12,7 +12,7 @@
                 class="absolute w-6 h-6 -translate-x-2 -translate-y-1/2 stroke-stone-700 top-2/3 left-1/2 group-hover:stroke-normal">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18" />
             </svg>
-        </button>
+        </div>
         <form action="#" class="flex flex-col items-center default_container">
             <p class="mb-6 text-base font-semibold text-center lg:text-xl xl:text-2xl lg:mb-4 text-stone-700"> ارتباط با
                 کارشناسان فروش </p>

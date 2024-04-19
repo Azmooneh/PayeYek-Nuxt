@@ -15,7 +15,7 @@
                     </div>
                     <div class="flex-col justify-center hidden sm:flex max-w-48">
                         <h3 class="text-sm font-bold lg:text-base font-iran"> {{ title }} </h3>
-                        <h4 class="text-[10px] lg:text-xs text-gray-400 font-inter text-start">
+                        <h4 class="text-[10px] lg:text-xs text-gray-500 font-inter text-start">
                             {{ generateEnName() }}
                         </h4>
                     </div>

@@ -4,7 +4,7 @@
             :class="'swiper-slide flex flex-col flex-none overflow-hidden rounded-custom ' + borderStyle + (evenOdd == 1 ? ' evenOdd_cards' : ' bg-white')">
             <div class="relative w-full pt-[56%]">
                 <img :src="article.image" :alt="article.title"
-                    class="absolute top-0 left-0 object-cover w-full h-full" />
+                    class="absolute top-0 left-0 object-cover w-full h-full" width="100%" height="100%" />
             </div>
             <!-- info -->
             <div class="px-2 pt-3 pb-4">
