@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { useCompanyData, useStyles, useCommon } from '~/store/index';
+import { useCompanyData, useCommon } from '~/store/index';
 import Sections from './children/sections/sections.vue';
 import Categories from './children/categories/index.vue';
 import Socialmedia from '~/components/common/socialmedia/index.vue';
