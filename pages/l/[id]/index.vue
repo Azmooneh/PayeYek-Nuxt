@@ -22,7 +22,7 @@
         <!-- <Header />
         <Sidebar /> -->
         <Slider />
-        <Theme1 />
+        <QuickAccessPAnel />
         <Products />
         <Articles />
         <Videos />
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { getApiRequest } from '~/helper/common';
+// import { getApiRequest } from '~/helper/common';
 import { useCompanyData, useStyles } from '~/store/index';
 import { ref } from 'vue';
 import Header from '~/components/layout/header/index.vue';
@@ -40,7 +40,7 @@ import HeaderSkeleton from '~/components/layout/header/headerSkeleton.vue';
 import Sidebar from '~/components/layout/sidebar/index.vue';
 import Slider from '~/components/companyLanding/Slider/index';
 import SliderSkeleton from '~/components/companyLanding/Slider/skeleton';
-import Theme1 from '~/components/companyLanding/quickAccessPanel/theme1';
+import QuickAccessPAnel from '~/components/companyLanding/quickAccessPanel/index.vue';
 import SkeletonQuickAccess from '~/components/companyLanding/quickAccessPanel/skeletonQuickAccess';
 import Products from '~/components/companyLanding/products/index';
 import ProductSkeleton from '~/components/companyLanding/products/productSkeleton';
@@ -59,7 +59,7 @@ export default {
         Sidebar,
         Slider,
         SliderSkeleton,
-        Theme1,
+        QuickAccessPAnel,
         Products,
         SkeletonQuickAccess,
         ProductSkeleton,

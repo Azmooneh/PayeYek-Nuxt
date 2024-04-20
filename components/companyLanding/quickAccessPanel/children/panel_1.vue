@@ -32,7 +32,7 @@ import { NuxtLink } from "#components";
 import { useCompanyData } from '~/store/index';
 
 export default {
-    name: 'Theme1',
+    name: 'Panel 1',
     setup() {
         const companyStore = useCompanyData();
 
