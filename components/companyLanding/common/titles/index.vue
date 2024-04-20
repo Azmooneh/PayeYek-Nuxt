@@ -1,5 +1,5 @@
 <template>
-    <Title_type_1 :slug="slug" v-if="headerType == 1" />
+    <Title_type_1 :slug="slug" v-if="headerType == 1" :title="title" />
 </template>
 
 <script>
@@ -14,6 +14,7 @@ export default {
     props: {
         slug: String,
         headerType: Number,
+        title: String,
     },
     setup(){
 

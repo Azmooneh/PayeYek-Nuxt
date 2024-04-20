@@ -1,16 +1,16 @@
 <template>
     <section class="mb-4 lg:mb-16 relative z-[1] container" v-if="productList.length">
         <!-- title -->
-        <Titles :slug="slug" :headerType="headerType" />
+        <Titles :slug="slug" :headerType="headerType" :title="'محصولات شرکت ' + companyName" />
         <!-- products -->
         <ProductTypes :slug="slug" :productCardType="productCardType" />
     </section>
 </template>
 
 <script>
-import { NuxtLink } from "#components";
+// import { NuxtLink } from "#components";
 import { useCompanyData, useStyles } from '~/store/index';
-import Titles from './children/titles/index.vue';
+import Titles from '~/components/companyLanding/common/titles/index.vue';
 import ProductTypes from './children/products/index.vue';
 
 export default {
@@ -74,6 +74,7 @@ export default {
             evenOdd: styleStore.styles.product_striped,
             headerType,
             productCardType,
+            companyName: companyStore.companyData.title,
         }
     }
 }
