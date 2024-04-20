@@ -1,5 +1,5 @@
 <template>
-    <Product_type_11 :slug="slug" />
+    <Product_type_11 :slug="slug" v-if="productCardType == 11" />
 </template>
 
 <script>
@@ -12,6 +12,7 @@ export default {
     },
     props: {
         slug: String,
+        productCardType: Number,
     }
 }
 </script>

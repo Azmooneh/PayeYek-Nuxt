@@ -1,9 +1,9 @@
 <template>
     <section class="mb-4 lg:mb-16 relative z-[1] container" v-if="productList.length">
         <!-- title -->
-        <Titles :slug="slug" />
+        <Titles :slug="slug" :headerType="headerType" />
         <!-- products -->
-        <ProductTypes :slug="slug" />
+        <ProductTypes :slug="slug" :productCardType="productCardType" />
     </section>
 </template>
 
@@ -25,6 +25,8 @@ export default {
         const styleStore = useStyles();
         const productList = ref(companyStore.products);
         const borderStyle = ref("");
+        const headerType = ref(1);
+        const productCardType = ref(11);
 
         switch (styleStore.styles.border_type) {
             case 0:
@@ -59,15 +61,19 @@ export default {
                 break;
         
             default:
+                borderStyle.value = "";
                 break;
         }
         
+        console.log(styleStore.styles);
 
         return {
             slug: companyStore.companyData.slug,
             productList,
             borderStyle,
             evenOdd: styleStore.styles.product_striped,
+            headerType,
+            productCardType,
         }
     }
 }
