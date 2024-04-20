@@ -1,16 +1,8 @@
 <template>
     <section :class="'mb-4 lg:mb-16 relative container ' + parentStyle" v-if="articles.length">
         <section :class="containerStyle">
-            <div>
-                <h3 class="mb-2 text-base sm:text-lg font-medium text-center text-stone-700"> آخرین اخبار و اطلاعیه ها </h3>
-                <hr class="w-60 sm:w-96 border-normal mb-6 lg:mb-0 mx-auto" />
-                <!-- show all -->
-                <div class="flex justify-end">
-                    <NuxtLink :to="`/l/${slug}/articles`"
-                        class="text-base font-normal text-normal mr-auto mb-3 hidden lg:inline-block px-2 cursor-pointer">
-                        نمایش همه </NuxtLink>
-                </div>
-            </div>
+            <!-- title -->
+            <Titles :landSlug="slug" :headerType="headerType" :title="'محصولات شرکت ' + companyName" section="articles" />
 
             <section class="w-full">
                 <articleSwiperType />
@@ -21,21 +13,25 @@
 </template>
 
 <script>
-import { NuxtLink } from "#components";
+// import { NuxtLink } from "#components";
 import { useCompanyData, useStyles } from '~/store/index';
-import articleSwiperType from '~/components/companyLanding/articles/articleSwiperType/index.vue'
+import articleSwiperType from '~/components/companyLanding/articles/articleSwiperType/index.vue';
+import Titles from '~/components/companyLanding/common/titles/index.vue';
 
 export default {
     name: 'Articles',
     components: {
         articleSwiperType,
+        Titles,
     },
-    setup(){
+    setup() {
         const companyStore = useCompanyData();
         const styleStore = useStyles();
         const articles = ref(companyStore.articles);
         const parentStyle = ref("");
         const containerStyle = ref("");
+        const headerType = ref(1);
+        const articleCardType = ref(5);
 
         switch (styleStore.styles.article_card_type) {
             case 7:
@@ -44,7 +40,7 @@ export default {
             case 8:
                 parentStyle.value = "bg-stone-200 py-4 sm:py-10 md:py-14 lg:pt-16 lg:pb-20 xl:pb-24"
                 break;
-        
+
             default:
                 break;
         }
@@ -53,7 +49,7 @@ export default {
             case 6:
                 containerStyle.value = "lg:default_container"
                 break;
-                
+
             default:
                 containerStyle.value = "default_container"
                 break;
@@ -65,6 +61,9 @@ export default {
             containerStyle,
             articleCardType: styleStore.styles.article_card_type,
             articles,
+            headerType,
+            companyName: companyStore.companyData.title,
+            articleCardType,
         }
     }
 }

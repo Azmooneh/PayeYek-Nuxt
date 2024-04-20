@@ -1,7 +1,7 @@
 <template>
     <section class="mb-4 lg:mb-16 relative z-[1] container" v-if="productList.length">
         <!-- title -->
-        <Titles :slug="slug" :headerType="headerType" :title="'محصولات شرکت ' + companyName" />
+        <Titles :landSlug="slug" :headerType="headerType" :title="'محصولات شرکت ' + companyName" section="products"  />
         <!-- products -->
         <ProductTypes :slug="slug" :productCardType="productCardType" />
     </section>
@@ -11,7 +11,7 @@
 // import { NuxtLink } from "#components";
 import { useCompanyData, useStyles } from '~/store/index';
 import Titles from '~/components/companyLanding/common/titles/index.vue';
-import ProductTypes from './children/products/index.vue';
+import ProductTypes from './children/index.vue';
 
 export default {
     name: 'Products',
@@ -65,7 +65,7 @@ export default {
                 break;
         }
         
-        console.log(styleStore.styles);
+        // console.log(styleStore.styles);
 
         return {
             slug: companyStore.companyData.slug,

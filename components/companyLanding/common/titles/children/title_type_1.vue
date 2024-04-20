@@ -4,7 +4,7 @@
         <hr class="mx-auto mb-6 w-60 sm:w-96 border-normal lg:mb-0" />
         <!-- show all -->
         <div class="flex justify-end">
-            <NuxtLink :to="`/l/${slug}/products`"
+            <NuxtLink :to="`/l/${landSlug}/${section}`"
                 class="hidden px-2 mb-3 mr-auto text-base font-normal cursor-pointer text-normal lg:inline-block">
                 نمایش همه </NuxtLink>
         </div>
@@ -17,8 +17,9 @@ import { NuxtLink } from "#components";
 export default {
     name: 'Title',
     props: {
-        slug: String,
+        landSlug: String,
         title: String,
+        section: String,
     },
     setup(){
         

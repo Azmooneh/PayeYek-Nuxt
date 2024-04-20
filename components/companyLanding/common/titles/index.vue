@@ -1,5 +1,5 @@
 <template>
-    <Title_type_1 :slug="slug" v-if="headerType == 1" :title="title" />
+    <Title_type_1 :landSlug="landSlug" v-if="headerType == 1" :title="title" :section="section" />
 </template>
 
 <script>
@@ -12,9 +12,10 @@ export default {
         Title_type_1,
     },
     props: {
-        slug: String,
+        landSlug: String,
         headerType: Number,
         title: String,
+        section: String,
     },
     setup(){
 
