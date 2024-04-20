@@ -22,7 +22,7 @@ export default {
         const panelType = ref(styleStore.styles.quick_access_panel_type);
 
         return {
-            panelType,
+            panelType: 1,
         }
     }
 }
