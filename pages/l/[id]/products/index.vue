@@ -6,16 +6,21 @@
         <p class="text-base font-medium text-center caption_color"> ارور: {{ error }} </p>
     </section>
     <!-- Render your component content here -->
-    <main v-else class="min-h-[calc(100vh-340px)]">
+    <main v-else class="min-h-[calc(100vh-340px)] pt-4">
+        <CategoryFilter />
     </main>
 </template>
 
 <script>
 import { ref } from 'vue';
 import { useCategory } from '~/store/index';
+import CategoryFilter from '~/components/products/filter/index.vue'
 
 export default {
     name: 'Product Categories',
+    components: {
+        CategoryFilter,
+    },
     setup(){
         const route = useRoute();
         const categoriesStore = useCategory();
