@@ -35,9 +35,9 @@
 // import { getApiRequest } from '~/helper/common';
 import { useCompanyData, useStyles } from '~/store/index';
 import { ref } from 'vue';
-import Header from '~/components/layout/header/index.vue';
-import HeaderSkeleton from '~/components/layout/header/headerSkeleton.vue';
-import Sidebar from '~/components/layout/sidebar/index.vue';
+// import Header from '~/components/layout/header/index.vue';
+// import HeaderSkeleton from '~/components/layout/header/headerSkeleton.vue';
+// import Sidebar from '~/components/layout/sidebar/index.vue';
 import Slider from '~/components/companyLanding/Slider/index';
 import SliderSkeleton from '~/components/companyLanding/Slider/skeleton';
 import QuickAccessPAnel from '~/components/companyLanding/quickAccessPanel/index.vue';
@@ -49,14 +49,14 @@ import ArticlesSkeleton from '~/components/companyLanding/articles/articlesSkele
 import Videos from '~/components/companyLanding/videos/index';
 import VideosSkeleton from '~/components/companyLanding/videos/VideosSkeleton.vue';
 import Contact from '~/components/companyLanding/contact/index.vue';
-import Footer from '~/components/layout/footer/index.vue';
+// import Footer from '~/components/layout/footer/index.vue';
 
 export default {
     name: 'Company',
     components: {
-        Header,
-        HeaderSkeleton,
-        Sidebar,
+        // Header,
+        // HeaderSkeleton,
+        // Sidebar,
         Slider,
         SliderSkeleton,
         QuickAccessPAnel,
@@ -68,7 +68,7 @@ export default {
         Videos,
         VideosSkeleton,
         Contact,
-        Footer,
+        // Footer,
     },
     setup() {
         const route = useRoute();

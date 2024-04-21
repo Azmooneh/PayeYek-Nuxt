@@ -1,5 +1,5 @@
 <template>
-    <header class="sticky top-0 z-[4] drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)] bg_skeleton_smooth">
+    <header class="sticky top-0 z-[4] drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)] bg_skeleton_smooth" v-if="!status">
         <section class="flex items-center justify-between gap-5 container h-16 sm:h-20">
             <div class="flex items-center gap-2">
                 <!-- hamburger menu -->
@@ -39,5 +39,8 @@ export default {
         NavbarSkeleton,
         Socialmedia,
     },
+    props: {
+        status: Boolean,
+    }
 }
 </script>

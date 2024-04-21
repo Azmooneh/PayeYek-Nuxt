@@ -46,6 +46,7 @@ export default {
         const layoutStore = useCommon();
         const description = ref(computed(() => layoutStore.footerData.description));
         const isFilled = ref(computed(() => layoutStore.footerData));
+        // console.log(isFilled.value);
 
         const generateEnName = () => {
             let enTitle = companyStore.companyData.slug;
@@ -61,6 +62,7 @@ export default {
         const loadData = (company) => {
             useFetch(`${useRuntimeConfig().public.apiBase}/l/${company}/footer`).then(response => {
                 layoutStore.saveFooterData(response.data.value);
+                // console.log(layoutStore.footerData);
             })
         }
 
