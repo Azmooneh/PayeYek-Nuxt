@@ -73,12 +73,10 @@ export default {
         }));
         
         if(isFilled.value){
-            console.log("if", isFilled.value);
             status.value = isFilled.value;
         }
         
         watch(() => isFilled.value, (n, o) => {
-            console.log("watch", n);
             status.value = n;
         })
         // console.log(isFilled.value);

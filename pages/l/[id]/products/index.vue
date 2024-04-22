@@ -53,6 +53,7 @@ export default {
                 loading.value = true;
                 const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/p`)
                 await categoriesStore.saveCategoriesData(response.data.value.categories, response.data.value.products);
+                // console.log(response.data.value);
                 // console.log(response.data.value.products);
                 // console.log(categoriesStore.categories);
                 // console.log(categoriesStore.products);

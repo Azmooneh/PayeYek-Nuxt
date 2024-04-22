@@ -148,8 +148,6 @@ export default {
             computedClass.value = `min-h-screen font-yekan ${companyTheme.value} ${companyRadius.value}`;
         });
 
-        console.log("computedClass.value", computedClass.value);
-        
         checkThemeAndRadius();
         // console.log(companyTheme.value);
         // if(companyTheme.value && companyRadius.value){
