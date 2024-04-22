@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { useCompanyData } from '~/store/index';
+import { useCommon } from '~/store/index';
 
 export default {
     name: 'Navbar',
@@ -28,10 +28,11 @@ export default {
         classNames: String,
     },
     setup() {
-        const companyStore = useCompanyData();
+        const layoutStore = useCommon();
+        const slug = ref(layoutStore.footerData.slug);
 
         return {
-            slug: companyStore.companyData.slug,
+            slug,
         }
     }
 }

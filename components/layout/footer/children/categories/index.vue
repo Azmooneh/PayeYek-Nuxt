@@ -22,7 +22,7 @@ import { useCommon } from '~/store/index';
 
 export default {
     name: 'Categories',
-    setup(props) {
+    setup() {
         const toggleDropdown = ref(false);
         const layoutStore = useCommon();
         const categories = ref([]);

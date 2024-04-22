@@ -8,18 +8,22 @@
     <!-- Render your component content here -->
     <main v-else class="min-h-[calc(100vh-340px)] pt-4">
         <CategoryFilter />
+
+        <Products />
     </main>
 </template>
 
 <script>
 import { ref } from 'vue';
 import { useCategory } from '~/store/index';
-import CategoryFilter from '~/components/products/filter/index.vue'
+import CategoryFilter from '~/components/products/filter/index.vue';
+import Products from '~/components/products/products/index.vue';
 
 export default {
     name: 'Product Categories',
     components: {
         CategoryFilter,
+        Products,
     },
     setup(){
         const route = useRoute();
