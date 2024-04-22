@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { useStyles } from '~/store/index';
+import { useStyles, useCommon } from '~/store/index';
 import { ref, watch } from 'vue';
 import Footer from '~/components/layout/footer/index.vue';
 import Header from '~/components/layout/header/index.vue';
@@ -27,7 +27,8 @@ export default {
         Sidebar,
     },
     setup() {
-        const styleStore = useStyles();
+        const layoutStore = useCommon();
+        // const styleStore = useStyles();
         const companyTheme = ref("");
         const companyRadius = ref("");
 
@@ -123,48 +124,37 @@ export default {
             }
         }
 
-        // watch(() => styleStore.styles.land_id, (newVal) => {
-        //     checkTheme(newVal);
-        // });
-
-        // if (styleStore.styles.land_id) {
-        //     console.log("if statement");
-        //     // console.log(styleStore.styles.land_id);
-        //     checkTheme(styleStore.styles.land_id);
-        // }
-
-        // watch(() => styleStore.styles.radius, (newVal) => {
-        //     console.log("watch statement");
-        //     checkRadius(newVal);
-        // });
-
-        // if (styleStore.styles.radius) {
-        //     checkRadius(styleStore.styles.radius);
-        // }
-
         const checkThemeAndRadius = () => {
-            if (styleStore.styles.land_id) {
-                checkTheme(styleStore.styles.land_id);
+            if (layoutStore.footerData && layoutStore.footerData.styles.land_id) {
+                checkTheme(layoutStore.footerData.styles.land_id);
             }
-            if (styleStore.styles.radius) {
-                checkRadius(styleStore.styles.radius);
+            if (layoutStore.footerData && layoutStore.footerData.styles.radius) {
+                checkRadius(layoutStore.footerData.styles.radius);
             }
         }
 
-        watch(() => [styleStore.styles.land_id, styleStore.styles.radius], ([newLandId, newRadius]) => {
+        watch(() => [layoutStore.footerData.styles.land_id, layoutStore.footerData.styles.radius], ([newLandId, newRadius]) => {
             checkTheme(newLandId);
             checkRadius(newRadius);
         });
+        
+        // if(styleStore.styles.radius){
+        //     checkRadius(styleStore.styles.radius);
+        // }
 
         const computedClass = ref('');
 
         watch([companyTheme, companyRadius], () => {
             computedClass.value = `min-h-screen font-yekan ${companyTheme.value} ${companyRadius.value}`;
         });
-        
+
+        console.log("computedClass.value", computedClass.value);
         
         checkThemeAndRadius();
-        
+        // console.log(companyTheme.value);
+        // if(companyTheme.value && companyRadius.value){
+        //     computedClass.value = `min-h-screen font-yekan ${companyTheme.value} ${companyRadius.value}`;
+        // }
         // console.log(companyTheme.value, companyRadius.value);
         return {
             companyTheme,

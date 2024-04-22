@@ -61,6 +61,7 @@ export default {
 
         const loadData = (company) => {
             useFetch(`${useRuntimeConfig().public.apiBase}/l/${company}/footer`).then(response => {
+                // console.log(response.data.value);
                 layoutStore.saveFooterData(response.data.value);
                 // console.log(layoutStore.footerData);
             })

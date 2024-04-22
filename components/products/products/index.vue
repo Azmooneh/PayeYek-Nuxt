@@ -1,25 +1,29 @@
 <template>
-    <ProductCardTypeOne />
+    <ProductCardTypeTen :productList="productList" :categories="categoryList" :landSlug="slug" />
 </template>
 
 <script>
-import ProductCardTypeOne from './children/PTypeOne.vue';
-import { useCategory } from '~/store/index';
+import ProductCardTypeTen from './children/PTypeTen.vue';
+import { useCategory, useCommon } from '~/store/index';
 
 export default {
     name: 'Product Switch',
     components: {
-        ProductCardTypeOne,
+        ProductCardTypeTen,
     },
     setup(){
         const categoriesStore = useCategory();
         const ProductCardType = ref(1);
-        const productList = categoriesStore.products;
-
-        console.log(productList.value);
+        const productList = ref(categoriesStore.products);
+        const categoryList = ref(categoriesStore.categories);
+        const layoutStore = useCommon();
+        const slug = ref(layoutStore.footerData.slug);
 
         return {
             ProductCardType,
+            productList,
+            categoryList,
+            slug,
         }
     }
 }

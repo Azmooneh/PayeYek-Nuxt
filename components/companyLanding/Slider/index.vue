@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { useCompanyData, useStyles } from '~/store/index';
+import { useCompanyData, useCommon } from '~/store/index';
 import { NuxtLink } from "#components";
 
 export default {
@@ -45,7 +45,8 @@ export default {
             },
         };
         const companyStore = useCompanyData();
-        const styleStore = useStyles();
+        // const styleStore = useStyles();
+        const layoutStore = useCommon();
         const slides = ref(companyStore.slides);
         const sliderStyle = ref("");
 
@@ -77,12 +78,12 @@ export default {
             }
         }
 
-        watch(() => styleStore.styles.slider_type, (newVal) => {
+        watch(() => layoutStore.footerData.styles.slider_type, (newVal) => {
             sliderType(newVal);
         });
 
-        if (styleStore.styles.slider_type) {
-            sliderType(styleStore.styles.slider_type);
+        if (layoutStore.footerData && layoutStore.footerData.styles.slider_type) {
+            sliderType(layoutStore.footerData.styles.slider_type);
         }
 
         return {

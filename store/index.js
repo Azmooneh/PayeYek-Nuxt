@@ -34,9 +34,7 @@ export const useStyles = defineStore('Styles', {
     },
     actions: {
         saveStyles(data){
-            // console.log(this.styles);
             this.styles = data;
-            // console.log(this.styles);
         },
     },
 })
@@ -46,6 +44,7 @@ export const useCommon = defineStore('Common', {
         return {
             menuVisiblityStatus: false,
             footerData: null,
+            // styles: {},
         }
     },
     actions: {
@@ -55,7 +54,10 @@ export const useCommon = defineStore('Common', {
         saveFooterData(data){
             this.footerData = data;
             // console.log(this.footerData);
-        }
+        },
+        // saveStyles(data){
+        //     this.styles = data;
+        // },
     },
 })
 

@@ -35,11 +35,11 @@ export default {
         const headerType = ref(1);
 
         const showVideoByThumbnail = (link) => {
-            videoModal.value = link
+            videoModal.value = link;
         }
 
         const hideVideoByThumbnail = () => {
-            videoModal.value = ""
+            videoModal.value = "";
         }
 
         return {

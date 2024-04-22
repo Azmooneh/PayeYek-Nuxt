@@ -8,7 +8,7 @@
 import AccessPanelTypeOne from './children/panel_1.vue';
 import AccessPanelTypeTwo from './children/panel_2.vue';
 import AccessPanelTypeThree from './children/panel_3.vue';
-import { useStyles } from '~/store/index';
+import { useCommon } from '~/store/index';
 
 export default {
     name: 'Quick Access Panel',
@@ -18,8 +18,8 @@ export default {
         AccessPanelTypeThree,
     },
     setup(){
-        const styleStore = useStyles();
-        const panelType = ref(styleStore.styles.quick_access_panel_type);
+        const layoutStore = useCommon();
+        // const panelType = ref(layoutStore.footerData.styles.quick_access_panel_type);
 
         return {
             panelType: 1,
