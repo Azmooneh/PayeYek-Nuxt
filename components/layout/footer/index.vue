@@ -1,16 +1,17 @@
 <template>
-    <footer class="px-10 py-10 bg-stone-900" v-if="isFilled">
+    <!-- v-if="isFilled" -->
+    <footer class="px-10 py-10 bg-stone-900">
         <section class="container grid grid-cols-1 gap-10 mb-16 md:grid-cols-4 lg:grid-cols-5 md:gap-4 lg:gap-10">
             <!-- about -->
             <section class="flex flex-col gap-4 md:gap-8 lg:col-span-2">
                 <p class="text-base font-medium text-white"> درباره شرکت </p>
-                <div class="text-sm font-normal leading-7 text-justify text-white">
+                <div class="text-sm font-normal leading-7 text-justify text-white" v-if="description">
                     {{ description }}
                 </div>
             </section>
 
             <!-- footer lists -->
-            <section
+            <section v-if="isFilled"
                 class="grid grid-cols-1 gap-8 text-white md:grid-cols-3 md:col-span-3 md:gap-4 lg:gap-10 lg:col-span-3">
                 <Sections />
 
@@ -44,7 +45,7 @@ export default {
         const route = useRoute();
         const companyStore = useCompanyData();
         const layoutStore = useCommon();
-        const description = ref(computed(() => layoutStore.footerData.description));
+        const description = ref("");
         const isFilled = ref(computed(() => layoutStore.footerData));
         // console.log(isFilled.value);
 
@@ -61,19 +62,16 @@ export default {
 
         const loadData = (company) => {
             useFetch(`${useRuntimeConfig().public.apiBase}/l/${company}/footer`).then(response => {
-                // console.log(response.data.value);
                 layoutStore.saveFooterData(response.data.value);
-                // console.log(layoutStore.footerData);
+                description.value = response.data.value.description;
             })
         }
 
         if (route.params.id) {
-            // console.log("footer if => ", route.params.id);
             loadData(route.params.id);
         }
         
         watch(() => route.params.id, (n, o) => {
-            // console.log("footer watch => ", n);
             loadData(n);
         })
 

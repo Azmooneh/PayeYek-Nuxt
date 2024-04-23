@@ -53,11 +53,7 @@ export const useCommon = defineStore('Common', {
         },
         saveFooterData(data){
             this.footerData = data;
-            // console.log(this.footerData);
         },
-        // saveStyles(data){
-        //     this.styles = data;
-        // },
     },
 })
 

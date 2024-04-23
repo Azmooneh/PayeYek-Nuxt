@@ -31,6 +31,7 @@ export default {
         // const styleStore = useStyles();
         const companyTheme = ref("");
         const companyRadius = ref("");
+        const status = ref(false);
 
         const checkTheme = company => {
             switch (company) {
@@ -124,28 +125,44 @@ export default {
             }
         }
 
-        const checkThemeAndRadius = () => {
-            if (layoutStore.footerData && layoutStore.footerData.styles.land_id) {
-                checkTheme(layoutStore.footerData.styles.land_id);
-            }
-            if (layoutStore.footerData && layoutStore.footerData.styles.radius) {
-                checkRadius(layoutStore.footerData.styles.radius);
-            }
-        }
-
-        watch(() => [layoutStore.footerData.styles.land_id, layoutStore.footerData.styles.radius], ([newLandId, newRadius]) => {
-            checkTheme(newLandId);
-            checkRadius(newRadius);
-        });
-        
-        // if(styleStore.styles.radius){
-        //     checkRadius(styleStore.styles.radius);
+        // const checkThemeAndRadius = () => {
+        //     if (layoutStore.footerData.styles && layoutStore.footerData.styles.land_id) {
+        //         checkTheme(layoutStore.footerData.styles.land_id);
+        //     }
+        //     if (layoutStore.footerData.styles && layoutStore.footerData.styles.radius) {
+        //         checkRadius(layoutStore.footerData.styles.radius);
+        //     }
         // }
 
+        const checkThemeAndRadius = () => {
+            if (layoutStore.footerData && layoutStore.footerData.styles) {
+                if (layoutStore.footerData.styles.land_id) {
+                    checkTheme(layoutStore.footerData.styles.land_id);
+                }
+                if (layoutStore.footerData.styles.radius) {
+                    checkRadius(layoutStore.footerData.styles.radius);
+                }
+                status.value = true;
+            }
+            // console.log(layoutStore.footerData);
+        }
+
+        // watch(() => [layoutStore.footerData.styles.land_id, layoutStore.footerData.styles.radius], ([newLandId, newRadius]) => {
+        //     checkTheme(newLandId);
+        //     checkRadius(newRadius);
+        // });
+
+        watch(() => layoutStore.footerData, (newFooterData) => {
+            if (newFooterData) {
+                checkThemeAndRadius();
+            }
+        });
+        
         const computedClass = ref('');
 
         watch([companyTheme, companyRadius], () => {
             computedClass.value = `min-h-screen font-yekan ${companyTheme.value} ${companyRadius.value}`;
+            status.value = true;
         });
 
         checkThemeAndRadius();
@@ -154,10 +171,13 @@ export default {
         //     computedClass.value = `min-h-screen font-yekan ${companyTheme.value} ${companyRadius.value}`;
         // }
         // console.log(companyTheme.value, companyRadius.value);
+        
+        // console.log(status.value);
         return {
             companyTheme,
             companyRadius,
             computedClass,
+            status,
         }
     }
 }
