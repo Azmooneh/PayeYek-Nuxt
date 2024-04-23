@@ -1,6 +1,10 @@
 <template>
     <section class="min-h-[calc(100vh-340px)] pt-4" v-if="watchLoading">
+        <breadcrumbSkeleton />
+
         <filterSkeleton />
+
+        
     </section>
     <!-- if we have error -->
     <section v-else-if="error" class="flex-col w-full h-screen gap-4 flex_center">
@@ -27,6 +31,7 @@ import filterSkeleton from '~/components/products/filter/filterSkeleton.vue';
 import Products from '~/components/products/products/index.vue';
 import Contact from '~/components/companyLanding/contact/index.vue';
 import Breadcrumbs from '~/components/common/breadcrumbs/index.vue';
+import breadcrumbSkeleton from '~/components/common/breadcrumbs/breadcrumbSkeleton.vue';
 
 export default {
     name: 'Product Categories',
@@ -36,6 +41,7 @@ export default {
         Contact,
         filterSkeleton,
         Breadcrumbs,
+        breadcrumbSkeleton,
     },
     setup(){
         const route = useRoute();
