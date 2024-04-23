@@ -44,6 +44,8 @@ export default {
             }
         });
 
+        // console.log(productList.value);
+
         return {
             ProductCardType,
             productList,

@@ -22,22 +22,29 @@ export default {
         const router = useRouter();
         const categoriesStore = useCategory();
         const filterType = ref(1);
-        const filterState = ref(computed(() => {
-            if (route.query.category) {
-                return route.query.category;
-            } else {
-                watch(() => route.query.category, (n, o) => {
-                    return n;
-                })
-            }
-        })); // Current filter state
+        const initialCategory = route.query.category || 0; // Set initialCategory to route.query.category if it exists, otherwise set it to 0
+        const filterState = ref(initialCategory); // Initialize filter state with initialCategory
+
+        watch(() => route.query.category, (newCategory, oldCategory) => {
+            // Update filterState whenever route.query.category changes
+            filterState.value = newCategory || 0; // Set filterState to newCategory if it exists, otherwise set it to 0
+        });
+        // const filterState = ref(computed(() => {
+        //     if (route.query.category) {
+        //         return route.query.category;
+        //     } else {
+        //         watch(() => route.query.category, (n, o) => {
+        //             return n;
+        //         })
+        //     }
+        // })); // Current filter state
         const categories = ref(categoriesStore.categories);
 
         const changeFilter = id => {
             router.push({ path: route.path, query: {category: id} });
         }
 
-        console.log(categories.value);
+        // console.log(categories.value);
 
         return {
             filterType,
