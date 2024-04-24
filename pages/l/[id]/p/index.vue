@@ -94,6 +94,10 @@ export default {
             watchLoading.value = n
         })
 
+        // definePageMeta({
+        //     middleware: ["redirect"]
+        // })
+
         return {
             loading,
             watchLoading,

@@ -2,7 +2,7 @@
     <ProductCardTypeOne :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 1" />
     <ProductCardTypeTwo :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 2" />
     <ProductCardTypeThree :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 3" />
-    <ProductCardTypeTen :productList="productList" :categories="categoryList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 11" />
+    <ProductCardTypeTen :productList="productList" :categories="categoryList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 10" />
 </template>
 
 <script>
