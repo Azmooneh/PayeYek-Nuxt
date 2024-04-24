@@ -63,7 +63,7 @@ export default {
         const slug = ref(layoutStore.footerData.slug);
         const evenOdd = ref(layoutStore.footerData.styles.category_striped);
         // const cardType = ref(layoutStore.footerData.styles.category_card_type);
-        const cardType = ref(5);
+        const cardType = ref(15);
         const filteredList = ref([]); // Filtered list of products
         const borderStyle = computed(() => {
             switch (layoutStore.footerData.styles.border_type.toString()) {

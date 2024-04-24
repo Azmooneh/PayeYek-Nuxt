@@ -15,7 +15,7 @@
                                 <img :src="item.image" :alt="item.name" class="object-contain h-full" />
                             </NuxtLink>
                             <NuxtLink :to="'/l/' + landSlug + '/p/' + item.slug"
-                                class="mb-5 font-medium text-xl line-clamp-2 lg:line-clamp-1 text-stone-700 lg:h-[28px]">
+                                class="mb-5 font-medium text-lg text-center line-clamp-2 lg:line-clamp-1 text-stone-700 lg:h-[28px]">
                                 {{ item.name }} </NuxtLink>
                             <NuxtLink :to="'/l/' + landSlug + '/p/' + item.slug"
                                 class="mb-6 font-normal text-sm line-clamp-1 text-stone-700 h-5"> مدل: {{ item.model }}
