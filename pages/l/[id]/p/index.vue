@@ -72,7 +72,9 @@ export default {
         const loadData = async () => {
             try {
                 loading.value = true;
+                console.log(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/p`);
                 const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/p`)
+                console.log(response.data.value);
                 if (response.data.value.status == 200) {
                     await categoriesStore.saveCategoriesData(response.data.value.data.categories, response.data.value.data.products);
                     breadcrumbs.value = response.data.value.data.breadcrumbs;

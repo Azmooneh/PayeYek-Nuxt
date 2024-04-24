@@ -9,6 +9,7 @@
     <ProductCardTypeEight :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 8" />
     <ProductCardTypeNine :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 9" />
     <ProductCardTypeTen :productList="productList" :categories="categoryList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 10" />
+    <ProductCardTypeEleven :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 11" />
 </template>
 
 <script>
@@ -22,6 +23,7 @@ import ProductCardTypeSeven from './children/PTypeSeven.vue';
 import ProductCardTypeEight from './children/PTypeEight.vue';
 import ProductCardTypeNine from './children/PTypeNine.vue';
 import ProductCardTypeTen from './children/PTypeTen.vue';
+import ProductCardTypeEleven from './children/PTypeEleven.vue';
 import { useCategory, useCommon } from '~/store/index';
 
 export default {
@@ -37,6 +39,7 @@ export default {
         ProductCardTypeEight,
         ProductCardTypeNine,
         ProductCardTypeTen,
+        ProductCardTypeEleven,
     },
     setup() {
         const route = useRoute();
