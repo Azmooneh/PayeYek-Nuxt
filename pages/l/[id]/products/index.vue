@@ -4,7 +4,7 @@
 
         <filterSkeleton />
 
-        
+        <productSkeleton />
     </section>
     <!-- if we have error -->
     <section v-else-if="error" class="flex-col w-full h-screen gap-4 flex_center">
@@ -29,6 +29,7 @@ import { useCategory } from '~/store/index';
 import CategoryFilter from '~/components/products/filter/index.vue';
 import filterSkeleton from '~/components/products/filter/filterSkeleton.vue';
 import Products from '~/components/products/products/index.vue';
+import productSkeleton from '~/components/products/products/productSkeleton.vue';
 import Contact from '~/components/companyLanding/contact/index.vue';
 import Breadcrumbs from '~/components/common/breadcrumbs/index.vue';
 import breadcrumbSkeleton from '~/components/common/breadcrumbs/breadcrumbSkeleton.vue';
@@ -42,6 +43,7 @@ export default {
         filterSkeleton,
         Breadcrumbs,
         breadcrumbSkeleton,
+        productSkeleton,
     },
     setup(){
         const route = useRoute();

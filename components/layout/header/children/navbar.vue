@@ -6,13 +6,16 @@
             :to="`/l/${slug}`"> خانه </NuxtLink>
         <NuxtLink
             class="focus:bg-[#eaeaea] lg:hover:text-stone-900 lg:focus:bg-transparent font-medium lg:first:pr-0 lg:last:pl-0 lg:last:border-l-0"
-            :to="`/l/${slug}/products`"> محصولات </NuxtLink>
+            :to="`/l/${slug}/p`"> محصولات </NuxtLink>
         <NuxtLink
             class="focus:bg-[#eaeaea] lg:hover:text-stone-900 lg:focus:bg-transparent font-medium lg:first:pr-0 lg:last:pl-0 lg:last:border-l-0"
             :to="`/l/${slug}/sales`"> نمایندگی فروش </NuxtLink>
         <NuxtLink
             class="focus:bg-[#eaeaea] lg:hover:text-stone-900 lg:focus:bg-transparent font-medium lg:first:pr-0 lg:last:pl-0 lg:last:border-l-0"
-            :to="`/l/${slug}/products?f=sell`"> اطلاعیه </NuxtLink>
+            :to="`/l/${slug}/a?f=sell`"> اطلاعیه </NuxtLink>
+        <NuxtLink
+            class="focus:bg-[#eaeaea] lg:hover:text-stone-900 lg:focus:bg-transparent font-medium lg:first:pr-0 lg:last:pl-0 lg:last:border-l-0"
+            :to="`/l/${slug}/facilities`"> تسهیلات </NuxtLink>
         <NuxtLink
             class="focus:bg-[#eaeaea] lg:hover:text-stone-900 lg:focus:bg-transparent font-medium lg:first:pr-0 lg:last:pl-0 lg:last:border-l-0"
             :to="`/l/${slug}/about`"> درباره ما </NuxtLink>

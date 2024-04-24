@@ -11,22 +11,22 @@
                         class="flex flex-col lg:flex-row mx-auto lg:mx-0 lg:items-start lg:justify-center lg:flex-wrap gap-1">
                         <li v-for="(item, index) in product.list" :key="index"
                             :class="'pt-2 px-8 w-72 sm:w-96 lg:w-full lg:max-w-[17rem] pb-5 lg:pt-3 items-center flex flex-col rounded-custom ' + borderStyle + (evenOdd == 1 ? ' evenOdd_cards' : ' bg-white')">
-                            <NuxtLink :to="'/l/' + landSlug + '/products/' + item.slug" class="mb-2 h-52">
+                            <NuxtLink :to="'/l/' + landSlug + '/p/' + item.slug" class="mb-2 h-52">
                                 <img :src="item.image" :alt="item.name" class="object-contain h-full" />
                             </NuxtLink>
-                            <NuxtLink :to="'/l/' + landSlug + '/products/' + item.slug"
+                            <NuxtLink :to="'/l/' + landSlug + '/p/' + item.slug"
                                 class="mb-5 font-medium text-xl line-clamp-2 lg:line-clamp-1 text-stone-700 lg:h-[28px]">
                                 {{ item.name }} </NuxtLink>
-                            <NuxtLink :to="'/l/' + landSlug + '/products/' + item.slug"
+                            <NuxtLink :to="'/l/' + landSlug + '/p/' + item.slug"
                                 class="mb-6 font-normal text-sm line-clamp-1 text-stone-700 h-5"> مدل: {{ item.model }}
                             </NuxtLink>
                             <div class="grid grid-cols-2 gap-3 w-56 lg:w-full">
-                                <NuxtLink :to="'/l/' + landSlug + '/products/' + item.slug"
+                                <NuxtLink :to="'/l/' + landSlug + '/p/' + item.slug"
                                     class="sameCategoryBtnStyle castegoryBtnfilled rounded-custom col-span-2"> خرید
                                     اقساطی </NuxtLink>
-                                <NuxtLink :to="'/l/' + landSlug + '/products/' + item.slug"
+                                <NuxtLink :to="'/l/' + landSlug + '/p/' + item.slug"
                                     class="sameCategoryBtnStyle categoryBtnEmpty rounded-custom"> مشخصات </NuxtLink>
-                                <NuxtLink :to="'/l/' + landSlug + '/products/' + item.slug"
+                                <NuxtLink :to="'/l/' + landSlug + '/p/' + item.slug"
                                     class="sameCategoryBtnStyle categoryBtnEmpty rounded-custom"> کاتالوگ </NuxtLink>
                             </div>
                         </li>

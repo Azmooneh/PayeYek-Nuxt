@@ -12,7 +12,7 @@
         </div>
         <div class="flex flex-col gap-4 overflow-hidden duration-300"
             :class="toggleDropdown ? 'py-4 md:py-0 max-h-60 md:max-h-full' : 'py-0 max-h-0 md:max-h-full'">
-            <NuxtLink v-for="(page, index) in categories.items" :key="index" :to="`/l/${companySlug}/products?f=${page.slug}`"> {{ page.title }} </NuxtLink>
+            <NuxtLink v-for="(page, index) in categories.items" :key="index" :to="`/l/${companySlug}/p?f=${page.slug}`"> {{ page.title }} </NuxtLink>
         </div>
     </section>
 </template>

@@ -21,7 +21,7 @@ export default {
                 items: [
                     {
                         title: 'محصولات',
-                        slug: `/l/${layoutStore.footerData.slug}/products`
+                        slug: `/l/${layoutStore.footerData.slug}/p`
                     },
                     {
                         title: 'درباره ما',
@@ -38,11 +38,11 @@ export default {
                     },
                     {
                         title: 'اطلاعیه های فروش',
-                        slug: `/l/${layoutStore.footerData.slug}/articles?f=sell`
+                        slug: `/l/${layoutStore.footerData.slug}/a?f=sell`
                     },
                     {
                         title: 'مطالب وبلاگ',
-                        slug: `/l/${layoutStore.footerData.slug}/articles?f=blog`
+                        slug: `/l/${layoutStore.footerData.slug}/a?f=blog`
                     },
                 ],
             },

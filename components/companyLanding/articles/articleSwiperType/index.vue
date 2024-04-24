@@ -18,7 +18,7 @@
                     class="mb-2 text-sm font-normal leading-6 sm:leading-7 sm:h-20 sm:mb-3 text-justify text-stone-700 line-clamp-3 h-[72px]">
                     {{ article.description }}
                 </p>
-                <NuxtLink :to="'/l/' + slug + '/articles/' + article.slug"
+                <NuxtLink :to="'/l/' + slug + '/a/' + article.slug"
                     class="w-32 h-10 mx-auto text-lg font-medium text-white bg-stone-700 flex_center rounded-custom">
                     بیشتر </NuxtLink>
             </div>
