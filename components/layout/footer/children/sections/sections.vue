@@ -34,7 +34,7 @@ export default {
                 items: [
                     {
                         title: 'نمایندگی فروش مجاز',
-                        slug: `/l/${layoutStore.footerData.slug}`
+                        slug: `/l/${layoutStore.footerData.slug}/sales`
                     },
                     {
                         title: 'اطلاعیه های فروش',
