@@ -1,8 +1,8 @@
 <template>
     <section class="mb-4 lg:mb-16 relative z-[1] container">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div v-for="(product, index) in productList" :key="index"
-                :class="'px-6 gap-2 w-full pt-6 pb-10 flex items-center rounded-custom ' + borderStyle + ' ' + (evenOdd ? 'evenOdd_cards ' : 'bg-white ')">
+                :class="'px-6 gap-2 w-full pt-6 pb-10 flex items-center rounded-custom ' + borderStyle + ' ' + (evenOdd == 1 ? 'evenOdd_cards ' : 'bg-white ')">
                 <NuxtLink :to="'/l/' + landSlug + '/p/' + product.slug" class="flex-none min-w-28 h-28 sm:min-w-32 sm:h-32">
                     <img :src="product.image" :alt="product.name" class="object-contain h-full" />
                 </NuxtLink>

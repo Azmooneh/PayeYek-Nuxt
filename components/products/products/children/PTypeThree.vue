@@ -2,7 +2,7 @@
     <section class="mb-4 lg:mb-16 relative z-[1] container">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div v-for="(product, index) in productList" :key="index"
-                :class="'pl-6 pr-8 w-full pt-5 pb-8 flex flex-col rounded-custom ' + borderStyle + ' ' + (evenOdd ? 'evenOdd_cards ' : 'bg-white ')">
+                :class="'pl-6 pr-8 w-full pt-5 pb-8 flex flex-col rounded-custom ' + borderStyle + ' ' + (evenOdd == 1 ? 'evenOdd_cards ' : 'bg-white ')">
                 <NuxtLink :to="'/l/' + landSlug + '/p/' + product.slug" class="mb-1.5 font-medium lg:mb-1 text-lg sm:line-clamp-1 text-stone-700"> {{ product.name }} </NuxtLink>
                 <div class="flex items-center justify-between gap-4">
                     <NuxtLink :to="'/l/' + landSlug + '/p/' + product.slug" class="flex-none h-32 lg:h-28 xl:h-32">
