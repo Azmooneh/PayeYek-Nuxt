@@ -1,7 +1,7 @@
 <template>
     <section class="mb-4 lg:mb-16 relative z-[1] container">
         <div
-            :class="'grid grid-cols-1 rounded-custom overflow-hidden sm:rounded-none sm:overflow-visible sm:gap-4 sm:border-0 ' + borderStyle">
+            :class="'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 rounded-custom overflow-hidden gap-px ' + borderStyle">
             <div v-for="(product, index) in productList" :key="index"
                 :class="'px-8 lg:px-5 xl:px-8 py-5 sm:pb-12 w-full items-center flex flex-col sm:first:rounded-none sm:last:rounded-none shadow-[0px_0px_0px_1px_#d2d2d2] ' + (evenOdd == 1 ? 'evenOdd_cards ' : 'bg-white ')">
                 <NuxtLink :to="'/l/' + landSlug + '/p/' + product.slug" class="h-32 mb-2">
