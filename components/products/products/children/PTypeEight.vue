@@ -1,8 +1,8 @@
 <template>
     <section class="mb-4 lg:mb-16 relative z-[1] container">
         <div
-            :class="'grid grid-cols-1 rounded-custom overflow-hidden sm:rounded-none sm:overflow-visible sm:gap-4 sm:border-0 ' + borderStyle">
-            <div v-if="productType == 8" :key="index"
+            :class="'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 rounded-custom overflow-hidden ' + borderStyle">
+            <div v-for="(product, index) in productList" :key="index"
                 :class="'border-b last:border-b-0 border-dark-100 pl-6 pr-8 w-full pt-5 pb-8 sm:border-l sm:[&:nth-child(2n)]:border-l-0 lg:[&:nth-child(2n)]:border-l lg:[&:nth-child(3n)]:border-l-0 flex flex-col ' + (evenOdd == 1 ? 'evenOdd_cards ' : 'bg-white ')">
                 <NuxtLink :to="'/l/' + landSlug + '/p/' + product.slug"
                     class="mb-1.5 font-medium lg:mb-1 text-lg sm:line-clamp-1 text-stone-700"> {{ product.name }}
