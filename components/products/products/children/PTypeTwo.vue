@@ -25,7 +25,7 @@
 import { NuxtLink } from "#components";
 
 export default {
-    name: 'Producy Type Ten',
+    name: 'Producy Type Two',
     props: {
         productList: Array,
         landSlug: String,

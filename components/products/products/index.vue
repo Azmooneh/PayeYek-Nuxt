@@ -4,6 +4,7 @@
     <ProductCardTypeThree :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 3" />
     <ProductCardTypeFour :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 4" />
     <ProductCardTypeFive :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 5" />
+    <ProductCardTypeSix :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 6" />
     <ProductCardTypeTen :productList="productList" :categories="categoryList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 10" />
 </template>
 
@@ -13,6 +14,7 @@ import ProductCardTypeTwo from './children/PTypeTwo.vue';
 import ProductCardTypeThree from './children/PTypeThree.vue';
 import ProductCardTypeFour from './children/PTypeFour.vue';
 import ProductCardTypeFive from './children/PTypeFive.vue';
+import ProductCardTypeSix from './children/PTypeSix.vue';
 import ProductCardTypeTen from './children/PTypeTen.vue';
 import { useCategory, useCommon } from '~/store/index';
 
@@ -24,6 +26,7 @@ export default {
         ProductCardTypeThree,
         ProductCardTypeFour,
         ProductCardTypeFive,
+        ProductCardTypeSix,
         ProductCardTypeTen,
     },
     setup() {
