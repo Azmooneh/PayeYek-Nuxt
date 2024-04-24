@@ -73,7 +73,7 @@ export default {
     setup() {
         const route = useRoute();
         const companyStore = useCompanyData();
-        const styleStore = useStyles();
+        // const styleStore = useStyles();
         const companySlug = ref(route.params.id);
         const loading = ref(true);
         const error = ref(null);

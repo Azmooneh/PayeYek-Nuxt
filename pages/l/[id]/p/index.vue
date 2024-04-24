@@ -77,11 +77,6 @@ export default {
                     await categoriesStore.saveCategoriesData(response.data.value.data.categories, response.data.value.data.products);
                     breadcrumbs.value = response.data.value.data.breadcrumbs;
                 }
-                console.log(response.data.value);
-                // console.log(response.data.value);
-                // console.log(response.data.value.products);
-                // console.log(categoriesStore.categories);
-                // console.log(categoriesStore.products);
                 // pageTitle.value = response.data.value.title;
                 // pageDescription.value = response.data.value.description;
                 // ogPageDescription.value = response.data.value.description;
