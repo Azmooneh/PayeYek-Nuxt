@@ -62,7 +62,8 @@ export default {
         const layoutStore = useCommon();
         const slug = ref(layoutStore.footerData.slug);
         const evenOdd = ref(layoutStore.footerData.styles.category_striped);
-        const cardType = ref(layoutStore.footerData.styles.category_card_type);
+        // const cardType = ref(layoutStore.footerData.styles.category_card_type);
+        const cardType = ref(5);
         const filteredList = ref([]); // Filtered list of products
         const borderStyle = computed(() => {
             switch (layoutStore.footerData.styles.border_type.toString()) {
@@ -90,6 +91,8 @@ export default {
         const filterState = ref(computed(() => {
             if (route.query.category) {
                 return route.query.category;
+            } else if (!!!route.query.category){
+                return 0;
             } else {
                 watch(() => route.query.category, (n, o) => {
                     return n;
@@ -98,11 +101,15 @@ export default {
         })); // Current filter state
 
         const initialLoadFilter = () => {
-            productList.value.filter(product => {
-                if (product.category_id == filterState.value) {
-                    filteredList.value.push(product);
-                }
-            })
+            if (filterState.value == 0) {
+                filteredList.value = productList.value;
+            } else {
+                productList.value.filter(product => {
+                    if (product.category_id == filterState.value) {
+                        filteredList.value.push(product);
+                    }
+                })
+            }
         }
 
         initialLoadFilter();
