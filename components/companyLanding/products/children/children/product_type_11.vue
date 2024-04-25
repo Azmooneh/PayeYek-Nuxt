@@ -4,7 +4,7 @@
         <div v-for="(product, index) in productList.slice(0, 4)" :key="index"
             :class="'pt-2 px-8 w-72 sm:w-full lg:max-w-[17rem] pb-5 lg:pt-3 items-center flex flex-col rounded-custom mx-auto lg:mx-0 ' + borderStyle + ' ' + (evenOdd == 1 ? 'evenOdd_cards' : 'bg-white')">
             <NuxtLink :to="'/l/' + slug + '/p/' + product.slug" class="mb-2 h-52">
-                <img :src="product.image" :alt="product.name" class="object-contain h-full" height="100%" />
+                <NuxtImg :src="product.image" :alt="product.name" class="object-contain h-full" height="100%" width="100%" format="png" />
             </NuxtLink>
             <NuxtLink :to="'/l/' + slug + '/p/' + product.slug" class="mb-5 text-center font-medium text-xl line-clamp-2 lg:line-clamp-1 text-stone-700 lg:h-[28px]"> {{
             product.name }} </NuxtLink>
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { NuxtLink } from "#components";
+import { NuxtLink, NuxtImg } from "#components";
 import { useCompanyData, useStyles } from '~/store/index';
 
 export default {
