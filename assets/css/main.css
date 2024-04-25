@@ -373,6 +373,28 @@
     .bg_skeleton_size{
         background-size: 1200px 104px;
     }
+
+    .prespective-3d{
+        transform-style: preserve-3d;
+    }
+
+    .rotateY-180{
+        transform: rotateY(180deg);
+    }
+
+    .backface-hidden{
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    .backface-visible{
+        -webkit-backface-visibility: visible;
+        backface-visibility: visible;
+    }
+
+    .prespective{
+        perspective: 1000px;
+    }
 }
 
 body{

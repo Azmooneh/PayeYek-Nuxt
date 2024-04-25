@@ -98,6 +98,7 @@ export default {
             try {
                 loading.value = true;
                 const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}`)
+                // console.log(response.data.value);
                 // await styleStore.saveStyles(response.data.value.styles) // Wait for saveStyles to finish
                 await companyStore.saveCompanyData(response.data.value) // Then save company data
                 // console.log(response.data.value);
