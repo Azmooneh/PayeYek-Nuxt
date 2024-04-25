@@ -5,6 +5,7 @@ export const useCompanyData = defineStore('Company', {
         return {
             companyData: {},
             slides: null,
+            categories: null,
             products: null,
             articles: null,
             videos: null,
@@ -19,6 +20,7 @@ export const useCompanyData = defineStore('Company', {
                 description: data.description,
             };
             this.slides = data.slides;
+            this.categories = data.categories;
             this.products = data.products;
             this.articles = data.articles;
             this.videos = data.videos;

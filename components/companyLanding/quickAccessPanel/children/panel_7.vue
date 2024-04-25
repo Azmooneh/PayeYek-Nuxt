@@ -20,7 +20,7 @@
 
 <script>
 import { NuxtLink } from "#components";
-import { useCompanyData } from '~/store/index';
+import { useCommon } from '~/store/index';
 import Curve from "./Icons/curve.vue";
 
 export default {
@@ -29,10 +29,10 @@ export default {
         Curve,
     },
     setup() {
-        const companyStore = useCompanyData();
+        const layoutStore = useCommon();
 
         return {
-            slug: companyStore.companyData.slug
+            slug: layoutStore.footerData.slug
         }
     }
 }

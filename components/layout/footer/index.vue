@@ -47,7 +47,6 @@ export default {
         const layoutStore = useCommon();
         const description = ref("");
         const isFilled = ref(computed(() => layoutStore.footerData));
-        // console.log(isFilled.value);
 
         const generateEnName = () => {
             let enTitle = companyStore.companyData.slug;

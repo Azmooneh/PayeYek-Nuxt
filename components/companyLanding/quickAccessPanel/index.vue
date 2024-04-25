@@ -2,6 +2,7 @@
     <AccessPanelTypeOne v-if="panelType == 1" />
     <AccessPanelTypeTwo v-if="panelType == 2" />
     <AccessPanelTypeThree v-if="panelType == 3" />
+    <AccessPanelTypeFour v-if="panelType == 4" />
     <AccessPanelTypeFive v-if="panelType == 5" />
     <AccessPanelTypeSix v-if="panelType == 6" />
     <AccessPanelTypeSeven v-if="panelType == 7" />
@@ -12,6 +13,7 @@
 import AccessPanelTypeOne from './children/panel_1.vue';
 import AccessPanelTypeTwo from './children/panel_2.vue';
 import AccessPanelTypeThree from './children/panel_3.vue';
+import AccessPanelTypeFour from './children/panel_4.vue';
 import AccessPanelTypeFive from './children/panel_5.vue';
 import AccessPanelTypeSix from './children/panel_6.vue';
 import AccessPanelTypeSeven from './children/panel_7.vue';
@@ -24,6 +26,7 @@ export default {
         AccessPanelTypeOne,
         AccessPanelTypeTwo,
         AccessPanelTypeThree,
+        AccessPanelTypeFour,
         AccessPanelTypeFive,
         AccessPanelTypeSix,
         AccessPanelTypeSeven,
@@ -31,7 +34,6 @@ export default {
     },
     setup(){
         const layoutStore = useCommon();
-        // const panelType = ref(layoutStore.footerData.styles.quick_access_panel_type);
 
         return {
             panelType: 1,
