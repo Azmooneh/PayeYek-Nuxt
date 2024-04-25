@@ -4,6 +4,8 @@
     <AccessPanelTypeThree v-if="panelType == 3" />
     <AccessPanelTypeFive v-if="panelType == 5" />
     <AccessPanelTypeSix v-if="panelType == 6" />
+    <AccessPanelTypeSeven v-if="panelType == 7" />
+    <AccessPanelTypeEight v-if="panelType == 8" />
 </template>
 
 <script>
@@ -12,6 +14,8 @@ import AccessPanelTypeTwo from './children/panel_2.vue';
 import AccessPanelTypeThree from './children/panel_3.vue';
 import AccessPanelTypeFive from './children/panel_5.vue';
 import AccessPanelTypeSix from './children/panel_6.vue';
+import AccessPanelTypeSeven from './children/panel_7.vue';
+import AccessPanelTypeEight from './children/panel_8.vue';
 import { useCommon } from '~/store/index';
 
 export default {
@@ -22,6 +26,8 @@ export default {
         AccessPanelTypeThree,
         AccessPanelTypeFive,
         AccessPanelTypeSix,
+        AccessPanelTypeSeven,
+        AccessPanelTypeEight,
     },
     setup(){
         const layoutStore = useCommon();
