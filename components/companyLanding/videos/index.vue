@@ -15,7 +15,7 @@
 
 <script>
 import Titles from '~/components/companyLanding/common/titles/index.vue';
-import { useCompanyData } from '~/store/index';
+import { useCompanyData, useCommon } from '~/store/index';
 import PlayIcon from "~/components/kit/Icons/PlayIcon.vue";
 import Videos from './children/index.vue';
 
@@ -28,9 +28,8 @@ export default {
     },
     setup() {
         const companyStore = useCompanyData();
-        // const styleStore = useStyles();
         const videoList = ref(companyStore.videos);
-        // console.log(videoList.value);
+        const layoutStore = useCommon();
         const videoModal = ref("");
         const headerType = ref(1);
 
@@ -43,7 +42,7 @@ export default {
         }
 
         return {
-            slug: companyStore.companyData.slug,
+            slug: layoutStore.footerData.slug,
             videoList,
             showVideoByThumbnail,
             hideVideoByThumbnail,

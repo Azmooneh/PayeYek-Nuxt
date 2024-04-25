@@ -69,13 +69,13 @@ export default {
         // console.log(styleStore.styles);
 
         return {
-            slug: companyStore.companyData.slug,
+            slug: layoutStore.footerData.slug,
             productList,
             borderStyle,
             evenOdd: layoutStore.footerData.styles.product_striped,
             headerType,
             productCardType,
-            companyName: companyStore.companyData.title,
+            companyName: layoutStore.footerData.title,
         }
     }
 }

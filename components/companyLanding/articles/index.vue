@@ -57,13 +57,13 @@ export default {
         }
 
         return {
-            slug: companyStore.companyData.slug,
+            slug: layoutStore.footerData.slug,
             parentStyle,
             containerStyle,
             articleCardType: layoutStore.footerData.styles.article_card_type,
             articles,
             headerType,
-            companyName: companyStore.companyData.title,
+            companyName: layoutStore.footerData.title,
             articleCardType,
         }
     }
