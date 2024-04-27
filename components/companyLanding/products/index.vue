@@ -1,7 +1,7 @@
 <template>
     <section class="mb-4 lg:mb-16 relative z-[1] container" v-if="productList.length">
         <!-- title -->
-        <Titles :landSlug="slug" :headerType="headerType" :title="'محصولات شرکت ' + companyName" section="products"  />
+        <Titles :landSlug="slug" :headerType="headerType" :title="'محصولات شرکت ' + companyName" section="p"  />
         <!-- products -->
         <ProductTypes :slug="slug" :productCardType="productCardType" />
     </section>

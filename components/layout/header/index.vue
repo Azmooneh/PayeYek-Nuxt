@@ -1,6 +1,6 @@
 <template>
-    <section>
-        <header class="sticky top-0 z-[4] drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)] bg-white" v-if="status">
+    <section class="sticky top-0 z-[4]">
+        <header class="drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)] bg-white" v-if="status">
             <section class="container flex items-center justify-between h-16 gap-5 sm:h-20">
                 <div class="flex items-center gap-2">
                     <!-- hamburger menu -->

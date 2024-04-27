@@ -48,7 +48,8 @@ export default defineNuxtConfig({
   ],
 
   plugins: [
-    "~/plugins/Vue3Lottie.client.ts"
+    "~/plugins/Vue3Lottie.client.ts",
+    {src: '~/plugins/vue3-toastify.ts'},
   ],
 
 

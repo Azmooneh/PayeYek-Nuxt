@@ -1,7 +1,7 @@
 <template>
     <section class="mb-4 sm:mb-8 lg:mb-16 relative z-[3] container" id="video-player-container" v-if="videoList.length">
         <!-- title -->
-        <Titles :landSlug="slug" :headerType="headerType" title="ویدیو ها" section="videos"  />
+        <Titles :landSlug="slug" :headerType="headerType" title="ویدیو ها" section="v"  />
         <!-- videos -->
         <Videos :videoList="videoList" :showVideoByThumbnail="showVideoByThumbnail" />
     </section>

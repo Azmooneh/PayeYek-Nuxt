@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         iran: "IRANSansX, serif",
         yekan: "IRANYekanX, serif",
+        Icomoon: 'icomoon',
       },
       colors: {
         label: {

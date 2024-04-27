@@ -2,7 +2,7 @@
     <section :class="'mb-4 lg:mb-16 relative container ' + parentStyle" v-if="articles.length">
         <section :class="containerStyle">
             <!-- title -->
-            <Titles :landSlug="slug" :headerType="headerType" :title="'محصولات شرکت ' + companyName" section="articles" />
+            <Titles :landSlug="slug" :headerType="headerType" :title="'محصولات شرکت ' + companyName" section="a" />
 
             <section class="w-full">
                 <articleSwiperType />
