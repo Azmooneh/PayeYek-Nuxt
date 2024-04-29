@@ -3,6 +3,7 @@
     <Product_type_2 :slug="slug" v-if="productCardType == 2" :borderStyle="borderStyle" :evenOdd="evenOdd" />
     <Product_type_3 :slug="slug" v-if="productCardType == 3" :borderStyle="borderStyle" :evenOdd="evenOdd" />
     <Product_type_4 :slug="slug" v-if="productCardType == 4" :borderStyle="borderStyle" :evenOdd="evenOdd" />
+    <Product_type_5 :slug="slug" v-if="productCardType == 5" :borderStyle="borderStyle" :evenOdd="evenOdd" />
     <Product_type_11 :slug="slug" v-if="productCardType == 11" />
 </template>
 
@@ -11,6 +12,7 @@ import Product_type_1 from './children/product_type_1.vue';
 import Product_type_2 from './children/product_type_2.vue';
 import Product_type_3 from './children/product_type_3.vue';
 import Product_type_4 from './children/product_type_4.vue';
+import Product_type_5 from './children/product_type_5.vue';
 import Product_type_11 from './children/product_type_11.vue';
 import {ref} from "vue";
 import {useCommon} from "~/store/index.js";
@@ -22,6 +24,7 @@ export default {
         Product_type_2,
         Product_type_3,
         Product_type_4,
+        Product_type_5,
         Product_type_11,
     },
     props: {
