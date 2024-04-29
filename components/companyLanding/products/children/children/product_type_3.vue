@@ -37,12 +37,9 @@ export default {
     },
     setup() {
         const companyStore = useCompanyData();
-        const layoutStore = useCommon();
         const productList = ref(companyStore.products);
-        const slug = ref(layoutStore.footerData.slug);
 
         return {
-            slug,
             productList,
         }
     }

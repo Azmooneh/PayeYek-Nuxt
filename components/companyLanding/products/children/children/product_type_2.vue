@@ -23,7 +23,7 @@
 <script>
 import {ref} from 'vue';
 import {NuxtLink, NuxtImg} from "#components";
-import {useCompanyData, useCommon} from '~/store/index';
+import {useCompanyData} from '~/store/index';
 
 export default {
     name: 'Products Type 2',
@@ -34,12 +34,9 @@ export default {
     },
     setup() {
         const companyStore = useCompanyData();
-        const layoutStore = useCommon();
         const productList = ref(companyStore.products);
-        const slug = ref(layoutStore.footerData.slug);
 
         return {
-            slug,
             productList,
         }
     }
