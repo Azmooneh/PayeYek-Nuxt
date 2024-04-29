@@ -27,7 +27,7 @@ export default {
         const productList = ref(companyStore.products);
         const borderStyle = ref("");
         const headerType = ref(layoutStore.footerData.styles.section_header_type);
-        const productCardType = ref(1);
+        const productCardType = ref(3);
         // console.log(layoutStore.footerData.styles.section_header_type)
 
         switch (layoutStore.footerData.styles.border_type) {

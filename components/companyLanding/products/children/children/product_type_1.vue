@@ -29,6 +29,7 @@ export default {
     props: {
         slug: String,
         borderStyle: String,
+        evenOdd: [String, Number],
     },
     setup(){
         const companyStore = useCompanyData();
@@ -39,7 +40,6 @@ export default {
         return {
             slug,
             productList,
-            evenOdd: layoutStore.footerData.styles.product_striped,
         }
     }
 }
