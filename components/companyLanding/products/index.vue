@@ -27,7 +27,9 @@ export default {
         const productList = ref(companyStore.products);
         const borderStyle = ref("");
         const headerType = ref(layoutStore.footerData.styles.section_header_type);
-        const productCardType = ref(5);
+        const productCardType = ref(6);
+        const slug = ref(layoutStore.footerData.slug);
+        console.log(slug.value)
         // console.log(layoutStore.footerData.styles.section_header_type)
 
         switch (layoutStore.footerData.styles.border_type) {
@@ -70,7 +72,7 @@ export default {
         // console.log(styleStore.styles);
 
         return {
-            slug: layoutStore.footerData.slug,
+            slug,
             productList,
             borderStyle,
             evenOdd: layoutStore.footerData.styles.product_striped,
