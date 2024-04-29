@@ -21,8 +21,5 @@ export default {
         title: String,
         section: String,
     },
-    setup(){
-        
-    }
 }
 </script>

@@ -5,7 +5,7 @@
             پایه یک، تنها مرجع تخصصی برای آشنایی با انواع خودروهای سنگین
             <strong class="text-red-700"> بزودی در دسترس شما خواهد بود... </strong>
         </h1>
-        <section class="grid max-w-5xl grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4 lg:mx-auto">
+        <section class="grid max-w-5xl grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:max-w-7xl 2xl:grid-cols-6 lg:mx-auto">
             <company :companyList="companies" v-if="companiesLoaded" />
             <!-- skeleton -->
             <skeleton v-else />

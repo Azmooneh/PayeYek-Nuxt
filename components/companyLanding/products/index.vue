@@ -26,8 +26,9 @@ export default {
         const layoutStore = useCommon();
         const productList = ref(companyStore.products);
         const borderStyle = ref("");
-        const headerType = ref(1);
-        const productCardType = ref(11);
+        const headerType = ref(layoutStore.footerData.styles.section_header_type);
+        const productCardType = ref(1);
+        // console.log(layoutStore.footerData.styles.section_header_type)
 
         switch (layoutStore.footerData.styles.border_type) {
             case 0:
