@@ -13,6 +13,7 @@
     <Product_type_12 :slug="slug" v-if="productCardType == 12" :borderStyle="borderStyle" :evenOdd="evenOdd" />
     <Product_type_13 :slug="slug" v-if="productCardType == 13" :borderStyle="borderStyle" :evenOdd="evenOdd" />
     <Product_type_14 :slug="slug" v-if="productCardType == 14" :borderStyle="borderStyle" :evenOdd="evenOdd" />
+    <Product_type_15 :slug="slug" v-if="productCardType == 15" :borderStyle="borderStyle" :evenOdd="evenOdd" />
 </template>
 
 <script>
@@ -30,6 +31,7 @@ import Product_type_11 from './children/product_type_11.vue';
 import Product_type_12 from './children/product_type_12.vue';
 import Product_type_13 from './children/product_type_13.vue';
 import Product_type_14 from './children/product_type_14.vue';
+import Product_type_15 from './children/product_type_15.vue';
 import {ref} from "vue";
 import {useCommon} from "~/store/index.js";
 
@@ -50,6 +52,7 @@ export default {
         Product_type_12,
         Product_type_13,
         Product_type_14,
+        Product_type_15,
     },
     props: {
         slug: String,
