@@ -23,65 +23,24 @@
 
 <script>
 import { NuxtLink, NuxtImg } from "#components";
-import {useCommon, useCompanyData} from '~/store/index';
+import {useCompanyData} from '~/store/index';
 import {ref} from "vue";
 
 export default {
     name: 'Products Type 11',
     props: {
         slug: String,
+        borderStyle: String,
+        evenOdd: [String, Number],
     },
     setup(){
-        // const route = useRoute();
         const companyStore = useCompanyData();
-        // const styleStore = useStyles();
         const productList = ref(companyStore.products);
-        const borderStyle = ref("");
-        const layoutStore = useCommon();
-        const slug = ref(layoutStore.footerData.slug);
 
-        switch (layoutStore.footerData.styles.border_type) {
-            case 0:
-                switch (layoutStore.footerData.styles.product_card_type) {
-                    case 11:
-                        borderStyle.value = "";
-                        break;
-                
-                    default:
-                        break;
-                }
-                break;
-            case 1:
-                switch (layoutStore.footerData.styles.product_card_type) {
-                    case 11:
-                        borderStyle.value = "border border-stone-400";
-                        break;
-                
-                    default:
-                        break;
-                }
-                break;
-            case 2:
-                switch (layoutStore.footerData.styles.product_card_type) {
-                    case 11:
-                        borderStyle.value = "drop-shadow-base";
-                        break;
-                
-                    default:
-                        break;
-                }
-                break;
-        
-            default:
-                break;
-        }
-        
+
 
         return {
-            slug,
             productList,
-            borderStyle,
-            evenOdd: layoutStore.footerData.styles.product_striped,
         }
     }
 }
