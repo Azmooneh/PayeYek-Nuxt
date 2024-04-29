@@ -27,11 +27,11 @@ export default {
         const productList = ref(companyStore.products);
         const borderStyle = ref("");
         const headerType = ref(layoutStore.footerData.styles.section_header_type);
-        const productCardType = ref(15);
+        const productCardType = ref(layoutStore.footerData.styles.product_card_type);
         const slug = ref(layoutStore.footerData.slug);
-        console.log(slug.value)
-        // console.log(layoutStore.footerData.styles.section_header_type)
-
+        // console.log(slug.value)
+        // console.log(layoutStore.footerData.styles.product_card_type)
+        //
         switch (layoutStore.footerData.styles.border_type) {
             case 0:
                 switch (layoutStore.footerData.styles.product_card_type) {
