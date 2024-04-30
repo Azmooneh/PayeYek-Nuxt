@@ -32,7 +32,7 @@ export default {
         const headerType = ref(layoutStore.footerData.styles.section_header_type);
         const slug = ref(layoutStore.footerData.slug);
         const evenOdd = ref(layoutStore.footerData.styles.article_striped);
-        const articleCardType = ref(9);
+        const articleCardType = ref(10);
 
         // switch (layoutStore.footerData.styles.article_card_type) {
         switch (layoutStore.footerData.styles.article_card_type) {
