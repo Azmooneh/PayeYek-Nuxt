@@ -70,17 +70,27 @@ export default {
         const watchLoading = ref(true);
 
         const updateMetaTags = (seo) =>{
+            console.log(seo)
             useHead({
-                title: seo.title,
-                ogTitle: seo.ogTitle,
                 meta: [
-                    { name: 'description', content: seo.description },
-                    { name: 'ogDescription', content: seo.ogDescription }
+                    { hid: 'robots', name: 'robots', content: seo.robot },
                 ],
                 link: {
                     rel: 'canonical',
-                    href: `https://www.paye1.com${route.path}`
+                    href: `https://www.paye1.com/l/${seo.canonical}`
                 }
+            })
+
+            useSeoMeta({
+                title: seo.title,
+                ogTitle: seo.og_title,
+                description: seo.description,
+                ogDescription: seo.og_description,
+                ogType: seo.og_type,
+                ogImage: seo.og_image,
+                ogImageAlt: seo.image_alt,
+                twitterCard: seo.twitter_card,
+                twitterImage: seo.twitter_card_image,
             })
         }
 
