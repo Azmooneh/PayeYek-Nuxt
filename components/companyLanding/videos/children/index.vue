@@ -3,6 +3,7 @@
     <VTypeTwo v-if="videoType == 2" :videoList="videoList" :showVideoByThumbnail="showVideoByThumbnail" />
     <VTypeThree v-if="videoType == 3" :videoList="videoList" :showVideoByThumbnail="showVideoByThumbnail" />
     <VTypeFour v-if="videoType == 4" :videoList="videoList" :showVideoByThumbnail="showVideoByThumbnail" />
+    <VTypeFive v-if="videoType == 5" :videoList="videoList" :showVideoByThumbnail="showVideoByThumbnail" />
     <VTypeSix v-if="videoType == 6" :videoList="videoList" :showVideoByThumbnail="showVideoByThumbnail" />
 </template>
 
@@ -11,6 +12,7 @@ import VTypeOne from './children/VTypeOne.vue';
 import VTypeTwo from './children/VTypeTwo.vue';
 import VTypeThree from './children/VTypeThree.vue';
 import VTypeFour from './children/VTypeFour.vue';
+import VTypeFive from './children/VTypeFive.vue';
 import VTypeSix from './children/VTypeSix.vue';
 import { useCommon } from '~/store/index';
 
@@ -21,6 +23,7 @@ export default {
         VTypeTwo,
         VTypeThree,
         VTypeFour,
+        VTypeFive,
         VTypeSix,
     },
     props: {
