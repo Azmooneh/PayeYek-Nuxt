@@ -1,5 +1,5 @@
 <template>
-    <section class="mb-4 sm:mb-0 w-full grid grid-cols-1 sm:grid-cols-2 gap-4 container">
+    <section class="mb-4 sm:mb-0 w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
         <template v-for="(article, key, index) in ArticlesRowList" :key="index">
             <div class="[&:nth-of-type(3)]:col-span-2">
                 <section :class="'sm:flex sm:flex-col sm:p-4 sm:bg-white border-0 sm:rounded-custom ' + borderStyle + ' sm:border-2'">
@@ -9,7 +9,7 @@
                             <div class="flex flex-col gap-3 lg:flex-row lg:mb-4">
                                 <!-- image -->
                                 <div class="h-24 lg:w-28 lg:flex-none rounded-custom">
-                                    <img :src="item.image" :alt="item.title" class="h-full mx-auto object-contain lg:mx-0" />
+                                    <NuxtImg :src="item.image" :alt="item.title" class="h-full mx-auto object-contain lg:mx-0" height="100%" width="100%" format="webp" />
                                 </div>
                                 <!-- info -->
                                 <div class="flex flex-col text-stone-700 gap-1 lg:gap-2">
