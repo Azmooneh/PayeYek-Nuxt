@@ -11,7 +11,6 @@
 </template>
 
 <script>
-// import { NuxtLink } from "#components";
 import { useCompanyData, useCommon } from '~/store/index';
 import Titles from '~/components/companyLanding/common/titles/index.vue';
 import Articles from '~/components/companyLanding/articles/children/index.vue';
@@ -34,7 +33,6 @@ export default {
         const slug = ref(layoutStore.footerData.slug);
         const evenOdd = ref(layoutStore.footerData.styles.article_striped);
         const articleCardType = ref(6);
-        // const articleCardType = ref(layoutStore.footerData.styles.article_card_type);
 
         switch (layoutStore.footerData.styles.article_card_type) {
             case 7:

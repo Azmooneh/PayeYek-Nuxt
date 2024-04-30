@@ -30,7 +30,6 @@
 
 <script>
 import { NuxtLink, NuxtImg } from "#components";
-import {useCommon} from "~/store/index.js";
 
 export default {
     name: "Article Type 4",
@@ -41,25 +40,12 @@ export default {
         evenOdd: [String, Number],
     },
     setup(){
-        const border = ref("");
-        const layoutStore = useCommon();
         const renderDate = (string) => {
             return new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium' }).format(new Date(string))
         }
 
-        switch (layoutStore.footerData.styles.border_type) {
-            case 1:
-                border.value = "border border-stone-400";
-                break;
-            default:
-                border.value = "";
-                break;
-        }
-
-
         return {
             renderDate,
-            border,
         }
     }
 }
