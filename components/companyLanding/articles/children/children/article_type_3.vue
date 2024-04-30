@@ -8,9 +8,9 @@
             </div>
             <!-- docs -->
             <div class="px-6 md:pl-8 flex flex-col sm:justify-center sm:flex-1 text-stone-700">
-                <h3 class="mb-4 text-lg font-medium line-clamp-1"> {{ article.title }} </h3>
+                <h3 class="mb-4 sm:mb-2 text-lg font-medium line-clamp-1"> {{ article.title }} </h3>
                 <p
-                    class="text-sm text-justify lg:text-base line-clamp-5 sm:line-clamp-3 lg:line-clamp-2 lg:h-24 leading-7 sm:h-20 lg:leading-8 mb-4 font-normal">
+                    class="text-sm text-justify lg:text-base line-clamp-5 sm:line-clamp-3 lg:line-clamp-2 lg:h-24 leading-7 sm:h-20 lg:leading-8 mb-4 sm:mb-2 font-normal">
                     {{ article.description }}
                 </p>
                 <div class="flex items-center justify-between">

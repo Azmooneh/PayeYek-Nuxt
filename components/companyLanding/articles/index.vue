@@ -32,9 +32,10 @@ export default {
         const headerType = ref(layoutStore.footerData.styles.section_header_type);
         const slug = ref(layoutStore.footerData.slug);
         const evenOdd = ref(layoutStore.footerData.styles.article_striped);
-        const articleCardType = ref(6);
+        const articleCardType = ref(8);
 
-        switch (layoutStore.footerData.styles.article_card_type) {
+        // switch (layoutStore.footerData.styles.article_card_type) {
+        switch (8) {
             case 7:
                 parentStyle.value = "bg-stone-200 py-4 sm:py-10 md:py-14 lg:pt-16 lg:pb-20 xl:pb-24"
                 break;
@@ -46,13 +47,14 @@ export default {
                 break;
         }
 
-        switch (layoutStore.footerData.styles.article_card_type) {
-            case 6:
-                containerStyle.value = "lg:container"
-                break;
+        // switch (layoutStore.footerData.styles.article_card_type) {
+            switch (7) {
+            // case 6:
+            //     containerStyle.value = "container"
+            //     break;
 
             default:
-                containerStyle.value = ""
+                containerStyle.value = "container"
                 break;
         }
 
