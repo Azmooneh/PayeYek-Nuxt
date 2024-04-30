@@ -31,7 +31,8 @@ export default {
         const videoList = ref(companyStore.videos);
         const layoutStore = useCommon();
         const videoModal = ref("");
-        const headerType = ref(1);
+        const headerType = ref(layoutStore.footerData.styles.section_header_type);
+        const slug = ref(layoutStore.footerData.slug);
 
         const showVideoByThumbnail = (link) => {
             videoModal.value = link;
@@ -42,7 +43,7 @@ export default {
         }
 
         return {
-            slug: layoutStore.footerData.slug,
+            slug,
             videoList,
             showVideoByThumbnail,
             hideVideoByThumbnail,

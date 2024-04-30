@@ -70,7 +70,7 @@ export default {
         const watchLoading = ref(true);
 
         const updateMetaTags = (seo) =>{
-            console.log(seo)
+            // console.log(seo)
             useHead({
                 meta: [
                     { hid: 'robots', name: 'robots', content: seo.robot },

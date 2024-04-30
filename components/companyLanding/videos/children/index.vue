@@ -1,13 +1,20 @@
 <template>
-    <VTypeSix :videoList="videoList" :showVideoByThumbnail="showVideoByThumbnail" />
+    <VTypeOne v-if="videoType == 1" :videoList="videoList" :showVideoByThumbnail="showVideoByThumbnail" />
+    <VTypeTwo v-if="videoType == 2" :videoList="videoList" :showVideoByThumbnail="showVideoByThumbnail" />
+    <VTypeSix v-if="videoType == 6" :videoList="videoList" :showVideoByThumbnail="showVideoByThumbnail" />
 </template>
 
 <script>
+import VTypeOne from './children/VTypeOne.vue';
+import VTypeTwo from './children/VTypeTwo.vue';
 import VTypeSix from './children/VTypeSix.vue';
+import { useCommon } from '~/store/index';
 
 export default {
     name: 'Video Single',
     components: {
+        VTypeOne,
+        VTypeTwo,
         VTypeSix,
     },
     props: {
@@ -15,8 +22,9 @@ export default {
         showVideoByThumbnail: Function,
     },
     setup(){
-        const videoType = ref(6);
-
+        const layoutStore = useCommon();
+        // const videoType = ref(layoutStore.footerData.styles.video_card_type);
+        const videoType = ref(3);
         return {
             videoType,
         }
