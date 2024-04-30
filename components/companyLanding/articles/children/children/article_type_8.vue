@@ -1,7 +1,7 @@
 <template>
     <section class="mb-4 sm:mb-0 w-full grid grid-cols-1 gap-4 md:grid-cols-3">
         <NuxtLink v-for="(article, index) in (articleList.length > 2 ? articleList.slice(0, 2) : articleList)" :key="index" :to="'/l/' + slug + '/a/' + article.slug" class="relative aspect-video rounded-custom overflow-hidden hover:scale-[1.025] duration-300">
-            <img :src="article.image" :alt="article.title" class="size-full absolute top-0 left-0 rounded-custom" />
+            <NuxtImg :src="article.image" :alt="article.title" class="size-full absolute top-0 left-0 rounded-custom" height="100%" width="100%" format="webp" />
             <div class="bg-gradient-to-t w-full h-full flex flex-col gap-2 p-4 justify-end from-black/80 to-black/25 z-[2] relative">
                 <h3 class="text-lg lg:text-xl xl:text-2xl font-medium text-white line-clamp-1"> {{ article.title }} </h3>
                 <p class="text-sm font-normal text-white line-clamp-1"> {{ article.description }} </p>
@@ -20,7 +20,7 @@
 import { NuxtLink, NuxtImg } from "#components";
 
 export default {
-    name: "Article Type 4",
+    name: "Article Type 8",
     props: {
         slug: String,
         articleList: Array,

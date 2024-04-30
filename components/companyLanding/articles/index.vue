@@ -1,6 +1,6 @@
 <template>
     <section :class="'mb-4 lg:mb-16 relative ' + parentStyle" v-if="articles.length">
-        <section :class="containerStyle">
+        <section class="container">
             <!-- title -->
             <Titles :landSlug="slug" :headerType="headerType" :title="'محصولات شرکت ' + companyName" section="a" />
 
@@ -32,10 +32,10 @@ export default {
         const headerType = ref(layoutStore.footerData.styles.section_header_type);
         const slug = ref(layoutStore.footerData.slug);
         const evenOdd = ref(layoutStore.footerData.styles.article_striped);
-        const articleCardType = ref(8);
+        const articleCardType = ref(9);
 
         // switch (layoutStore.footerData.styles.article_card_type) {
-        switch (8) {
+        switch (layoutStore.footerData.styles.article_card_type) {
             case 7:
                 parentStyle.value = "bg-stone-200 py-4 sm:py-10 md:py-14 lg:pt-16 lg:pb-20 xl:pb-24"
                 break;
@@ -47,16 +47,16 @@ export default {
                 break;
         }
 
-        // switch (layoutStore.footerData.styles.article_card_type) {
-            switch (7) {
-            // case 6:
-            //     containerStyle.value = "container"
-            //     break;
-
-            default:
-                containerStyle.value = "container"
-                break;
-        }
+        // switch () {
+        //     switch (layoutStore.footerData.styles.article_card_type) {
+        //     // case 6:
+        //     //     containerStyle.value = "container"
+        //     //     break;
+        //
+        //     default:
+        //         containerStyle.value = "container"
+        //         break;
+        // }
 
         switch (layoutStore.footerData.styles.border_type) {
             case 1:

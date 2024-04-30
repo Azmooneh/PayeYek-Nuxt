@@ -34,7 +34,7 @@
 import { NuxtLink, NuxtImg } from "#components";
 
 export default {
-    name: "Article Type 4",
+    name: "Article Type 6",
     props: {
         slug: String,
         articleList: Array,
