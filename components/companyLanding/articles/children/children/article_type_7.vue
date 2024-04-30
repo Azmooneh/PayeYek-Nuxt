@@ -12,10 +12,10 @@
                                     <NuxtImg :src="item.image" :alt="item.title" class="h-full mx-auto object-contain lg:mx-0" height="100%" width="100%" format="webp" />
                                 </div>
                                 <!-- info -->
-                                <div class="flex flex-col text-stone-700 gap-1 lg:gap-2">
+                                <article class="flex flex-col text-stone-700 gap-1 lg:gap-2">
                                     <p class="text-sm lg:text-base xl:text-lg font-medium lg:line-clamp-1"> {{ item.title }} </p>
                                     <p class="text-xs lg:text-sm lg:leading-6 font-normal line-clamp-1 lg:line-clamp-2 h-4 lg:h-12"> {{ item.description }} </p>
-                                </div>
+                                </article>
                             </div>
                             <div class="hidden lg:flex items-center justify-end gap-4 text-normal text-base font-medium">
                                 <span> ادامه </span>

@@ -8,20 +8,20 @@
                              class="absolute top-0 left-0 object-cover w-full h-full" width="100%" height="100%" format="webp" />
                 </div>
                 <!-- info -->
-                <div class="px-2 pt-3 pb-4">
+                <article class="px-2 pt-3 pb-4 text-stone-700">
                     <div class="gap-4 mb-1 flex_between">
-                        <h3 class="text-base font-medium leading-7 sm:text-lg text-stone-700 line-clamp-1">
+                        <h3 class="text-base font-medium leading-7 sm:text-lg line-clamp-1">
                             {{ article.title }} </h3>
-                        <h4 class="flex-none text-sm font-medium leading-7 sm:text-base text-normal"> {{ renderDate(article.created_at) }} </h4>
+                        <p class="flex-none text-sm font-medium leading-7 sm:text-base text-normal"> {{ renderDate(article.created_at) }} </p>
                     </div>
                     <p
-                        class="mb-2 text-sm font-normal leading-6 sm:leading-7 sm:h-20 sm:mb-3 text-justify text-stone-700 line-clamp-3 h-[72px]">
+                        class="mb-2 text-sm font-normal leading-6 sm:leading-7 sm:h-20 sm:mb-3 text-justify line-clamp-3 h-[72px]">
                         {{ article.description }}
                     </p>
                     <NuxtLink :to="'/l/' + slug + '/a/' + article.slug"
                               class="w-32 h-10 mx-auto text-lg font-medium text-white bg-stone-700 flex_center rounded-custom">
                         بیشتر </NuxtLink>
-                </div>
+                </article>
             </SwiperSlide>
         </Swiper>
     </section>

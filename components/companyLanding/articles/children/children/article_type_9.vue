@@ -6,7 +6,7 @@
                      class="absolute top-0 left-0 w-full h-full object-cover" height="100%" width="100%" format="webp" />
             </div>
             <!-- info -->
-            <div class="px-4 pt-3 pb-4 text-stone-700">
+            <article class="px-4 pt-3 pb-4 text-stone-700">
                 <h3 class="mb-4 text-sm sm:text-base lg:text-lg font-medium line-clamp-1"> {{ article.title }} </h3>
                 <p class="mb-6 text-xs sm:text-sm font-normal leading-5 sm:leading-6 md:h-12 text-justify md:line-clamp-2">
                     {{ article.description }}
@@ -14,7 +14,7 @@
                 <p class="text-xs sm:text-sm font-normal">
                     {{ renderDate(article.created_at) }}
                 </p>
-            </div>
+            </article>
         </NuxtLink>
     </section>
 </template>

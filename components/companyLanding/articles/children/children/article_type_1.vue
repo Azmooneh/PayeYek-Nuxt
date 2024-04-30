@@ -7,9 +7,9 @@
                 <NuxtImg :src="article.image" :alt="article.title" class="absolute top-0 left-0 object-cover w-full h-full sm:static" height="100%" width="100%" format="webp" />
             </div>
             <!-- docs -->
-            <div class="px-6 pb-6 pt-2.5 md:pl-10 flex flex-col sm:justify-center sm:flex-1">
-                <h3 class="mb-4 text-lg font-medium text-stone-700 line-clamp-1"> {{ article.title }} </h3>
-                <p class="text-sm text-justify line-clamp-5 sm:line-clamp-3 lg:line-clamp-2 lg:h-16 leading-7 sm:h-20 lg:leading-8 mb-4 font-normal text-dark-500 ">
+            <div class="px-6 pb-6 pt-2.5 md:pl-10 text-stone-700 flex flex-col sm:justify-center sm:flex-1">
+                <h3 class="mb-4 text-lg font-medium line-clamp-1"> {{ article.title }} </h3>
+                <p class="text-sm text-justify line-clamp-5 sm:line-clamp-3 lg:line-clamp-2 lg:h-16 leading-7 sm:h-20 lg:leading-8 mb-4 font-normal">
                     {{ article.description }}
                 </p>
                 <div class="text-lg font-medium flex_center h-10 w-32 rounded-custom mr-auto text-white bg-normal hover:bg-focus focus:shadow-focus focus:shadow-shadowNormal">

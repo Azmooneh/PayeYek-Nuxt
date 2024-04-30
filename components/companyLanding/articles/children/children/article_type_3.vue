@@ -7,7 +7,7 @@
                 <NuxtImg :src="article.image" :alt="article.title" class="absolute top-0 left-0 object-cover w-full h-full sm:static" height="100%" width="100%" format="webp" />
             </div>
             <!-- docs -->
-            <div class="px-6 md:pl-8 flex flex-col sm:justify-center sm:flex-1 text-stone-700">
+            <article class="px-6 md:pl-8 flex flex-col sm:justify-center sm:flex-1 text-stone-700">
                 <h3 class="mb-4 sm:mb-2 text-lg font-medium line-clamp-1"> {{ article.title }} </h3>
                 <p
                     class="text-sm text-justify lg:text-base line-clamp-5 sm:line-clamp-3 lg:line-clamp-2 lg:h-24 leading-7 sm:h-20 lg:leading-8 mb-4 sm:mb-2 font-normal">
@@ -20,7 +20,7 @@
                         <span> بیشتر </span>
                     </div>
                 </div>
-            </div>
+            </article>
         </NuxtLink>
     </section>
 </template>

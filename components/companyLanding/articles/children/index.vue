@@ -9,10 +9,10 @@
     <Article_type_8 :slug="slug" v-if="articleCardType == 8" :articleList="articleList" :evenOdd="evenOdd" :borderStyle="borderStyle" />
     <Article_type_9 :slug="slug" v-if="articleCardType == 9" :articleList="articleList" :evenOdd="evenOdd" :borderStyle="borderStyle" />
     <Article_type_10 :slug="slug" v-if="articleCardType == 10" :articleList="articleList" :evenOdd="evenOdd" :borderStyle="borderStyle" />
+    <Article_type_11 :slug="slug" v-if="articleCardType == 11" :articleList="articleList" :evenOdd="evenOdd" :borderStyle="borderStyle" />
 </template>
 
 <script>
-
 import Article_type_1 from "~/components/companyLanding/articles/children/children/article_type_1.vue";
 import Article_type_2 from "~/components/companyLanding/articles/children/children/article_type_2.vue";
 import Article_type_3 from "~/components/companyLanding/articles/children/children/article_type_3.vue";
@@ -23,6 +23,7 @@ import Article_type_7 from "~/components/companyLanding/articles/children/childr
 import Article_type_8 from "~/components/companyLanding/articles/children/children/article_type_8.vue";
 import Article_type_9 from "~/components/companyLanding/articles/children/children/article_type_9.vue";
 import Article_type_10 from "~/components/companyLanding/articles/children/children/article_type_10.vue";
+import Article_type_11 from "~/components/companyLanding/articles/children/children/article_type_11.vue";
 import { useCompanyData } from '~/store/index';
 
 export default {
@@ -38,6 +39,7 @@ export default {
         Article_type_8,
         Article_type_9,
         Article_type_10,
+        Article_type_11,
     },
     props: {
         articleCardType: [String, Number],

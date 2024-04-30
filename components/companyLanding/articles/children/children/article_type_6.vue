@@ -7,7 +7,7 @@
                 <NuxtImg :src="article.image" :alt="article.title" class="absolute top-0 left-0 object-cover w-full h-full sm:static" height="100%" width="100%" format="webp" />
             </div>
             <!-- docs -->
-            <div class="px-5 pb-4 lg:px-8 flex flex-col sm:justify-center lg:justify-start sm:flex-1 sm:py-2 lg:py-4 text-stone-700">
+            <article class="px-5 pb-4 lg:px-8 flex flex-col sm:justify-center lg:justify-start sm:flex-1 sm:py-2 lg:py-4 text-stone-700">
                 <div class="flex mb-1 lg:mb-4 flex-col sm:flex-row gap-2 sm:justify-between">
                     <h3 class="text-base lg:text-lg font-medium line-clamp-1"> {{ article.title }} </h3>
                     <h4 class="text-normal text-sm font-normal sm:flex-none"> {{ renderDate(article.created_at) }} </h4>
@@ -25,7 +25,7 @@
                         </svg>
                     </div>
                 </div>
-            </div>
+            </article>
         </NuxtLink>
     </section>
 </template>
