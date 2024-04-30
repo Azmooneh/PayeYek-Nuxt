@@ -51,37 +51,33 @@ export default {
         const companySlug = ref(route.params.id);
         const loading = ref(true);
         const error = ref(null);
-        const pageTitle = ref('پایه یک');
-        const pageDescription = ref('پایه یک، تنها مرجع تخصصی برای آشنایی با انواع خودروهای سنگین');
-        const ogPageDescription = ref('پایه یک، اولین و تنها مرجع تخصصی در ایران است که به انواع ماشین های سنگین می پردازد و در تلاش است به سوالات بازار، پاسخی جامع دهد.');
         const watchLoading = ref(true);
         const breadcrumbs = ref([]);
-        useHead({
-            title: pageTitle.value,
-            ogTitle: pageTitle.value,
-            meta: [
-                { name: 'description', content: pageDescription.value },
-                { name: 'ogDescription', content: ogPageDescription.value }
-            ],
-            link: {
-                rel: 'canonical',
-                href: `https://www.paye1.com${route.path}`
-            }
-        })
+
+        const updateMetaTags = (seo) =>{
+            useHead({
+                title: seo.title,
+                ogTitle: seo.ogTitle,
+                meta: [
+                    { name: 'description', content: seo.description },
+                    { name: 'ogDescription', content: seo.ogDescription }
+                ],
+                link: {
+                    rel: 'canonical',
+                    href: `https://www.paye1.com${route.path}`
+                }
+            })
+        }
 
         const loadData = async () => {
             try {
                 loading.value = true;
-                console.log(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/p`);
                 const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/p`)
-                console.log(response.data.value);
                 if (response.data.value.status == 200) {
-                    await categoriesStore.saveCategoriesData(response.data.value.data.categories, response.data.value.data.products);
+                    await categoriesStore.saveCategoriesData(response.data.value.data.categories, response.data.value.data.products.data);
                     breadcrumbs.value = response.data.value.data.breadcrumbs;
+                    await updateMetaTags(response.data.value.data.seo);
                 }
-                // pageTitle.value = response.data.value.title;
-                // pageDescription.value = response.data.value.description;
-                // ogPageDescription.value = response.data.value.description;
             } catch (err) {
                 error.value = err.message || 'سرور به مشکل خورده است.'
             } finally {

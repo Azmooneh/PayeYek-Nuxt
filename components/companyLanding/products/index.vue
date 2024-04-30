@@ -29,6 +29,8 @@ export default {
         const headerType = ref(layoutStore.footerData.styles.section_header_type);
         const productCardType = ref(layoutStore.footerData.styles.product_card_type);
         const slug = ref(layoutStore.footerData.slug);
+        const evenOdd = ref(layoutStore.footerData.styles.product_striped);
+        const companyName = ref(layoutStore.footerData.title);
         // console.log(slug.value)
         // console.log(layoutStore.footerData.styles.product_card_type)
         //
@@ -75,10 +77,10 @@ export default {
             slug,
             productList,
             borderStyle,
-            evenOdd: layoutStore.footerData.styles.product_striped,
+            evenOdd,
             headerType,
             productCardType,
-            companyName: layoutStore.footerData.title,
+            companyName,
         }
     }
 }

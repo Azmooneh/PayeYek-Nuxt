@@ -1,12 +1,10 @@
 <template>
-    <section :class="'mb-4 lg:mb-16 relative container ' + parentStyle" v-if="articles.length">
+    <section :class="'mb-4 lg:mb-16 relative ' + parentStyle" v-if="articles.length">
         <section :class="containerStyle">
             <!-- title -->
             <Titles :landSlug="slug" :headerType="headerType" :title="'محصولات شرکت ' + companyName" section="a" />
 
-            <section class="w-full">
-                <articleSwiperType />
-            </section>
+            <Articles :articleCardType="articleCardType" :slug="slug" :borderStyle="borderStyle" :evenOdd="evenOdd" />
         </section>
     </section>
 
@@ -15,24 +13,28 @@
 <script>
 // import { NuxtLink } from "#components";
 import { useCompanyData, useCommon } from '~/store/index';
-import articleSwiperType from '~/components/companyLanding/articles/articleSwiperType/index.vue';
 import Titles from '~/components/companyLanding/common/titles/index.vue';
+import Articles from '~/components/companyLanding/articles/children/index.vue';
 
 export default {
-    name: 'Articles',
+    name: 'Articles Parent',
     components: {
-        articleSwiperType,
         Titles,
+        Articles,
     },
     setup() {
         const companyStore = useCompanyData();
-        // const styleStore = useStyles();
         const layoutStore = useCommon();
         const articles = ref(companyStore.articles);
         const parentStyle = ref("");
         const containerStyle = ref("");
-        const headerType = ref(1);
-        const articleCardType = ref(5);
+        const borderStyle = ref("");
+        const companyName = ref(layoutStore.footerData.title);
+        const headerType = ref(layoutStore.footerData.styles.section_header_type);
+        const slug = ref(layoutStore.footerData.slug);
+        const evenOdd = ref(layoutStore.footerData.styles.article_striped);
+        const articleCardType = ref(6);
+        // const articleCardType = ref(layoutStore.footerData.styles.article_card_type);
 
         switch (layoutStore.footerData.styles.article_card_type) {
             case 7:
@@ -48,23 +50,36 @@ export default {
 
         switch (layoutStore.footerData.styles.article_card_type) {
             case 6:
-                containerStyle.value = "lg:default_container"
+                containerStyle.value = "lg:container"
                 break;
 
             default:
-                containerStyle.value = "default_container"
+                containerStyle.value = ""
+                break;
+        }
+
+        switch (layoutStore.footerData.styles.border_type) {
+            case 1:
+                borderStyle.value = "border border-stone-400";
+                break;
+            case 2:
+                borderStyle.value = "drop-shadow-base";
+                break;
+            default:
+                borderStyle.value = "";
                 break;
         }
 
         return {
-            slug: layoutStore.footerData.slug,
+            slug,
             parentStyle,
             containerStyle,
-            articleCardType: layoutStore.footerData.styles.article_card_type,
             articles,
             headerType,
-            companyName: layoutStore.footerData.title,
+            companyName,
             articleCardType,
+            borderStyle,
+            evenOdd,
         }
     }
 }

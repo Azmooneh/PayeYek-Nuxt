@@ -1,0 +1,43 @@
+<template>
+    <Article_type_1 :slug="slug" v-if="articleCardType == 1" :articleList="articleList" :evenOdd="evenOdd" :borderStyle="borderStyle" />
+    <Article_type_2 :slug="slug" v-if="articleCardType == 2" :articleList="articleList" :evenOdd="evenOdd" :borderStyle="borderStyle" />
+    <Article_type_3 :slug="slug" v-if="articleCardType == 3" :articleList="articleList" :evenOdd="evenOdd" :borderStyle="borderStyle" />
+    <Article_type_4 :slug="slug" v-if="articleCardType == 4" :articleList="articleList" :evenOdd="evenOdd" :borderStyle="borderStyle" />
+    <section class="w-full" v-if="articleCardType == 5">
+        <articleSwiperType :slug="slug" :borderStyle="borderStyle" :evenOdd="evenOdd" />
+    </section>
+</template>
+
+<script>
+import articleSwiperType from "~/components/companyLanding/articles/children/children/articleSwiperType/index.vue";
+import Article_type_1 from "~/components/companyLanding/articles/children/children/article_type_1.vue";
+import Article_type_2 from "~/components/companyLanding/articles/children/children/article_type_2.vue";
+import Article_type_3 from "~/components/companyLanding/articles/children/children/article_type_3.vue";
+import Article_type_4 from "~/components/companyLanding/articles/children/children/article_type_4.vue";
+import { useCompanyData, useCommon } from '~/store/index';
+
+export default {
+    name: 'Article Switch',
+    components: {
+        articleSwiperType,
+        Article_type_1,
+        Article_type_2,
+        Article_type_3,
+        Article_type_4,
+    },
+    props: {
+        articleCardType: [String, Number],
+        slug: String,
+        borderStyle: String,
+        evenOdd: [String, Number],
+    },
+    setup(){
+        const companyStore = useCompanyData();
+        const articleList = ref(companyStore.articles);
+
+        return {
+            articleList,
+        }
+    }
+}
+</script>

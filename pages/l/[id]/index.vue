@@ -32,12 +32,8 @@
 </template>
 
 <script>
-// import { getApiRequest } from '~/helper/common';
-import { useCompanyData, useStyles } from '~/store/index';
+import { useCompanyData } from '~/store/index';
 import { ref } from 'vue';
-// import Header from '~/components/layout/header/index.vue';
-// import HeaderSkeleton from '~/components/layout/header/headerSkeleton.vue';
-// import Sidebar from '~/components/layout/sidebar/index.vue';
 import Slider from '~/components/companyLanding/Slider/index';
 import SliderSkeleton from '~/components/companyLanding/Slider/skeleton';
 import QuickAccessPAnel from '~/components/companyLanding/quickAccessPanel/index.vue';
@@ -49,14 +45,10 @@ import ArticlesSkeleton from '~/components/companyLanding/articles/articlesSkele
 import Videos from '~/components/companyLanding/videos/index';
 import VideosSkeleton from '~/components/companyLanding/videos/VideosSkeleton.vue';
 import Contact from '~/components/companyLanding/contact/index.vue';
-// import Footer from '~/components/layout/footer/index.vue';
 
 export default {
     name: 'Company',
     components: {
-        // Header,
-        // HeaderSkeleton,
-        // Sidebar,
         Slider,
         SliderSkeleton,
         QuickAccessPAnel,
@@ -68,45 +60,38 @@ export default {
         Videos,
         VideosSkeleton,
         Contact,
-        // Footer,
     },
     setup() {
         const route = useRoute();
         const companyStore = useCompanyData();
-        // const styleStore = useStyles();
         const companySlug = ref(route.params.id);
         const loading = ref(true);
         const error = ref(null);
-        const pageTitle = ref('پایه یک');
-        const pageDescription = ref('پایه یک، تنها مرجع تخصصی برای آشنایی با انواع خودروهای سنگین');
-        const ogPageDescription = ref('پایه یک، اولین و تنها مرجع تخصصی در ایران است که به انواع ماشین های سنگین می پردازد و در تلاش است به سوالات بازار، پاسخی جامع دهد.');
         const watchLoading = ref(true);
-        useHead({
-            title: pageTitle.value,
-            ogTitle: pageTitle.value,
-            meta: [
-                { name: 'description', content: pageDescription.value },
-                { name: 'ogDescription', content: ogPageDescription.value }
-            ],
-            link: {
-                rel: 'canonical',
-                href: `https://www.paye1.com${route.path}`
-            }
-        })
+
+        const updateMetaTags = (seo) =>{
+            useHead({
+                title: seo.title,
+                ogTitle: seo.ogTitle,
+                meta: [
+                    { name: 'description', content: seo.description },
+                    { name: 'ogDescription', content: seo.ogDescription }
+                ],
+                link: {
+                    rel: 'canonical',
+                    href: `https://www.paye1.com${route.path}`
+                }
+            })
+        }
 
         const loadData = async () => {
             try {
                 loading.value = true;
                 const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}`);
-                console.log(response.data.value);
                 if(response.data.value.status == 200){
                     await companyStore.saveCompanyData(response.data.value.data) // Then save company data
+                    await updateMetaTags(response.data.value.data.seo);
                 }
-                // await styleStore.saveStyles(response.data.value.styles) // Wait for saveStyles to finish
-                // console.log(response.data.value);
-                // pageTitle.value = response.data.value.title;
-                // pageDescription.value = response.data.value.description;
-                // ogPageDescription.value = response.data.value.description;
             } catch (err) {
                 error.value = err.message || 'سرور به مشکل خورده است.'
             } finally {
