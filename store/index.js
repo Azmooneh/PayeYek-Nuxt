@@ -73,3 +73,17 @@ export const useCategory = defineStore('Category', {
         }
     },
 })
+
+export const useArticles = defineStore('Articles', {
+    state: () => {
+        return {
+            Articles: [],
+            // products: [],
+        }
+    },
+    actions: {
+        saveArticlesData(Articles){
+            this.Articles = Articles;
+        }
+    },
+})
