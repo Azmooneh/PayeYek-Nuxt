@@ -14,23 +14,20 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5"/>
             </svg>
         </div>
-        <section class="flex flex-col items-center default_container">
+        <form class="flex flex-col items-center container">
             <p class="mb-10 text-base sm:text-lg font-semibold text-center lg:text-xl xl:text-2xl text-stone-700 px-10">
                 جهت
                 اطلاع از آخرین اطلاعیه های فروش شماره خود را وارد کنید. </p>
             <!--            <p class="mb-3 text-sm font-normal text-center lg:text-base lg:mb-4 text-stone-700"> جهت اطلاع از آخرین اطلاعیه های فروش شماره خود را وارد کنید. </p>-->
-            <input type="tel" name="phone" v-model="phone"
+            <input type="tel" name="phone" v-model="phone" autocomplete="off"
                    class="h-11 w-full max-w-64 focus:ring-0 dir-ltr mb-6 outline-none rounded-custom border border-[#CFD1D4] focus:border-[#CFD1D4] placeholder:text-[#ACACAC]"
                    placeholder="09"/>
-            <button type="button" @click="submitForm"
+            <button type="submit" @click.prevent="submitForm"
                     class="w-full text-lg font-medium text-white cursor-pointer rounded-custom h-11 max-w-64 flex_center bg-normal">
                 ارسال
             </button>
-        </section>
+        </form>
 
-        <section class="fixed top-0 right-0 size-full z-[5] bg-white/25 backdrop-blur-sm" v-if="modalStatus"></section>
-
-        <section></section>
     </section>
 </template>
 
@@ -40,20 +37,22 @@ import {toast} from 'vue3-toastify';
 import {ref} from "vue";
 
 export default {
-    name: 'Contact Type Six',
+    name: 'Contact Type One',
     setup() {
         const phone = ref("");
-        const modalStatus = ref(false);
 
 
         const submitForm = () => {
             if (phone.value.toString().length != 11) {
-                toast.success("شماره موبایل خود را به درستی وارد کنید.", {
-                    autoClose: 50000,
+                toast.error("شماره موبایل خود را به درستی وارد کنید.", {
+                    autoClose: 3000,
                     limit: 2,
                 });
             } else {
-
+                toast.success("اطلاعات شما ذخیره شد. منتظر تماس کارشناسان ما باشید.", {
+                    autoClose: 3000,
+                    limit: 2,
+                });
             }
         }
 
@@ -61,7 +60,6 @@ export default {
             scrollToTopSmoothly,
             phone,
             submitForm,
-            modalStatus,
         }
     }
 }

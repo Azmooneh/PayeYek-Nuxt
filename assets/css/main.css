@@ -504,14 +504,18 @@ body{
 }
 
 .Toastify .Toastify__toast-container .Toastify__toast{
-    @apply flex-row-reverse items-center min-h-full gap-2 bg-white max-h-none h-16 sm:h-24 lg:h-32 sm:min-w-80 sm:max-w-80;
+    @apply flex-row-reverse items-center min-h-full gap-2 bg-white max-h-none h-16 sm:h-24 sm:min-w-80 sm:max-w-80 rounded;
 }
 
 .Toastify .Toastify__toast-container .Toastify__toast.Toastify__toast--success{
-    @apply border-r-4 border-r-[#59B874];
+    @apply border-r-4 border-r-[#59B874] bg-[#E8FBED];
 }
 
-.Toastify .Toastify__toast-container .Toastify__toast.Toastify__toast--success .Toastify__toast-icon{
+.Toastify .Toastify__toast-container .Toastify__toast.Toastify__toast--error{
+    @apply border-r-4 border-r-[#ff0000] bg-[#FFDEDE];
+}
+
+.Toastify .Toastify__toast-container .Toastify__toast .Toastify__toast-icon{
     @apply hidden;
 }
 
@@ -520,7 +524,7 @@ body{
 }
 
 .Toastify .Toastify__toast-container .Toastify__toast .Toastify__close-button{
-    @apply top-2 left-2 before:absolute opacity-100 before:content-['\e907'] before:font-Icomoon before:text-base;
+    @apply top-2 left-2 before:absolute opacity-100 before:content-['\e906'] before:font-Icomoon before:text-base;
 }
 
 .Toastify .Toastify__toast-container .Toastify__toast .Toastify__close-button svg{
@@ -528,8 +532,7 @@ body{
 }
 
 .Toastify .Toastify__toast-container .Toastify__toast .Toastify__progress-bar{
-    /*@apply top-0 bottom-auto h-1 bg-[#A773F2] bg-none;*/
-    @apply hidden;
+    @apply invisible opacity-0;
 }
 
 /* toastification styles ends */

@@ -1,3 +1,35 @@
+@font-face {
+    font-family: icomoon;
+    font-style: normal;
+    font-weight: 500; /* font-medium -> 500 */
+    src: url('./eot/icomoon.eot') format('embedded-opentype'),
+    url('./eot/icomoon.eot') format('embedded-opentype');
+}
+
+@font-face {
+    font-family: icomoon;
+    font-style: normal;
+    font-weight: 500; /* font-medium -> 500 */
+    src: url('./svg/icomoon.svg') format('svg'),
+    url('./svg/icomoon.svg') format('svg');
+}
+
+@font-face {
+    font-family: icomoon;
+    font-style: normal;
+    font-weight: 500; /* font-medium -> 500 */
+    src: url('./ttf/icomoon.ttf') format('truetype'),
+    url('./ttf/icomoon.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: icomoon;
+    font-style: normal;
+    font-weight: 500; /* font-medium -> 500 */
+    src: url('./woff/icomoon.woff') format('woff'),
+    url('./woff/icomoon.woff') format('woff');
+}
+
 [class^="icon-"],
 [class*=" icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
