@@ -8,7 +8,6 @@
 </template>
 
 <script>
-// import { NuxtLink } from "#components";
 import { useCompanyData, useCommon } from '~/store/index';
 import Titles from '~/components/companyLanding/common/titles/index.vue';
 import ProductTypes from './children/index.vue';
@@ -20,9 +19,7 @@ export default {
         ProductTypes,
     },
     setup(){
-        // const route = useRoute();
         const companyStore = useCompanyData();
-        // const styleStore = useStyles();
         const layoutStore = useCommon();
         const productList = ref(companyStore.products);
         const borderStyle = ref("");
@@ -31,9 +28,6 @@ export default {
         const slug = ref(layoutStore.footerData.slug);
         const evenOdd = ref(layoutStore.footerData.styles.product_striped);
         const companyName = ref(layoutStore.footerData.title);
-        // console.log(slug.value)
-        // console.log(layoutStore.footerData.styles.product_card_type)
-        //
         switch (layoutStore.footerData.styles.border_type) {
             case 0:
                 switch (layoutStore.footerData.styles.product_card_type) {
@@ -71,8 +65,6 @@ export default {
                 break;
         }
         
-        // console.log(styleStore.styles);
-
         return {
             slug,
             productList,
