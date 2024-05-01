@@ -23,7 +23,7 @@ export default {
         CTypeFive,
     },
     setup(){
-        const ContactType = ref(2);
+        const ContactType = ref(6);
 
         return{
             ContactType,
