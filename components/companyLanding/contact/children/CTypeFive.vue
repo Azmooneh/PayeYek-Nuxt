@@ -7,7 +7,7 @@
                     اطلاع از آخرین اطلاعیه های فروش شماره خود را وارد کنید. </p>
                 <input name="phone" type="tel" autocomplete="off" v-model="phone"
                        class="bg-stone-200/10 mb-6 lg:mb-10 max-w-64 h-11 border border-[#CFD1D4] focus:border-[#CFD1D4] focus:ring-0 rounded-custom outline-none w-full placeholder:text-[#acacac] text-base font-normal px-3 text-white tracking-widest"
-                       placeholder="09" />
+                       placeholder="شماره همراه" />
                 <button type="submit" @click.prevent="submitForm"
                         class="w-full text-base font-medium text-normal rounded-custom flex_center max-w-64 h-11 bg-transparent border-y border-x-4 border-normal">
                     ارسال </button>
@@ -23,7 +23,7 @@ import {ref} from "vue";
 export default {
     name: 'Contact Type Five',
     setup() {
-        const phone = ref("");
+        const phone = ref("09");
 
 
         const submitForm = () => {

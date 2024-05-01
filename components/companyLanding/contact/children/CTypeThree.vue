@@ -4,7 +4,7 @@
             <p class="text-base sm:text-lg lg:text-xl xl:text-2xl font-normal text-white mb-8 lg:mb-10 text-center"> جهت اطلاع از آخرین اطلاعیه های فروش شماره خود را وارد کنید. </p>
             <!-- form-->
             <form class="max-w-64 w-full flex flex-col items-center gap-10 mx-auto">
-                <input name="phone" v-model="phone" autocomplete="off" type="tel" class="border border-[#cfd1d4] focus:border-[#cfd1d4] h-12 focus:ring-0 rounded-custom outline-none w-full placeholder:text-[#888b93] text-base bg-[#262626] font-normal pr-6 pl-3 text-white" placeholder="شماره همراه" value="09" />
+                <input name="phone" v-model="phone" autocomplete="off" type="tel" class="border border-[#cfd1d4] focus:border-[#cfd1d4] h-12 focus:ring-0 rounded-custom outline-none w-full placeholder:text-[#888b93] text-base bg-[#262626] font-normal pr-6 pl-3 text-white" placeholder="شماره همراه" />
                 <button type="submit" @click.prevent="submitForm" class="flex_center max-w-64 w-full h-11 text-[#FFD598] border border-[#FFD600] bg-transparent rounded-b-custom rounded-tl-custom rounded-tr-2xl"> ارسال </button>
             </form>
             <!-- scroll to top-->
@@ -40,7 +40,7 @@ import {ref} from "vue";
 export default {
     name: 'Contact Type Three',
     setup() {
-        const phone = ref("");
+        const phone = ref("09");
 
 
         const submitForm = () => {
