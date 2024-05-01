@@ -398,6 +398,12 @@
     .prespective{
         perspective: 1000px;
     }
+
+    .number-fa {
+        -moz-font-feature-settings: "ss02";
+        -webkit-font-feature-settings: "ss02";
+        font-feature-settings: "ss02";
+    }
 }
 
 body{

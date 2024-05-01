@@ -1,6 +1,6 @@
 <template>
     <!-- <section :class="'min-h-screen font-yekan ' + companyTheme + ' ' + companyRadius"> -->
-    <section :class="computedClass">
+    <section :class="'number-fa ' + computedClass">
         <Header />
         
         <Sidebar />
