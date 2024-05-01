@@ -5,6 +5,7 @@
     <CTypeFour v-if="ContactType == 4" />
     <CTypeFive v-if="ContactType == 5" />
     <CTypeSix v-if="ContactType == 6" />
+    <CTypeSeven v-if="ContactType == 7" />
 </template>
 
 <script>
@@ -14,6 +15,7 @@ import CTypeThree from './children/CTypeThree.vue';
 import CTypeFour from './children/CTypeFour.vue';
 import CTypeFive from './children/CTypeFive.vue';
 import CTypeSix from './children/CTypeSix.vue';
+import CTypeSeven from './children/CTypeSeven.vue';
 
 export default {
     name: 'Contact Switch',
@@ -24,9 +26,10 @@ export default {
         CTypeFour,
         CTypeFive,
         CTypeSix,
+        CTypeSeven,
     },
     setup(){
-        const ContactType = ref(6);
+        const ContactType = ref(7);
 
         return{
             ContactType,
