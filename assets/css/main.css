@@ -461,7 +461,7 @@ body{
 }
 
 .slider_type_1.arrow-blur-bottom {
-    @apply relative before:absolute before:content-[''] before:left-0 before:w-full before:bottom-0 before:h-44 before:hidden lg:before:block before:z-[2] before:bg-gradient-to-t before:from-black before:to-transparent;
+    @apply relative before:absolute before:rounded-b-custom before:content-[''] before:left-0 before:w-full before:bottom-0 before:h-44 before:hidden lg:before:block before:z-[2] before:bg-gradient-to-t before:from-black before:to-transparent;
 }
 
 .slider_type_1.arrow-bottom .custom_gradient, .slider_type_1.arrow-center .custom_gradient, .slider_type_1.arrow-center-transparent .custom_gradient{

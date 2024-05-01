@@ -26,7 +26,7 @@
         <Products />
         <Articles />
         <Videos />
-        <Contact />
+<!--        <Contact />-->
         <!-- <Footer /> -->
     </main>
 </template>
