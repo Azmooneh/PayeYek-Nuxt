@@ -27,7 +27,7 @@ import { useCommon } from '~/store/index';
 import { NuxtImg } from "#components";
 
 export default {
-    name: 'Video Type Three',
+    name: 'Video Type Five',
     components: {
         PlayIcon,
     },

@@ -5,6 +5,7 @@
     <VTypeFour v-if="videoType == 4" :videoList="videoList" :showVideoByThumbnail="showVideoByThumbnail" />
     <VTypeFive v-if="videoType == 5" :videoList="videoList" :showVideoByThumbnail="showVideoByThumbnail" />
     <VTypeSix v-if="videoType == 6" :videoList="videoList" :showVideoByThumbnail="showVideoByThumbnail" />
+    <VTypeSeven v-if="videoType == 7" :videoList="videoList" :showVideoByThumbnail="showVideoByThumbnail" />
 </template>
 
 <script>
@@ -14,6 +15,7 @@ import VTypeThree from './children/VTypeThree.vue';
 import VTypeFour from './children/VTypeFour.vue';
 import VTypeFive from './children/VTypeFive.vue';
 import VTypeSix from './children/VTypeSix.vue';
+import VTypeSeven from './children/VTypeSeven.vue';
 import { useCommon } from '~/store/index';
 
 export default {
@@ -25,6 +27,7 @@ export default {
         VTypeFour,
         VTypeFive,
         VTypeSix,
+        VTypeSeven,
     },
     props: {
         videoList: Array,
@@ -32,9 +35,8 @@ export default {
     },
     setup(){
         const layoutStore = useCommon();
+        const videoType = ref(layoutStore.footerData.styles.video_card_type);
 
-        // const videoType = ref(layoutStore.footerData.styles.video_card_type);
-        const videoType = ref(4);
         return {
             videoType,
         }
