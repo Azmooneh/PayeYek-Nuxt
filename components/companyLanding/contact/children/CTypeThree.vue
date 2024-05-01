@@ -38,7 +38,7 @@ import {toast} from 'vue3-toastify';
 import {ref} from "vue";
 
 export default {
-    name: 'Contact Type One',
+    name: 'Contact Type Three',
     setup() {
         const phone = ref("");
 
