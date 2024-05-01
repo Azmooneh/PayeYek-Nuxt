@@ -16,6 +16,7 @@ import CTypeFour from './children/CTypeFour.vue';
 import CTypeFive from './children/CTypeFive.vue';
 import CTypeSix from './children/CTypeSix.vue';
 import CTypeSeven from './children/CTypeSeven.vue';
+import {useCommon} from "~/store/index.js";
 
 export default {
     name: 'Contact Switch',
@@ -29,7 +30,8 @@ export default {
         CTypeSeven,
     },
     setup(){
-        const ContactType = ref(7);
+        const layoutStore = useCommon();
+        const ContactType = ref(layoutStore.footerData.styles.contact_type);
 
         return{
             ContactType,
