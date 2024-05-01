@@ -1,10 +1,10 @@
 <template>
     <section class="min-h-[calc(100vh-340px)] pt-4" v-if="watchLoading">
-        <breadcrumbSkeleton />
+        <breadcrumbSkeleton/>
 
-        <filterSkeleton />
+        <filterSkeleton/>
 
-        <productSkeleton />
+        <productSkeleton/>
     </section>
     <!-- if we have error -->
     <section v-else-if="error" class="flex-col w-full h-screen gap-4 flex_center">
@@ -13,27 +13,21 @@
     </section>
     <!-- Render your component content here -->
     <main v-else class="min-h-[calc(100vh-340px)] pt-4">
-        <Breadcrumbs :breadcrumbs="breadcrumbs" />
+        <Breadcrumbs :breadcrumbs="breadcrumbs"/>
 
-        <CategoryFilter />
+        <CategoryFilter/>
 
-        <Products />
+        <Products/>
 
-        <section class="flex_center gap-4">
-            <button>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                </svg>
-            </button>
-        </section>
+        <Pagination />
 
-        <Contact />
+        <Contact/>
     </main>
 </template>
 
 <script>
-import { ref } from 'vue';
-import { useCategory } from '~/store/index';
+import {ref} from 'vue';
+import {useCategory} from '~/store/index';
 import CategoryFilter from '~/components/products/filter/index.vue';
 import filterSkeleton from '~/components/products/filter/filterSkeleton.vue';
 import Products from '~/components/products/products/index.vue';
@@ -41,6 +35,7 @@ import productSkeleton from '~/components/products/products/productSkeleton.vue'
 import Contact from '~/components/companyLanding/contact/index.vue';
 import Breadcrumbs from '~/components/common/breadcrumbs/index.vue';
 import breadcrumbSkeleton from '~/components/common/breadcrumbs/breadcrumbSkeleton.vue';
+import Pagination from "~/components/common/pagination/index.vue";
 
 export default {
     name: 'Product Categories',
@@ -52,8 +47,9 @@ export default {
         Breadcrumbs,
         breadcrumbSkeleton,
         productSkeleton,
+        Pagination,
     },
-    setup(){
+    setup() {
         const route = useRoute();
         const categoriesStore = useCategory();
         const companySlug = ref(route.params.id);
@@ -62,10 +58,10 @@ export default {
         const watchLoading = ref(true);
         const breadcrumbs = ref([]);
 
-        const updateMetaTags = (seo) =>{
+        const updateMetaTags = (seo) => {
             useHead({
                 meta: [
-                    { hid: 'robots', name: 'robots', content: seo.robot },
+                    {hid: 'robots', name: 'robots', content: seo.robot},
                 ],
                 link: {
                     rel: 'canonical',

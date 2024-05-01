@@ -2,7 +2,7 @@
     <section class="min-h-[calc(100vh-340px)] pt-4" v-if="watchLoading">
         <breadcrumbSkeleton />
 
-        <filterSkeleton />
+        <filterArticlesSkeleton />
 
     </section>
     <!-- if we have error -->
@@ -14,21 +14,22 @@
     <main v-else class="min-h-[calc(100vh-340px)] pt-4">
         <Breadcrumbs :breadcrumbs="breadcrumbs" />
 
-
+        <ArticlesFilter />
 
     </main>
 </template>
 
 <script>
 import breadcrumbSkeleton from "~/components/common/breadcrumbs/breadcrumbSkeleton.vue";
-import filterSkeleton from "~/components/products/filter/filterSkeleton.vue";
+import filterArticlesSkeleton from "~/components/Articles/filterArticlesSkeleton.vue";
 import Breadcrumbs from "~/components/common/breadcrumbs/index.vue";
 import {useArticles, useCategory} from '~/store/index';
 import { ref } from 'vue';
+import ArticlesFilter from "~/components/Articles/index.vue";
 
 export default {
     name: 'Articles',
-    components: {Breadcrumbs, filterSkeleton, breadcrumbSkeleton},
+    components: {Breadcrumbs, filterArticlesSkeleton, breadcrumbSkeleton, ArticlesFilter},
     setup(){
         const route = useRoute();
         const articlesStore = useArticles();
