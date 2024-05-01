@@ -39,7 +39,7 @@ import {ref} from "vue";
 export default {
     name: 'Contact Type One',
     setup() {
-        const phone = ref("");
+        const phone = ref("09");
 
 
         const submitForm = () => {

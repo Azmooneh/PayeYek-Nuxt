@@ -3,7 +3,7 @@
         <div v-for="(product, index) in productList.slice(0, 3)" :key="index"
              :class="'w-60 py-5 first:pt-0 last:pb-0 items-center flex flex-col border-b border-b-stone-400 last:border-b-0 sm:border-b-0 sm:first:pt-5 sm:last:pb-5 sm:px-10 sm:flex-none sm:w-80 relative before:absolute before:content-[' + '] before:inset-y-10 before:left-0 before:w-px before:bg-[#ccc] last:before:bg-transparent before:hidden sm:before:block ' + (evenOdd == 1 ? ' evenOdd_cards' : ' bg-white')">
             <NuxtLink :to="'/l/' + slug + '/p/' + product.slug" class="mb-2 h-48">
-                <NuxtImg :src="product.image" :alt="product.name" class="object-contain h-full" height="100%" width="100%" format="png" />
+                <NuxtImg :src="product.image" :alt="product.name" class="object-contain h-full" height="100%" width="100%" format="webp" />
             </NuxtLink>
             <NuxtLink :to="'/l/' + slug + '/p/' + product.slug" class="mb-5 font-medium text-base sm:text-lg lg:text-xl sm:line-clamp-1 text-stone-700"> {{ product.name }} </NuxtLink>
             <NuxtLink :to="'/l/' + slug + '/p/' + product.slug" class="text-center text-sm font-normal leading-7 mb-3 h-14 line-clamp-2"> {{ product.description }} </NuxtLink>
