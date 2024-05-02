@@ -22,12 +22,14 @@ import filterArticlesSkeleton from "~/components/Articles/filterArticlesSkeleton
 import Breadcrumbs from "~/components/common/breadcrumbs/index.vue";
 import Article from "~/components/Article/index.vue";
 import {ref} from "vue";
+import { useArticle } from '~/store/index.js';
 
 export default {
     name: 'Article Single Page',
     components: {Breadcrumbs, filterArticlesSkeleton, breadcrumbSkeleton, Article   },
     setup(){
         const route = useRoute();
+        const articleStore = useArticle();
         const companySlug = ref(route.params.id);
         const articleSlug = ref(route.params.article);
 
@@ -35,6 +37,7 @@ export default {
         const error = ref(null);
         const watchLoading = ref(true);
         const breadcrumbs = ref([]);
+
 
         const updateMetaTags = (seo) =>{
             useHead({
@@ -66,9 +69,13 @@ export default {
                 const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/a/${articleSlug.value}`);
                 if (response.data.value.status == 200) {
                     console.log(response.data.value)
+                    await articleStore.saveArticleData(response.data.value.data.article);
+                    await articleStore.saveRelatedArticles(response.data.value.data.related_articles);
+                    // articleBody.value = response.data.value.data.article.body;
                     // await articlesStore.saveArticlesData(response.data.value.data.articles.data);
                     breadcrumbs.value = response.data.value.data.breadcrumbs;
                     // await updateMetaTags(response.data.value.data.seo);
+                    // console.log(articleBody.value)
                 }
             } catch (err) {
                 error.value = err.message || 'سرور به مشکل خورده است.'
