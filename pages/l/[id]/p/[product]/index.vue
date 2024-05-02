@@ -5,9 +5,14 @@
 </template>
 
 <script>
+import {useCommon} from "~/store/index.js";
+
 export default {
   name: 'Product Single',
   setup() {
+      const layoutStore = useCommon();
+
+
     // definePageMeta({
     //   middleware: [
     //     function(to, from){

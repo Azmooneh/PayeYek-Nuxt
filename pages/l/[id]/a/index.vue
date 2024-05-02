@@ -16,6 +16,8 @@
 
         <ArticlesFilter />
 
+        <FilterList />
+
     </main>
 </template>
 
@@ -26,10 +28,11 @@ import Breadcrumbs from "~/components/common/breadcrumbs/index.vue";
 import {useArticles, useCategory} from '~/store/index';
 import { ref } from 'vue';
 import ArticlesFilter from "~/components/Articles/index.vue";
+import FilterList from "~/components/Articles/children/ArticleList.vue";
 
 export default {
     name: 'Articles',
-    components: {Breadcrumbs, filterArticlesSkeleton, breadcrumbSkeleton, ArticlesFilter},
+    components: {FilterList, Breadcrumbs, filterArticlesSkeleton, breadcrumbSkeleton, ArticlesFilter},
     setup(){
         const route = useRoute();
         const articlesStore = useArticles();

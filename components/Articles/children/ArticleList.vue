@@ -37,10 +37,8 @@ export default {
         const route = useRoute();
         const layoutStore = useCommon();
         const articlesStore = useArticles();
-        // const evenOdd = ref(layoutStore.footerData.styles.a_striped);
-        const evenOdd = ref(1);
-        // const articlesCardType = ref(layoutStore.footerData.styles.a_striped.a_card_type);
-        const articlesCardType = ref(7);
+        const evenOdd = ref(layoutStore.footerData.styles.a_striped);
+        const articlesCardType = ref(layoutStore.footerData.styles.a_card_type);
         const slug = ref(layoutStore.footerData.slug);
         const borderStyle = computed(() => {
             switch (layoutStore.footerData.styles.border_type.toString()) {
