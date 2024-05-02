@@ -1,6 +1,5 @@
 <template>
     <section class="container" v-if="watchLoading">
-        <!-- <HeaderSkeleton /> -->
         <!-- slider skeleton -->
         <SliderSkeleton />
         <!-- quick access panel skeleton -->
@@ -19,15 +18,12 @@
     </section>
     <!-- Render your component content here -->
     <main v-else class="min-h-[calc(100vh-340px)]">
-        <!-- <Header />
-        <Sidebar /> -->
         <Slider />
         <QuickAccessPAnel />
         <Products />
-        <Articles />
+        <ArticlesList />
         <Videos />
         <Contact />
-        <!-- <Footer /> -->
     </main>
 </template>
 
@@ -40,7 +36,7 @@ import QuickAccessPAnel from '~/components/companyLanding/quickAccessPanel/index
 import SkeletonQuickAccess from '~/components/companyLanding/quickAccessPanel/skeletonQuickAccess';
 import Products from '~/components/companyLanding/products/index';
 import ProductSkeleton from '~/components/companyLanding/products/productSkeleton';
-import Articles from '~/components/companyLanding/articles/index';
+import ArticlesList from '~/components/companyLanding/articles/index';
 import ArticlesSkeleton from '~/components/companyLanding/articles/articlesSkeleton';
 import Videos from '~/components/companyLanding/videos/index';
 import VideosSkeleton from '~/components/companyLanding/videos/VideosSkeleton.vue';
@@ -55,7 +51,7 @@ export default {
         Products,
         SkeletonQuickAccess,
         ProductSkeleton,
-        Articles,
+        ArticlesList,
         ArticlesSkeleton,
         Videos,
         VideosSkeleton,

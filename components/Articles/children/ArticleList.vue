@@ -7,7 +7,6 @@
     <ArticleTypeSix :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 6" :filteredArticles="filteredList" :borderStyle="borderStyle" />
     <ArticleTypeSeven :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 7" :filteredArticles="filteredList" :borderStyle="borderStyle" />
     <EmptyFilters v-if="filteredList.length == 0" />
-
 </template>
 
 <script>

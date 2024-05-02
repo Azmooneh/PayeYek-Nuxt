@@ -7,7 +7,6 @@
             <Articles :articleCardType="articleCardType" :slug="slug" :borderStyle="borderStyle" :evenOdd="evenOdd" />
         </section>
     </section>
-
 </template>
 
 <script>
@@ -16,7 +15,7 @@ import Titles from '~/components/companyLanding/common/titles/index.vue';
 import Articles from '~/components/companyLanding/articles/children/index.vue';
 
 export default {
-    name: 'Articles Parent',
+    name: 'Articles List',
     components: {
         Titles,
         Articles,

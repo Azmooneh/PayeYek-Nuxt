@@ -2,10 +2,6 @@
     <section class="min-h-[calc(100vh-340px)] pt-4" v-if="watchLoading">
         <breadcrumbSkeleton />
 
-        <filterArticlesSkeleton />
-
-        <ArticlesSkeleton />
-
     </section>
     <!-- if we have error -->
     <section v-else-if="error" class="flex-col w-full h-screen gap-4 flex_center">
@@ -16,10 +12,7 @@
     <main v-else class="min-h-[calc(100vh-340px)] pt-4">
         <Breadcrumbs :breadcrumbs="breadcrumbs" />
 
-        <ArticlesFilter />
-
-        <FilterList />
-
+        <Article />
     </main>
 </template>
 
@@ -27,19 +20,17 @@
 import breadcrumbSkeleton from "~/components/common/breadcrumbs/breadcrumbSkeleton.vue";
 import filterArticlesSkeleton from "~/components/Articles/filterArticlesSkeleton.vue";
 import Breadcrumbs from "~/components/common/breadcrumbs/index.vue";
-import {useArticles, useCategory} from '~/store/index';
-import { ref } from 'vue';
-import ArticlesFilter from "~/components/Articles/articleFilters.vue";
-import FilterList from "~/components/Articles/children/ArticleList.vue";
-import ArticlesSkeleton from "~/components/Articles/ArticlesSkeleton.vue";
+import Article from "~/components/Article/index.vue";
+import {ref} from "vue";
 
 export default {
-    name: 'Articles List',
-    components: {ArticlesSkeleton, FilterList, Breadcrumbs, filterArticlesSkeleton, breadcrumbSkeleton, ArticlesFilter},
+    name: 'Article Single Page',
+    components: {Breadcrumbs, filterArticlesSkeleton, breadcrumbSkeleton, Article   },
     setup(){
         const route = useRoute();
-        const articlesStore = useArticles();
         const companySlug = ref(route.params.id);
+        const articleSlug = ref(route.params.article);
+
         const loading = ref(true);
         const error = ref(null);
         const watchLoading = ref(true);
@@ -72,12 +63,12 @@ export default {
         const loadData = async () => {
             try {
                 loading.value = true;
-                const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/a`)
+                const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/a/${articleSlug.value}`);
                 if (response.data.value.status == 200) {
-                    // console.log(response.data.value)
-                    await articlesStore.saveArticlesData(response.data.value.data.articles.data);
+                    console.log(response.data.value)
+                    // await articlesStore.saveArticlesData(response.data.value.data.articles.data);
                     breadcrumbs.value = response.data.value.data.breadcrumbs;
-                    await updateMetaTags(response.data.value.data.seo);
+                    // await updateMetaTags(response.data.value.data.seo);
                 }
             } catch (err) {
                 error.value = err.message || 'سرور به مشکل خورده است.'
