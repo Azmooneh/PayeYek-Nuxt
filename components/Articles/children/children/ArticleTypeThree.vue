@@ -1,19 +1,5 @@
 <template>
     <section class="mb-10 grid grid-cols-1 border border-dark-100 p-4 rounded-custom mx-4 lg:container">
-<!--        <NuxtLink  :key="index" :to="'/l/' + slug + '/a/' + article.slug"-->
-<!--                  :class="'flex flex-col w-full flex-none overflow-hidden rounded-custom bg-white ' + borderStyle + (evenOdd == 1 ? ' evenOdd_cards ' : ' bg-white ')">-->
-<!--            <div class="relative w-full pt-[56%]">-->
-<!--                <NuxtImg :src="article.image" :alt="article.title"-->
-<!--                     class="absolute top-0 left-0 object-cover w-full h-full" height="100%" width="100%" format="webp" />-->
-<!--            </div>-->
-<!--            &lt;!&ndash; info &ndash;&gt;-->
-<!--            <div class="px-4 pt-3 pb-4">-->
-<!--                <h3 class="mb-2 text-sm font-medium text-stone-700 line-clamp-1"> {{ article.title }} </h3>-->
-<!--                <p class="h-10 mb-3 text-xs font-normal leading-5 text-justify text-stone-700 line-clamp-2">-->
-<!--                    {{ article.description }}-->
-<!--                </p>-->
-<!--            </div>-->
-<!--        </NuxtLink>-->
         <NuxtLink v-for="(article, index) in filteredArticles" :key="index" :to="'/l/' + slug + '/a/' + article.slug"
                      :class="'flex flex-col py-4 bg-white border-t sm:flex-row first:border-t-0 first:pt-0 last:pb-0 border-dark-100 ' + (evenOdd == 1 ? ' evenOdd_cards ' : ' bg-white ')">
             <!-- image -->
