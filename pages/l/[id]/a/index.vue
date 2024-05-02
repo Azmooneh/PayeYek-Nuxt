@@ -68,7 +68,7 @@ export default {
                 loading.value = true;
                 const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/a`)
                 if (response.data.value.status == 200) {
-                    console.log(response.data.value)
+                    // console.log(response.data.value)
                     await articlesStore.saveArticlesData(response.data.value.data.articles.data);
                     breadcrumbs.value = response.data.value.data.breadcrumbs;
                     await updateMetaTags(response.data.value.data.seo);
