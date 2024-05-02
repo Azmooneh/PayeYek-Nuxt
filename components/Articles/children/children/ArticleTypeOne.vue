@@ -24,7 +24,7 @@
 import { useCommon } from '~/store/index';
 
 export default {
-    name: 'ArticleList',
+    name: 'ArticleList Type 1',
     props: {
         filteredArticles: Array,
         borderStyle: String,
