@@ -5,6 +5,7 @@
     <ArticleTypeFour :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 4" :filteredArticles="filteredList" :borderStyle="borderStyle" />
     <ArticleTypeFive :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 5" :filteredArticles="filteredList" :borderStyle="borderStyle" />
     <ArticleTypeSix :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 6" :filteredArticles="filteredList" :borderStyle="borderStyle" />
+    <ArticleTypeSeven :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 7" :filteredArticles="filteredList" :borderStyle="borderStyle" />
     <EmptyFilters v-if="filteredList.length == 0" />
 
 </template>
@@ -16,6 +17,7 @@ import ArticleTypeThree from "~/components/Articles/children/children/ArticleTyp
 import ArticleTypeFour from "~/components/Articles/children/children/ArticleTypeFour.vue";
 import ArticleTypeFive from "~/components/Articles/children/children/ArticleTypeFive.vue";
 import ArticleTypeSix from "~/components/Articles/children/children/ArticleTypeSix.vue";
+import ArticleTypeSeven from "~/components/Articles/children/children/ArticleTypeSeven.vue";
 import EmptyFilters from "~/components/Articles/emptyFilters.vue";
 import { useCommon, useArticles } from '~/store/index';
 
@@ -28,6 +30,7 @@ export default {
         ArticleTypeFour,
         ArticleTypeFive,
         ArticleTypeSix,
+        ArticleTypeSeven,
         EmptyFilters,
     },
     setup(){
@@ -37,7 +40,7 @@ export default {
         // const evenOdd = ref(layoutStore.footerData.styles.a_striped);
         const evenOdd = ref(1);
         // const articlesCardType = ref(layoutStore.footerData.styles.a_striped.a_card_type);
-        const articlesCardType = ref(6);
+        const articlesCardType = ref(7);
         const slug = ref(layoutStore.footerData.slug);
         const borderStyle = computed(() => {
             switch (layoutStore.footerData.styles.border_type.toString()) {
