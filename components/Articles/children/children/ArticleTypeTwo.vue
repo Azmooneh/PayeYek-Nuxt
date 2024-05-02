@@ -1,7 +1,7 @@
 <template>
     <section class="mb-10 gap-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 container">
         <NuxtLink v-for="(article, index) in filteredArticles" :key="index" :to="'/l/' + slug + '/a/' + article.slug"
-                  :class="'flex flex-col w-full flex-none overflow-hidden rounded-custom bg-white ' + borderStyle + (evenOdd == 1 ? ' evenOdd_cards ' : ' bg-white ')">
+                  :class="'flex flex-col w-full flex-none overflow-hidden rounded-custom ' + borderStyle + (evenOdd == 1 ? ' evenOdd_cards ' : ' bg-white ')">
             <div class="relative w-full pt-[56%]">
                 <NuxtImg :src="article.image" :alt="article.title"
                      class="absolute top-0 left-0 object-cover w-full h-full" height="100%" width="100%" format="webp" />

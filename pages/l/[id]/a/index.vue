@@ -4,6 +4,8 @@
 
         <filterArticlesSkeleton />
 
+        <ArticlesSkeleton />
+
     </section>
     <!-- if we have error -->
     <section v-else-if="error" class="flex-col w-full h-screen gap-4 flex_center">
@@ -29,10 +31,11 @@ import {useArticles, useCategory} from '~/store/index';
 import { ref } from 'vue';
 import ArticlesFilter from "~/components/Articles/index.vue";
 import FilterList from "~/components/Articles/children/ArticleList.vue";
+import ArticlesSkeleton from "~/components/Articles/ArticlesSkeleton.vue";
 
 export default {
     name: 'Articles',
-    components: {FilterList, Breadcrumbs, filterArticlesSkeleton, breadcrumbSkeleton, ArticlesFilter},
+    components: {ArticlesSkeleton, FilterList, Breadcrumbs, filterArticlesSkeleton, breadcrumbSkeleton, ArticlesFilter},
     setup(){
         const route = useRoute();
         const articlesStore = useArticles();
