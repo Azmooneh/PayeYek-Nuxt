@@ -70,7 +70,7 @@ export default {
         const slug = ref(layoutStore.footerData.slug);
         const evenOdd = ref(layoutStore.footerData.styles.category_striped);
         const cardType = ref(layoutStore.footerData.styles.category_card_type);
-        console.log(cardType.value)
+        // console.log(cardType.value)
         const filteredList = ref([]); // Filtered list of products
         const activeFilters = {};
         const str = ref("");

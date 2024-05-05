@@ -545,16 +545,16 @@ body{
 
 /* Article Single Styles starts */
 .custom_article_styles h1{
-    @apply mb-4 text-3xl font-medium;
+    @apply mb-4 text-xl sm:text-2xl lg:text-3xl font-medium;
 }
 .custom_article_styles h2{
-    @apply mb-4 text-[26px] font-medium;
+    @apply mb-4 text-lg sm:text-xl lg:text-2xl font-medium;
 }
 .custom_article_styles h3{
-    @apply text-2xl mb-2.5 font-medium;
+    @apply text-base sm:text-lg lg:text-xl mb-2.5 font-medium;
 }
 .custom_article_styles p{
-    @apply text-sm font-normal leading-7 lg:text-xl lg:leading-8;
+    @apply text-sm font-normal leading-7 lg:text-base lg:leading-7;
 }
 .custom_article_styles a{
     @apply text-base leading-7 font-medium text-[#1EA0FF] underline underline-offset-[6px];

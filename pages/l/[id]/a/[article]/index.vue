@@ -68,7 +68,7 @@ export default {
                 loading.value = true;
                 const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/a/${articleSlug.value}`);
                 if (response.data.value.status == 200) {
-                    console.log(response.data.value)
+                    // console.log(response.data.value)
                     await articleStore.saveArticleData(response.data.value.data.article);
                     await articleStore.saveRelatedArticles(response.data.value.data.related_articles);
                     // articleBody.value = response.data.value.data.article.body;

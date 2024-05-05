@@ -46,6 +46,15 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-ic_baseline-share:before {
+    content: "\e902";
+}
+.icon-NEXT:before {
+    content: "\e908";
+}
+.icon-Before:before {
+    content: "\e909";
+}
 .icon-lets-icons_close-ring-duotone:before {
     content: "\e907";
     color: #f3f3f4;
@@ -57,18 +66,15 @@
     content: "\e901";
     color: #000;
 }
-.icon-chevron-left:before {
-    content: "\e902";
-}
-.icon-chevron-left1:before {
-    content: "\e908";
-}
 .icon-fa6-solid_list:before {
     content: "\e903";
     color: #000;
 }
-.icon-chevron-right:before {
+.icon-chevron-LEFT:before {
     content: "\e904";
+}
+.icon-IconRIGHT:before {
+    content: "\e90a";
 }
 .icon-mingcute_menu-fill:before {
     content: "\e905";
