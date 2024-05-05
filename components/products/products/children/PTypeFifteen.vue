@@ -31,7 +31,7 @@ import { NuxtLink } from "#components";
 import Pagination from "~/components/common/pagination/index.vue";
 
 export default {
-    name: 'Producy Type Fifteen',
+    name: 'Product Type Fifteen',
     components: {Pagination},
     props: {
         productList: Array,
