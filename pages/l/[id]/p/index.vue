@@ -19,8 +19,6 @@
 
         <Products/>
 
-        <Pagination />
-
         <Contact/>
     </main>
 </template>
@@ -35,7 +33,6 @@ import productSkeleton from '~/components/products/products/productSkeleton.vue'
 import Contact from '~/components/companyLanding/contact/index.vue';
 import Breadcrumbs from '~/components/common/breadcrumbs/index.vue';
 import breadcrumbSkeleton from '~/components/common/breadcrumbs/breadcrumbSkeleton.vue';
-import Pagination from "~/components/common/pagination/index.vue";
 
 export default {
     name: 'Product Categories',
@@ -47,16 +44,19 @@ export default {
         Breadcrumbs,
         breadcrumbSkeleton,
         productSkeleton,
-        Pagination,
     },
     setup() {
         const route = useRoute();
+        const router = useRouter();
         const categoriesStore = useCategory();
         const companySlug = ref(route.params.id);
         const loading = ref(true);
         const error = ref(null);
         const watchLoading = ref(true);
         const breadcrumbs = ref([]);
+        const prevQuery = ref(route.query.page);
+        const activeFilters = {};
+        const str = ref("");
 
         const updateMetaTags = (seo) => {
             useHead({
@@ -82,12 +82,12 @@ export default {
             })
         }
 
-        const loadData = async () => {
+        const loadData = async (filter = '') => {
             try {
                 loading.value = true;
-                const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/p`)
+                const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/p${filter}`)
                 if (response.data.value.status == 200) {
-                    await categoriesStore.saveCategoriesData(response.data.value.data.categories, response.data.value.data.products.data);
+                    await categoriesStore.saveCategoriesData(response.data.value.data.categories, response.data.value.data.products);
                     await updateMetaTags(response.data.value.data.seo);
                     breadcrumbs.value = response.data.value.data.breadcrumbs;
                 }
@@ -98,12 +98,24 @@ export default {
             }
         }
 
-
         loadData();
+
+        const handlePageChange = (page) => {
+            activeFilters.page = page;
+            str.value = Object.keys(activeFilters).map(key => `${key}=${encodeURIComponent(activeFilters[key])}`).join("&");
+            loadData(`?${str.value}`);
+            router.push({ path: route.path, query: activeFilters });
+        };
 
         watch(() => loading.value, (n, o) => {
             watchLoading.value = n
         })
+
+        if (prevQuery.value) {
+            handlePageChange(prevQuery.value);
+        } else {
+            loadData();
+        }
 
         // definePageMeta({
         //     middleware: ["redirect"]

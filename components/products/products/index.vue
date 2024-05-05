@@ -1,19 +1,23 @@
 <template>
-    <ProductCardTypeOne :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 1" />
-    <ProductCardTypeTwo :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 2" />
-    <ProductCardTypeThree :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 3" />
-    <ProductCardTypeFour :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 4" />
-    <ProductCardTypeFive :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 5" />
-    <ProductCardTypeSix :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 6" />
-    <ProductCardTypeSeven :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 7" />
-    <ProductCardTypeEight :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 8" />
-    <ProductCardTypeNine :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 9" />
-    <ProductCardTypeTen :productList="productList" :categories="categoryList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 10" />
-    <ProductCardTypeEleven :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 11" />
-    <ProductCardTypeTwelve :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 12" />
-    <ProductCardTypeThirteen :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 13" />
-    <ProductCardTypeFourteen :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 14" />
-    <ProductCardTypeFifteen :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 15" />
+    <!--    <ProductCardTypeOne :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 1" />-->
+    <!--    <ProductCardTypeTwo :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 2" />-->
+    <!--    <ProductCardTypeThree :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 3" />-->
+    <!--    <ProductCardTypeFour :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 4" />-->
+    <!--    <ProductCardTypeFive :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 5" />-->
+    <!--    <ProductCardTypeSix :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 6" />-->
+    <!--    <ProductCardTypeSeven :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 7" />-->
+    <!--    <ProductCardTypeEight :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 8" />-->
+    <!--    <ProductCardTypeNine :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 9" />-->
+    <!--&lt;!&ndash;    <ProductCardTypeTen :productList="productList" :categories="categoryList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 10" />&ndash;&gt;-->
+    <!--    <ProductCardTypeTen :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 10" :productPagination="productPagination" :handlePageChange="handlePageChange" />-->
+    <!--    <ProductCardTypeEleven :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 11" :productPagination="productPagination" :handlePageChange="handlePageChange" />-->
+    <!--    <ProductCardTypeTwelve :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 12" />-->
+    <!--    <ProductCardTypeThirteen :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 13" />-->
+    <!--    <ProductCardTypeFourteen :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 14" />-->
+    <!--    <ProductCardTypeFifteen :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 15" />-->
+    <component :is="selectedComponent" :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd"
+               :borderStyle="borderStyle" :productPagination="productPagination"
+               :handlePageChange="handlePageChange"/>
 </template>
 
 <script>
@@ -32,7 +36,8 @@ import ProductCardTypeTwelve from './children/PTypeTwelve.vue';
 import ProductCardTypeThirteen from './children/PTypeThirteen.vue';
 import ProductCardTypeFourteen from './children/PTypeFourteen.vue';
 import ProductCardTypeFifteen from './children/PTypeFifteen.vue';
-import { useCategory, useCommon } from '~/store/index';
+import {useCategory, useCommon} from '~/store/index';
+import {ref} from "vue";
 
 export default {
     name: 'Product Switch',
@@ -55,15 +60,20 @@ export default {
     },
     setup() {
         const route = useRoute();
+        const router = useRouter();
         const categoriesStore = useCategory();
-        const ProductCardType = ref(10);
-        const productList = ref(categoriesStore.products);
+        const companySlug = ref(route.params.id);
+        const productList = ref(categoriesStore.products.data);
+        const productPagination = ref(categoriesStore.products.pagination);
         const categoryList = ref(categoriesStore.categories);
         const layoutStore = useCommon();
         const slug = ref(layoutStore.footerData.slug);
         const evenOdd = ref(layoutStore.footerData.styles.category_striped);
         const cardType = ref(layoutStore.footerData.styles.category_card_type);
+        console.log(cardType.value)
         const filteredList = ref([]); // Filtered list of products
+        const activeFilters = {};
+        const str = ref("");
         const borderStyle = computed(() => {
             switch (layoutStore.footerData.styles.border_type.toString()) {
                 case '0':
@@ -90,7 +100,7 @@ export default {
         const filterState = ref(computed(() => {
             if (route.query.category) {
                 return route.query.category;
-            } else if (!!!route.query.category){
+            } else if (!!!route.query.category) {
                 return 0;
             } else {
                 watch(() => route.query.category, (n, o) => {
@@ -126,8 +136,76 @@ export default {
             }
         });
 
+        const loadData = async (filter = '') => {
+            // try {
+            // loading.value = true;
+            const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/p${filter}`);
+            // console.log(response.data.value);
+            if (response.data.value.status == 200) {
+                await categoriesStore.saveCategoriesData(response.data.value.data.categories, response.data.value.data.products); // Then save company data
+                console.log(categoriesStore.products);
+                // await updateMetaTags(response.data.value.data.seo);
+            }
+            // } catch (err) {
+            //     error.value = err.message || 'سرور به مشکل خورده است.'
+            // } finally {
+            //     loading.value = false
+            // }
+        }
+
+        const handlePageChange = (page) => {
+            activeFilters.page = page;
+            str.value = Object.keys(activeFilters).map(key => `${key}=${encodeURIComponent(activeFilters[key])}`).join("&");
+            loadData(`?${str.value}`);
+            router.push({path: route.path, query: activeFilters});
+        };
+
+        watch(() => categoriesStore.products.data, (n, o) => {
+            filteredList.value = n;
+        })
+
+        watch(() => categoriesStore.products.pagination, (n, o) => {
+            productPagination.value = n;
+        })
+
+        const selectedComponent = computed(() => {
+            switch (cardType.value) {
+                case 1:
+                    return "ProductCardTypeOne";
+                case 2:
+                    return "ProductCardTypeTwo";
+                case 3:
+                    return "ProductCardTypeThree";
+                case 4:
+                    return "ProductCardTypeFour";
+                case 5:
+                    return "ProductCardTypeFive";
+                case 6:
+                    return "ProductCardTypeSix";
+                case 7:
+                    return "ProductCardTypeSeven";
+                case 8:
+                    return "ProductCardTypeEight";
+                case 9:
+                    return "ProductCardTypeNine";
+                case 10:
+                    return "ProductCardTypeTen";
+                case 11:
+                    return "ProductCardTypeEleven";
+                case 12:
+                    return "ProductCardTypeTwelve";
+                case 13:
+                    return "ProductCardTypeThirteen";
+                case 14:
+                    return "ProductCardTypeFourteen";
+                case 15:
+                    return "ProductCardTypeFifteen";
+                default:
+                    return null; // Handle default case if needed
+            }
+        })
+
         return {
-            ProductCardType,
             productList,
             categoryList,
             slug,
@@ -135,6 +213,9 @@ export default {
             borderStyle,
             filteredList,
             cardType,
+            productPagination,
+            handlePageChange,
+            selectedComponent,
         }
     }
 }
