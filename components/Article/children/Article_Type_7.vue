@@ -15,13 +15,13 @@
 
         <section class="grid grid-cols-1 lg:grid-cols-12 lg:gap-4 xl:gap-5 mb-12">
             <!-- toc-->
-            <div class="hidden lg:block lg:col-span-4">
-                <ul class="rounded-custom py-8 xl:py-10 px-6 xl:px-8 bg-stone-200 list-none sticky top-40" v-if="tocTitles.length">
+            <div class="hidden lg:block lg:col-span-4" v-if="tocTitles.length">
+                <ul class="rounded-custom py-8 xl:py-10 px-6 xl:px-8 bg-stone-200 list-none sticky top-40">
                     <li v-for="(title, index) in tocTitles" :key="index" :class="'mb-6 cursor-pointer last:mb-0 text-sm font-medium text-stone-700 pr-5 relative before:absolute before:top-1.5 before:right-0 before:size-2 before:rounded-full before:border-2 before:border-normal ' + (title.enter ? 'before:bg-normal' : '')" @click="scrollToElement(title.id)"> {{ title.title }} </li>
                 </ul>
             </div>
             <!-- details-->
-            <article class="overflow-hidden custom_article_styles cursor-default custom_table_striped_container lg:col-span-8" v-html="body">
+            <article :class="'overflow-hidden custom_article_styles cursor-default custom_table_striped_container ' + (tocTitles.length ? 'lg:col-span-8' : 'lg:col-span-12')" v-html="body">
             </article>
         </section>
 
