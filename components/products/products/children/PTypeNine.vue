@@ -1,7 +1,7 @@
 <template>
     <section class="mb-4 lg:mb-16 relative z-[1] container">
         <div
-            :class="'grid grid-cols-1 md:grid-cols-1 rounded-custom overflow-hidden ' + borderStyle">
+            :class="'grid grid-cols-1 md:grid-cols-1 rounded-custom overflow-hidden mb-8 ' + borderStyle">
             <div v-for="(product, index) in productList" :key="index"
                 :class="`flex flex-col w-full sm:flex-row sm:items-center lg:pl-14 sm:gap-4 lg:gap-10 xl:gap-16 px-6 pb-6 pt-4 sm:py-6 after:absolute after:content-[''] after:top-0 after:left-0 after:w-full after:h-px after:border-t first:after:hidden after:border-dark-100 relative ` + (evenOdd == 1 ? 'evenOdd_cards ' : 'bg-white ')">
                 <NuxtLink :to="'/l/' + landSlug + '/p/' + product.slug"
@@ -27,19 +27,28 @@
                 </div>
             </div>
         </div>
+
+        <Pagination :landSlug="landSlug" :productPagination="productPagination" @page-change="handlePageChange" />
     </section>
 </template>
 
 <script>
 import { NuxtLink } from "#components";
+import Pagination from "~/components/common/pagination/index.vue";
 
 export default {
-    name: 'Producy Type Nine',
+    name: 'Product Type Nine',
+    components: {Pagination},
     props: {
         productList: Array,
         landSlug: String,
         borderStyle: String,
         evenOdd: Number,
+        productPagination: {
+            type: Object,
+            default: {},
+        },
+        handlePageChange: Function,
     },
 }
 </script>
