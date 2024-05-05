@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import {scrollToTopSmoothly} from '~/helper/common';
+
 export default {
     name: 'Pagination',
     props: {
@@ -34,7 +36,6 @@ export default {
     },
     emits: ['page-change'],
     setup(props, { emit }){
-        console.log(props.productPagination)
         const displayedPages = computed(() => {
             const minPage = Math.max(1, props.productPagination.currentPage - 1);
             const maxPage = Math.min(props.productPagination.totalPages, props.productPagination.currentPage + 1);
@@ -47,6 +48,7 @@ export default {
 
         const changePage = (page) => {
             emit('page-change', page);
+            scrollToTopSmoothly();
         };
 
         return {
