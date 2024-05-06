@@ -103,20 +103,3 @@ export const useArticle = defineStore('Article', {
         }
     },
 })
-
-export const useFacilites = defineStore('Facilities', {
-    state: () => {
-        return {
-            Article: [],
-            RelatedArticles: [],
-        }
-    },
-    actions: {
-        saveArticleData(Article){
-            this.Article = Article;
-        },
-        saveRelatedArticles(relatedArticles){
-            this.RelatedArticles = relatedArticles;
-        }
-    },
-})
