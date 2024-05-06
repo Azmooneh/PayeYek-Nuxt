@@ -1,15 +1,15 @@
 <template>
-<!--    <section class="min-h-[calc(100vh-340px)] pt-4" v-if="watchLoading">-->
-<!--        <breadcrumbSkeleton />-->
+    <section class="min-h-[calc(100vh-340px)] pt-4" v-if="!status">
+        <breadcrumbSkeleton />
 
-<!--    </section>-->
-<!--    &lt;!&ndash; if we have error &ndash;&gt;-->
+    </section>
+    <!-- if we have error -->
 <!--    <section v-else-if="error" class="flex-col w-full h-screen gap-4 flex_center">-->
 <!--        <iframe src="https://lottie.host/embed/fa73d967-9d5d-40c4-ba37-d8dc01185d88/XVqCFf2DuQ.json"></iframe>-->
 <!--        <p class="text-base font-medium text-center caption_color"> ارور: {{ error }} </p>-->
 <!--    </section>-->
     <!-- Render your component content here -->
-    <main class="min-h-[calc(100vh-340px)] pt-4 container">
+    <main class="min-h-[calc(100vh-340px)] pt-4 container" v-else>
         <Breadcrumbs :breadcrumbs="breadcrumbs" />
 
 <!--        <section class="container">-->
@@ -49,36 +49,44 @@ import {useCommon} from "~/store/index.js";
 import Branches from "~/components/Sales/Branches/index.vue";
 import Map from "~/components/Sales/Map/index.vue";
 
-
 export default {
     name: 'Sales',
     components: {Breadcrumbs, breadcrumbSkeleton, Branches, Map},
     setup(){
         const layoutStore = useCommon();
-        const loading = ref(true);
-        const error = ref(null);
-        const watchLoading = ref(true);
+        const status = ref();
+        const isFilled = ref(computed(() => {
+            if(!!layoutStore.footerData){
+                return true;
+            } else {
+                return false;
+            }
+        }));
         const breadcrumbs = ref([
             {
                 title: "نمایندگی فروش",
                 url: null,
             }
         ]);
-        // const slug = ref(layoutStore.footerData.slug);
-
-        watch(() => loading.value, (n, o) => {
-            watchLoading.value = n;
+        if (process.client) {
+            const slug = ref(layoutStore.footerData.slug);
+        }
+        if(isFilled.value){
+            status.value = isFilled.value;
+        }
+        watch(() => isFilled.value, (n, o) => {
+            status.value = n;
         })
+
 
         const clickOnState = id => {
             return false;
         }
 
         return {
-            watchLoading,
-            error,
             breadcrumbs,
             clickOnState,
+            status,
         }
     }
 }
