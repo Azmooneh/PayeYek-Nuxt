@@ -64,7 +64,7 @@ export default {
                 url: null,
             }
         ]);
-        const slug = ref(layoutStore.footerData.slug);
+        // const slug = ref(layoutStore.footerData.slug);
 
         watch(() => loading.value, (n, o) => {
             watchLoading.value = n;
