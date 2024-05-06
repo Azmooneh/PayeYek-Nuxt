@@ -73,7 +73,8 @@ export default {
               if (response.data.value.status == 200) {
                   // await categoriesStore.saveCategoriesData(response.data.value.data.categories, response.data.value.data.products.data);
                   // await updateMetaTags(response.data.value.data.seo);
-                  // breadcrumbs.value = response.data.value.data.breadcrumbs;
+                  updateMetaTags(response.data.value.data.seo);
+                  breadcrumbs.value = response.data.value.data.breadcrumbs;
               }
           } catch (err) {
               error.value = err.message || 'سرور به مشکل خورده است.'

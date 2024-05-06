@@ -1,5 +1,14 @@
 <template>
-    <main class="min-h-[calc(100vh-340px)] pt-4 pb-10">
+    <section class="min-h-[calc(100vh-340px)] pt-4" v-if="watchLoading">
+        <breadcrumbSkeleton/>
+
+    </section>
+    <!-- if we have error -->
+    <section v-else-if="error" class="flex-col w-full h-screen gap-4 flex_center">
+        <iframe src="https://lottie.host/embed/fa73d967-9d5d-40c4-ba37-d8dc01185d88/XVqCFf2DuQ.json"></iframe>
+        <p class="text-base font-medium text-center caption_color"> ارور: {{ error }} </p>
+    </section>
+    <main v-else class="min-h-[calc(100vh-340px)] pt-4 pb-10">
         <Breadcrumbs :breadcrumbs="breadcrumbs"/>
 
         <section class="mb-10 lg:mb-20 container">
@@ -43,7 +52,7 @@
                             <div class="h-2 w-full bg-stone-200 rounded-full mb-4 relative">
                                 <input :style="{ background: priceSliderBackground }" type="range"
                                        class="dir-rtl absolute top-0.5 inset-x-0.5 range__input rounded-full"
-                                       :min="loanMin" :max="loanMax" :value="loanInitialValue"
+                                       :min="loanMin" :max="loanMax"
                                        v-model="loanInitialValue"
                                        :step="loanSteps"/>
                             </div>
@@ -243,7 +252,8 @@
         </section>
 
         <section>
-            <h3 class="text-lg lg:text-2xl font-medium text-stone-700 mb-4 lg:mb-8 cursor-default container"> مدارک مورد نیاز
+            <h3 class="text-lg lg:text-2xl font-medium text-stone-700 mb-4 lg:mb-8 cursor-default container"> مدارک مورد
+                نیاز
                 دریافت تسهیلات
             </h3>
             <Facilities classNames="mb-10 lg:mb-20"/>
@@ -259,7 +269,8 @@
                         <p class="text-sm font-normal leading-6 lg:leading-7 mb-8 lg:mb-0">
                             با ثبت درخواست دریافت تسهیلات جهت خرید ماشین های سنگین، کارشناسان لیزینگ اتوبان با شما تماس
                             خواهند
-                            گرفت و مراحل دریافت تسهیلات را متناسب با شرایط شما به صورت کامل به شما توضیح خواهند داد، پس از
+                            گرفت و مراحل دریافت تسهیلات را متناسب با شرایط شما به صورت کامل به شما توضیح خواهند داد، پس
+                            از
                             تکمیل
                             اطلاعات اولیه پروسه دریافت تسهیلات آغاز خواهد شد.
                             در صورت تکمیل مدارک از سمت شما پروسه دریافت تسهیلات به سرعت طی شده و در مدت زمان 2 هفته می
@@ -294,7 +305,8 @@
                                         {{ formatValue(option.value) }} تومان
                                     </option>
                                 </select>
-                                <p class="absolute text-red-500 text-xs -bottom-5 right-2 font-normal" v-if="facilityAlert">
+                                <p class="absolute text-red-500 text-xs -bottom-5 right-2 font-normal"
+                                   v-if="facilityAlert">
                                     میزان تسهیلات را وارد کنید. </p>
                             </div>
                             <div class="flex flex-col gap-1 relative">
@@ -306,7 +318,8 @@
                                         {{ category.title }}
                                     </option>
                                 </select>
-                                <p class="absolute text-red-500 text-xs -bottom-5 right-2 font-normal" v-if="categoryAlert">
+                                <p class="absolute text-red-500 text-xs -bottom-5 right-2 font-normal"
+                                   v-if="categoryAlert">
                                     نوع خودرو را وارد کنید. </p>
                             </div>
                             <div class="flex flex-col gap-1 relative">
@@ -314,7 +327,8 @@
                                 <input name="fullname" type="text" v-model="fullname" required
                                        class="validation-input h-11 rounded-custom border border-[#CFD1D4] focus:ring-0 outline-none focus:border-[#CFD1D4] text-sm font-normal placeholder:text-[#acacac]"
                                        placeholder="نام و نام خانوادگی خود را وارد کنید..."/>
-                                <p class="absolute text-red-500 text-xs -bottom-5 right-2 font-normal" v-if="nameAlert"> نام
+                                <p class="absolute text-red-500 text-xs -bottom-5 right-2 font-normal" v-if="nameAlert">
+                                    نام
                                     و نام خانوادگی خود را وارد کنید. (بیشتر از 3 کاراکتر) </p>
                             </div>
                             <div class="flex flex-col gap-1 relative">
@@ -322,7 +336,8 @@
                                 <input name="phone" type="tel" v-model="phone" required
                                        class="validation-input h-11 dir-rtl rounded-custom border border-[#CFD1D4] focus:ring-0 outline-none focus:border-[#CFD1D4] text-sm font-normal placeholder:text-[#acacac]"
                                        placeholder="شماره موبایل خود را وارد کنید..."/>
-                                <p class="absolute text-red-500 text-xs -bottom-5 right-2 font-normal" v-if="phoneAlert">
+                                <p class="absolute text-red-500 text-xs -bottom-5 right-2 font-normal"
+                                   v-if="phoneAlert">
                                     شماره موبایل خود را به درستی وارد کنید. </p>
                             </div>
                         </div>
@@ -336,32 +351,31 @@
             </section>
         </div>
 
-        <!-- submit response message -->
-        <section
-            :class="'fixed top-4 sm:top-8 right-4 shadow-xl border-r-4 flex items-center rounded-xl p-4 h-20 w-full max-w-[90%] sm:max-w-[28rem] md:max-w-[32rem] sm:right-6 text-stone-700 text-sm sm:text-base sm:font-medium leading-6 sm:leading-7 z-[5] ' + (responseState === 'success' ? 'border-r-green-500 bg-[#E8FBED]' : 'border-r-red-600 bg-[#FFDEDE]')"
-            v-if="responseShow"> {{ responseMessage }}
-        </section>
-
     </main>
 </template>
 
 <script>
 import Breadcrumbs from "~/components/common/breadcrumbs/index.vue";
 import {ref} from "vue";
-import { numberWithCommas } from "~/helper/common.js";
+import {numberWithCommas} from "~/helper/common.js";
 import Facilities from "~/components/Facilities/Facilities/index.vue";
 import FormIconOne from "~/components/Facilities/Facilities/Icons/FormIconOne.vue";
 import FormIconTwo from "~/components/Facilities/Facilities/Icons/FormIconTwo.vue";
+import breadcrumbSkeleton from "~/components/common/breadcrumbs/breadcrumbSkeleton.vue";
+import {toast} from 'vue3-toastify';
 
 export default {
     name: 'Facilities Page',
     components: {
+        breadcrumbSkeleton,
         Breadcrumbs,
         Facilities,
         FormIconOne,
         FormIconTwo,
     },
-    setup(){
+    setup() {
+        const route = useRoute();
+        const companySlug = ref(route.params.id);
         const breadcrumbs = ref([]);
         const categories = ref([]);
         const selectedProduct = ref("");
@@ -376,8 +390,6 @@ export default {
         const refund = ref(0);
         const modalState = ref(false);
         const informationState = ref(false);
-        const responseShow = ref(false);
-        const responseState = ref("success");
         const loanOptions = ref([]);
         const categoryType = ref(0);
         const fullname = ref("");
@@ -386,13 +398,62 @@ export default {
         const nameAlert = ref(false);
         const categoryAlert = ref(false);
         const facilityAlert = ref(false);
-        const responseMessage = ref("");
-        const timer = ref(3000);
         const profitState = ref("initial");
         const customProfit = ref("");
         const activeToolsButtons = ref(false);
         const calculationInterest = ref(0);
         const profitAlert = ref("");
+        const loading = ref(true);
+        const error = ref(null);
+        const watchLoading = ref(true);
+        const landId = ref(null);
+
+        const updateMetaTags = (seo) => {
+            useHead({
+                meta: [
+                    {hid: 'robots', name: 'robots', content: seo.robot},
+                ],
+                link: {
+                    rel: 'canonical',
+                    href: `https://www.paye1.com/l/${seo.canonical}`
+                }
+            })
+
+            useSeoMeta({
+                title: seo.title,
+                ogTitle: seo.og_title,
+                description: seo.description,
+                ogDescription: seo.og_description,
+                ogType: seo.og_type,
+                ogImage: seo.og_image,
+                ogImageAlt: seo.image_alt,
+                twitterCard: seo.twitter_card,
+                twitterImage: seo.twitter_card_image,
+            })
+        }
+
+        const loadData = async () => {
+            try {
+                loading.value = true;
+                const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/facility`);
+                if (response.data.value.status == 200) {
+                    categories.value = response.data.value.data.categories;
+                    landId.value = response.data.value.data.land_id;
+                    breadcrumbs.value = response.data.value.data.breadcrumbs;
+                    await updateMetaTags(response.data.value.data.seo);
+                }
+            } catch (err) {
+                error.value = err.message || 'سرور به مشکل خورده است.'
+            } finally {
+                loading.value = false
+            }
+        }
+
+        loadData();
+
+        watch(() => loading.value, (n, o) => {
+            watchLoading.value = n
+        })
 
         const generatePriceBackground = (value) => {
             let percentage = (value - loanMin.value) / (loanMax.value - loanMin.value) * 100;
@@ -631,48 +692,42 @@ export default {
                     category_id: categoryType.value,
                     full_name: fullname.value.toString(),
                     phone: phone.value.toString(),
-                    land_id: Number(props.landId),
+                    land_id: Number(landId.value),
                 }
 
-                // console.log(body)
-                axios.post(`https://paye1.com/api/l/facilities-request`, body)
-                    .then(function (response) {
-                        // handle success
-                        // console.log("success", response);
-                        if (response.data.status == 200) {
-                            responseShow.value = true;
-                            responseMessage.value = "اطلاعات شما ثبت شد. منتظر تماس کارشناسان ما باشید.";
-                            responseState.value = "success";
-                            timer.value = 3000;
-                            const myInterval = setInterval(() => myTimer(myInterval), 100);
-                            resetFormInputs();
-                        }
-                    })
-                    .catch(function (error) {
-                        // handle error
-                        console.log("catch", error.response);
-                        if (error.response.data.status == 400) {
-                            responseShow.value = true;
-                            responseMessage.value = "اطلاعات شما قبلا ثبت شده است. منتظر تماس کارشناسان ما باشید.";
-                            responseState.value = "error";
-                            timer.value = 3000;
-                            const myInterval = setInterval(() => myTimer(myInterval), 100);
-                        } else if (error.response.data.status == 500) {
-                            responseShow.value = true;
-                            responseMessage.value = "خطایی سمت سرور رخ داده است. لطفا بعدا امتحان کنید.";
-                            responseState.value = "error";
-                            timer.value = 3000;
-                            const myInterval = setInterval(() => myTimer(myInterval), 100);
-                        }
-                    })
-                    .finally(function () {
-                        // always executed
-                    });
+                $fetch(`${useRuntimeConfig().public.apiBase}/l/facilities-request`, {
+                    method: 'Post',
+                    body
+                }).then(response => {
+                    console.log("respoinse => ", response);
+                    if(response.status == 200) {
+                        toast.success("اطلاعات شما ثبت شد. منتظر تماس کارشناسان ما باشید.", {
+                            autoClose: 3000,
+                            limit: 2,
+                        });
+                        resetFormInputs();
+                    }
+                }).catch(error => {
+                    if (error.status == 400) {
+                        toast.error("اطلاعات شما قبلا ثبت شده است. منتظر تماس کارشناسان ما باشید.", {
+                            autoClose: 3000,
+                            limit: 2,
+                        });
+                    } else if (error.status == 500) {
+                        toast.error("خطایی سمت سرور رخ داده است. لطفا بعدا امتحان کنید.", {
+                            autoClose: 3000,
+                            limit: 2,
+                        });
+                    }
+                })
             }
         }
 
 
         return {
+            loading,
+            watchLoading,
+            error,
             breadcrumbs,
             selectedProduct,
             loanSteps,
@@ -702,9 +757,6 @@ export default {
             nameAlert,
             categoryAlert,
             facilityAlert,
-            responseState,
-            responseMessage,
-            responseShow,
             profitState,
             customProfit,
             paymentDurationView,

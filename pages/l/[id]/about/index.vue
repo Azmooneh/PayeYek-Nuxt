@@ -76,6 +76,12 @@ export default {
         }
 
         loadData(companySlug.value);
+
+        return {
+            error,
+            watchLoading,
+            breadcrumbs,
+        }
     }
 }
 </script>

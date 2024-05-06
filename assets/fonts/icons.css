@@ -46,44 +46,39 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-CLOSE:before {
-    content: "\e90b";
+.icon-arrow-left .path1:before {
+    content: "\e900";
+    color: rgb(0, 0, 0);
 }
-.icon-ic_baseline-share:before {
+.icon-arrow-left .path2:before {
+    content: "\e901";
+    margin-left: -1em;
+    color: rgb(0, 0, 0);
+}
+.icon-bars-3:before {
     content: "\e902";
 }
-.icon-NEXT:before {
-    content: "\e908";
-}
-.icon-Before:before {
-    content: "\e909";
-}
-.icon-lets-icons_close-ring-duotone:before {
-    content: "\e907";
-    color: #000;
-}
-.icon-location:before {
-    content: "\e900";
-}
 .icon-chat:before {
-    content: "\e901";
-    color: #000;
-}
-.icon-fa6-solid_list:before {
     content: "\e903";
-    color: #000;
 }
-.icon-chevron-LEFT:before {
+.icon-check:before {
     content: "\e904";
 }
-.icon-IconRIGHT:before {
-    content: "\e90a";
-}
-.icon-mingcute_menu-fill:before {
+.icon-chevron-LEFT:before {
     content: "\e905";
-    color: #000;
 }
-.icon-Question:before {
+.icon-chevron-right:before {
     content: "\e906";
-    color: #000;
+}
+.icon-i-mark:before {
+    content: "\e907";
+}
+.icon-search:before {
+    content: "\e908";
+}
+.icon-share:before {
+    content: "\e909";
+}
+.icon-x-mark:before {
+    content: "\e90a";
 }
