@@ -127,7 +127,7 @@
                                        class="hidden peer" v-model="profitState" @change="checkProfit"/>
                                 <div
                                     class="size-4 rounded-full border border-[#90A4AE] relative peer-checked:border-[#1EA0FF] peer-checked:bg-[#1EA0FF] before:absolute before:w-2 before:h-1 before:border-l before:border-b before:border-white before:top-1 before:left-[3px] before:-rotate-45 before:hidden peer-checked:before:block"></div>
-                                <span class="cursor-pointer text-sm font-medium text-stone-700"> سود پیشفرض </span>
+                                <span class="cursor-pointer text-sm font-medium text-stone-700"> درصد پیشفرض سیستم </span>
                             </label>
                             <!--  custom profit-->
                             <label for="custom-profit" class="flex flex-col sm:flex-row gap-4 sm:gap-8 relative">
@@ -136,7 +136,7 @@
                                            class="hidden peer" v-model="profitState" @change="checkProfit"/>
                                     <div
                                         class="size-4 rounded-full border border-[#90A4AE] relative peer-checked:border-[#1EA0FF] peer-checked:bg-[#1EA0FF] before:absolute before:w-2 before:h-1 before:border-l before:border-b before:border-white before:top-1 before:left-[3px] before:-rotate-45 before:hidden peer-checked:before:block"></div>
-                                    <span class="cursor-pointer text-sm font-medium text-stone-700"> سود مورد نظر شما (درصد) </span>
+                                    <span class="cursor-pointer text-sm font-medium text-stone-700"> درصد سفارشی </span>
                                 </div>
 
 
