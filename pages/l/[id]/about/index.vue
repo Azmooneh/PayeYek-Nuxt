@@ -12,28 +12,35 @@
     <main v-else class="min-h-[calc(100vh-340px)] pt-4">
         <Breadcrumbs :breadcrumbs="breadcrumbs"/>
 
+        <section class="container">
+            <h2 class="text-stone-700 mb-4 text-lg sm:text-xl lg:text-2xl font-medium"> درباره ما </h2>
+            <article class="overflow-hidden custom_article_styles cursor-default custom_table_striped_container" v-html="content"></article>
+        </section>
     </main>
 </template>
 <script>
 import breadcrumbSkeleton from "~/components/common/breadcrumbs/breadcrumbSkeleton.vue";
 import Breadcrumbs from "~/components/common/breadcrumbs/index.vue";
-import {useCommon} from '~/store/index';
+// import {useCommon} from '~/store/index';
 import {ref} from "vue";
+import Section from "~/components/layout/footer/children/sections/section.vue";
 
 export default {
     name: 'About Us',
     components: {
+        Section,
         Breadcrumbs,
         breadcrumbSkeleton,
     },
     setup() {
         const route = useRoute();
-        const layoutStore = useCommon();
+        // const layoutStore = useCommon();
         const loading = ref(true);
         const error = ref(null);
         const watchLoading = ref(true);
         const breadcrumbs = ref([]);
         const companySlug = ref(route.params.id);
+        const content = ref("");
 
         const updateMetaTags = (seo) => {
             useHead({
@@ -57,7 +64,7 @@ export default {
                 twitterCard: seo.twitter_card,
                 twitterImage: seo.twitter_card_image,
             })
-        }
+        };
 
         const loadData = async (company) => {
             try {
@@ -65,6 +72,7 @@ export default {
                 const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${company}/about`)
                 console.log(response.data.value);
                 if (response.data.value.status == 200) {
+                    content.value = response.data.value.data.about_us;
                     updateMetaTags(response.data.value.data.seo);
                     breadcrumbs.value = response.data.value.data.breadcrumbs;
                 }
@@ -73,14 +81,19 @@ export default {
             } finally {
                 loading.value = false
             }
-        }
+        };
 
         loadData(companySlug.value);
+
+        watch(() => loading.value, (n, o) => {
+            watchLoading.value = n
+        })
 
         return {
             error,
             watchLoading,
             breadcrumbs,
+            content,
         }
     }
 }
