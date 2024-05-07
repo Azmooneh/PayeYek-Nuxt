@@ -1,5 +1,5 @@
 <template>
-    <ProductType1 v-if="productType == 2" />
+    <ProductType1 />
 </template>
 
 <script>
@@ -27,6 +27,10 @@ export default {
             `${useRuntimeConfig().public.apiBase}/l/p/${productSlug.value}/specification`
         );
 
+        const videos = useFetch(() =>
+            `${useRuntimeConfig().public.apiBase}/l/p/${productSlug.value}/videos`
+        );
+
         watchEffect(() => {
             if(data.value && data.value.status == 200) {
                 productStore.saveAttributes(data.value.data);
@@ -35,6 +39,12 @@ export default {
             if(response && response.data.value != null){
                 if(response.data.value.status == 200) {
                     productStore.saveSpecification(response.data.value.data.specification);
+                }
+            }
+
+            if(videos && videos.data.value != null){
+                if(videos.data.value.status == 200) {
+                    productStore.saveVideos(videos.data.value.data.videos);
                 }
             }
         });

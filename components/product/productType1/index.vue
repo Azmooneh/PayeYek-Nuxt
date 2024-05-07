@@ -17,6 +17,8 @@
     <section class="grid grid-cols-1 gap-8 lg:gap-14 container">
         <div class="">
             <Specification v-if="SpecSkeleton" />
+
+            <Videos v-if="VideosSkeleton" />
         </div>
     </section>
 
@@ -30,6 +32,7 @@ import {useProduct} from "~/store/index.js";
 import HelpAndResources from "~/components/product/productType1/children/helpAndResources/index.vue";
 import Information from "~/components/product/productType1/children/information/index.vue";
 import Specification from "~/components/product/productType1/children/specification/index.vue";
+import Videos from "~/components/product/productType1/children/videos/index.vue";
 
 export default {
     name: "ProductType1",
@@ -40,12 +43,14 @@ export default {
         HelpAndResources,
         Information,
         Specification,
+        Videos,
     },
     setup(){
         const productStore = useProduct();
         const productName = ref(productStore.current.title);
         const AttSkeleton = ref(false);
         const SpecSkeleton = ref(false);
+        const VideosSkeleton = ref(false);
 
         watch(() => productStore.AttributeSkeleton, (n, o) => {
             AttSkeleton.value = n;
@@ -55,10 +60,15 @@ export default {
             SpecSkeleton.value = n;
         })
 
+        watch(() => productStore.VideosSkeleton, (n, o) => {
+            VideosSkeleton.value = n;
+        })
+
         return {
             AttSkeleton,
             productName,
             SpecSkeleton,
+            VideosSkeleton,
         }
     }
 }

@@ -112,6 +112,8 @@ export const useProduct = defineStore('Product', {
             current: null,
             SpecificationSkeleton: false,
             Specification: null,
+            VideosSkeleton: false,
+            Videos: null,
         }
     },
     actions: {
@@ -125,6 +127,12 @@ export const useProduct = defineStore('Product', {
             this.Specification = specifications;
             // setTimeout(() => {
             this.SpecificationSkeleton = true;
+            // }, 300);
+        },
+        saveVideos(videos){
+            this.Videos = videos;
+            // setTimeout(() => {
+            this.VideosSkeleton = true;
             // }, 300);
         },
         saveCurrent(data){
