@@ -103,3 +103,20 @@ export const useArticle = defineStore('Article', {
         }
     },
 })
+
+export const useProduct = defineStore('Product', {
+    state: () => {
+        return {
+            Gallery: [],
+            primaryImage: null,
+        }
+    },
+    actions: {
+        saveGallery(gallery){
+            this.Gallery = gallery;
+        },
+        savePrimaryImage(image){
+            this.primaryImage = image;
+        }
+    },
+})

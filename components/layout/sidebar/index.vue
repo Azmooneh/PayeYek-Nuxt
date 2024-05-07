@@ -48,6 +48,10 @@ export default {
             status.value = isFilled.value;
         }
 
+        watch(() => isFilled.value, (n, o) => {
+            status.value = n;
+        })
+
         const toggleMenu = (status) => {
             layoutStore.toggleMenuStatus(status);
         }

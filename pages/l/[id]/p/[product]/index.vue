@@ -12,6 +12,8 @@
     <main v-else class="min-h-[calc(100vh-340px)] pt-4">
         <Breadcrumbs :breadcrumbs="breadcrumbs"/>
 
+        <Product />
+
     </main>
 </template>
 
@@ -20,21 +22,26 @@ import {useCommon} from "~/store/index.js";
 import breadcrumbSkeleton from "~/components/common/breadcrumbs/breadcrumbSkeleton.vue";
 import Breadcrumbs from "~/components/common/breadcrumbs/index.vue";
 import {ref} from "vue";
+import Product from "~/components/product/index.vue";
+import { useProduct } from "~/store/index.js";
 
 export default {
   name: 'Product Single',
     components: {
         Breadcrumbs,
         breadcrumbSkeleton,
+        Product,
     },
   setup() {
       const route = useRoute();
       // const layoutStore = useCommon();
+      const productStore = useProduct();
       const loading = ref(true);
       const error = ref(null);
       const watchLoading = ref(true);
       const companySlug = ref(route.params.id);
       const productSlug = ref(route.params.product);
+      const breadcrumbs = ref([]);
       // console.log(companySlug.value);
 
       const updateMetaTags = (seo) => {
@@ -71,8 +78,8 @@ export default {
               const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/p/${productSlug.value}`);
               console.log(response.data.value);
               if (response.data.value.status == 200) {
-                  // await categoriesStore.saveCategoriesData(response.data.value.data.categories, response.data.value.data.products.data);
-                  // await updateMetaTags(response.data.value.data.seo);
+                  productStore.savePrimaryImage(response.data.value.data.primary_image);
+                  productStore.saveGallery(response.data.value.data.slider_image);
                   updateMetaTags(response.data.value.data.seo);
                   breadcrumbs.value = response.data.value.data.breadcrumbs;
               }
@@ -84,6 +91,12 @@ export default {
       }
 
       loadData();
+
+      return {
+          breadcrumbs,
+          watchLoading,
+          error,
+      }
 
 
     // definePageMeta({
