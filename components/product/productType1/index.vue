@@ -1,5 +1,5 @@
 <template>
-    <section class="grid grid-cols-1 gap-8">
+    <section class="grid grid-cols-1 gap-8 mb-16 lg:mb-36">
         <SwiperCompoinent />
 
         <section class="px-4">
@@ -7,6 +7,8 @@
             <Attributes v-if="AttSkeleton" />
 
             <AttributeSkeleton v-else />
+
+            <HelpAndResources />
         </section>
 
     </section>
@@ -17,6 +19,7 @@ import SwiperCompoinent from "~/components/product/productType1/children/Swiper.
 import Attributes from "~/components/product/productType1/children/attributes/index.vue";
 import AttributeSkeleton from "~/components/product/productType1/children/attributes/attributeSkeleton.vue";
 import {useProduct} from "~/store/index.js";
+import HelpAndResources from "~/components/product/productType1/children/helpAndResources/index.vue";
 
 export default {
     name: "ProductType1",
@@ -24,6 +27,7 @@ export default {
         SwiperCompoinent,
         Attributes,
         AttributeSkeleton,
+        HelpAndResources,
     },
     setup(){
         const productStore = useProduct();
