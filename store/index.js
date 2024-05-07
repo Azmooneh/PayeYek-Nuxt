@@ -115,9 +115,9 @@ export const useProduct = defineStore('Product', {
     actions: {
         saveAttributes(attributes){
             this.Attributes = attributes;
-            setTimeout(() => {
+            // setTimeout(() => {
                 this.AttributeSkeleton = true;
-            }, 300);
+            // }, 300);
         },
         saveCurrent(data){
             this.current = data;
