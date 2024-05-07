@@ -109,6 +109,7 @@ export const useProduct = defineStore('Product', {
         return {
             Gallery: [],
             primaryImage: null,
+            Attributes: [],
         }
     },
     actions: {
@@ -117,6 +118,9 @@ export const useProduct = defineStore('Product', {
         },
         savePrimaryImage(image){
             this.primaryImage = image;
+        },
+        saveAttributes(attributes){
+            this.Attributes = attributes;
         }
     },
 })
