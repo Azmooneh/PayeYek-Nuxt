@@ -1,5 +1,5 @@
 <template>
-    <ul class="text-sm font-normal grid grid-cols-2 gap-1 list-none px-4 *:px-2">
+    <ul class="text-sm font-normal grid grid-cols-2 gap-1 list-none *:px-2">
         <!-- usage-->
         <li class="h-20 rounded-custom flex_center flex-col gap-1 bg-stone-200">
             <h3 class=" text-normal"> نوع کاربری </h3>
@@ -34,21 +34,22 @@
 </template>
 
 <script>
-// import {useProduct} from "~/store/index.js";
+import {useProduct} from "~/store/index.js";
 import {ref} from "vue";
 
 export default {
     name: "Attrubutes Type 1",
-    props: {
-        Attributes: Array,
-    },
+    // props: {
+    //     Attributes: Array,
+    // },
     setup(props){
-        console.log(props.Attributes)
-        // const productStore = useProduct();
-        // const attributes = ref(productStore.Attributes);
+        // console.log(props.Attributes)
+        const productStore = useProduct();
+        const Attributes = ref(productStore.Attributes);
         // console.log(attributes.value)
 
         return {
+            Attributes,
         }
     }
 }

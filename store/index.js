@@ -107,20 +107,20 @@ export const useArticle = defineStore('Article', {
 export const useProduct = defineStore('Product', {
     state: () => {
         return {
-            Gallery: [],
-            primaryImage: null,
-            Attributes: [],
+            Attributes: null,
+            AttributeSkeleton: false,
+            current: null,
         }
     },
     actions: {
-        saveGallery(gallery){
-            this.Gallery = gallery;
-        },
-        savePrimaryImage(image){
-            this.primaryImage = image;
-        },
         saveAttributes(attributes){
             this.Attributes = attributes;
+            setTimeout(() => {
+                this.AttributeSkeleton = true;
+            }, 300);
+        },
+        saveCurrent(data){
+            this.current = data;
         }
     },
 })

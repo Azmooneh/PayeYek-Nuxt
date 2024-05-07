@@ -17,8 +17,9 @@ export default {
     },
     setup(){
         const productStore = useProduct();
-        const Gallery = ref(productStore.Gallery);
-        const mainImage = ref(productStore.primaryImage);
+        // console.log(productStore.current);
+        const Gallery = ref(productStore.current.slider_image);
+        const mainImage = ref(productStore.current.primary_image);
         const newGallery = ref(null);
         const settings = {
             slidesPerView: 1,

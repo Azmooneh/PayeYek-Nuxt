@@ -76,10 +76,9 @@ export default {
           try {
               loading.value = true;
               const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/p/${productSlug.value}`);
-              // console.log(response.data.value);
+              console.log(response.data.value);
               if (response.data.value.status == 200) {
-                  productStore.savePrimaryImage(response.data.value.data.primary_image);
-                  productStore.saveGallery(response.data.value.data.slider_image);
+                  productStore.saveCurrent(response.data.value.data);
                   updateMetaTags(response.data.value.data.seo);
                   breadcrumbs.value = response.data.value.data.breadcrumbs;
               }
