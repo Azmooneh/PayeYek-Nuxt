@@ -1,8 +1,8 @@
 <template>
-    <section class="grid grid-cols-1 gap-8 mb-16 lg:mb-36">
+    <section class="grid grid-cols-1 lg:grid-cols-9 gap-8 mb-16 lg:mb-36 lg:container 2xl:max-w-7xl">
         <SwiperCompoinent />
 
-        <section class="px-4">
+        <section class="px-4 lg:col-span-3 lg:px-0">
             <h1 class="text-base mb-8 lg:mb-12 text-center font-semibold text-normal xl:text-3xl"> {{ productName }} </h1>
             <Attributes v-if="AttSkeleton" />
 

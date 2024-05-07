@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import {useProduct} from "~/store/index.js";
 import {Pagination} from 'swiper/modules';
 import {Swiper, SwiperSlide} from 'swiper/vue';
+
 export  default {
     name: 'Mobile Slider Type 1',
     components: {
