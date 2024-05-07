@@ -19,21 +19,25 @@ export default {
         const productType = ref(layoutStore.footerData.styles.product_list_type);
         const productSlug = ref(route.params.product);
 
-        console.log(productType.value, productSlug.value);
-
-        const { data, pending, error, refresh } = useFetch(() =>
+        const { data } = useFetch(() =>
             `${useRuntimeConfig().public.apiBase}/l/p/${productSlug.value}/information`
         );
-        //
-        // console.log("from outside", data.value)
-        //
+
+        const response = useFetch(() =>
+            `${useRuntimeConfig().public.apiBase}/l/p/${productSlug.value}/specification`
+        );
+
         watchEffect(() => {
             if(data.value && data.value.status == 200) {
                 productStore.saveAttributes(data.value.data);
             }
-            // console.log("from watcheffect", data.value.data)
-        });
 
+            if(response && response.data.value != null){
+                if(response.data.value.status == 200) {
+                    productStore.saveSpecification(response.data.value.data.specification);
+                }
+            }
+        });
 
         return {
             productType,

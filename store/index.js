@@ -110,6 +110,8 @@ export const useProduct = defineStore('Product', {
             Attributes: null,
             AttributeSkeleton: false,
             current: null,
+            SpecificationSkeleton: false,
+            Specification: null,
         }
     },
     actions: {
@@ -117,6 +119,12 @@ export const useProduct = defineStore('Product', {
             this.Attributes = attributes;
             // setTimeout(() => {
                 this.AttributeSkeleton = true;
+            // }, 300);
+        },
+        saveSpecification(specifications){
+            this.Specification = specifications;
+            // setTimeout(() => {
+            this.SpecificationSkeleton = true;
             // }, 300);
         },
         saveCurrent(data){

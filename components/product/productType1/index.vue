@@ -3,15 +3,23 @@
         <SwiperCompoinent />
 
         <section class="px-4 lg:col-span-3 lg:px-0">
-            <h1 class="text-base mb-8 lg:mb-12 text-center font-semibold text-normal xl:text-3xl"> {{ productName }} </h1>
+            <h1 class="text-base leading-7 sm:text-xl sm:leading-8 mb-8 lg:mb-12 text-center font-semibold text-normal xl:text-3xl xl:leading-10"> {{ productName }} </h1>
             <Attributes v-if="AttSkeleton" />
 
             <AttributeSkeleton v-else />
 
             <HelpAndResources />
         </section>
-
     </section>
+
+    <Information />
+
+    <section class="grid grid-cols-1 gap-8 lg:gap-14 container">
+        <div class="">
+            <Specification v-if="SpecSkeleton" />
+        </div>
+    </section>
+
 </template>
 
 <script>
@@ -20,6 +28,8 @@ import Attributes from "~/components/product/productType1/children/attributes/in
 import AttributeSkeleton from "~/components/product/productType1/children/attributes/attributeSkeleton.vue";
 import {useProduct} from "~/store/index.js";
 import HelpAndResources from "~/components/product/productType1/children/helpAndResources/index.vue";
+import Information from "~/components/product/productType1/children/information/index.vue";
+import Specification from "~/components/product/productType1/children/specification/index.vue";
 
 export default {
     name: "ProductType1",
@@ -28,23 +38,27 @@ export default {
         Attributes,
         AttributeSkeleton,
         HelpAndResources,
+        Information,
+        Specification,
     },
     setup(){
         const productStore = useProduct();
         const productName = ref(productStore.current.title);
         const AttSkeleton = ref(false);
-        // if(productStore.Attributes && productStore.Attributes != null){
-        //     AttSkeleton.value = true;
-        //     console.log("outside watch => ", productStore.Attributes);
-        // }
+        const SpecSkeleton = ref(false);
+
         watch(() => productStore.AttributeSkeleton, (n, o) => {
-            console.log("insede watch => ", productStore.Attributes);
             AttSkeleton.value = n;
+        })
+
+        watch(() => productStore.SpecificationSkeleton, (n, o) => {
+            SpecSkeleton.value = n;
         })
 
         return {
             AttSkeleton,
             productName,
+            SpecSkeleton,
         }
     }
 }
