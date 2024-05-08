@@ -1,23 +1,7 @@
 <template>
-    <!--    <ProductCardTypeOne :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 1" />-->
-    <!--    <ProductCardTypeTwo :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 2" />-->
-    <!--    <ProductCardTypeThree :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 3" />-->
-    <!--    <ProductCardTypeFour :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 4" />-->
-    <!--    <ProductCardTypeFive :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 5" />-->
-    <!--    <ProductCardTypeSix :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 6" />-->
-    <!--    <ProductCardTypeSeven :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 7" />-->
-    <!--    <ProductCardTypeEight :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 8" />-->
-    <!--    <ProductCardTypeNine :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 9" />-->
-    <!--&lt;!&ndash;    <ProductCardTypeTen :productList="productList" :categories="categoryList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 10" />&ndash;&gt;-->
-    <!--    <ProductCardTypeTen :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 10" :productPagination="productPagination" :handlePageChange="handlePageChange" />-->
-    <!--    <ProductCardTypeEleven :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 11" :productPagination="productPagination" :handlePageChange="handlePageChange" />-->
-    <!--    <ProductCardTypeTwelve :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 12" />-->
-    <!--    <ProductCardTypeThirteen :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 13" />-->
-    <!--    <ProductCardTypeFourteen :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 14" />-->
-    <!--    <ProductCardTypeFifteen :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd" :borderStyle="borderStyle" v-if="cardType == 15" />-->
     <component :is="selectedComponent" :productList="filteredList" :landSlug="slug" :evenOdd="evenOdd"
                :borderStyle="borderStyle" :productPagination="productPagination"
-               :handlePageChange="handlePageChange"/>
+               :handlePageChange="handlePageChange" />
 </template>
 
 <script>

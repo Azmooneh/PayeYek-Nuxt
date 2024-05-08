@@ -48,7 +48,7 @@ export default {
                 disableOnInteraction: false,
             },
             navigation: true,
-            speed: 750,
+            speed: 1000,
             pagination: {
                 clickable: true,
             },

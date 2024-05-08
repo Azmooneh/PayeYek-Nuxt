@@ -5,7 +5,7 @@
         <NuxtImg class="absolute top-0 left-0 object-cover w-full h-full" width="1280" height="720" :src="slide.image"
             :alt="slide.alt" format="webp" />
             <ul v-if="slide.infos"
-                class="list-disc list-inside absolute top-2.5 sm:top-4 sm:right-2 lg:top-6 lg:right-4 shadow-md right-1 py-1 px-2 sm:px-4 sm:py-2 space-y-1.5 z-[1] bg-white/80 text-xs font-medium text-stone-700 rounded-custom">
+                class="list-disc list-inside absolute top-2.5 sm:top-4 sm:right-2 lg:top-6 lg:right-4 xl:top-8 xl:right-6 shadow-md right-1 py-1 px-2 sm:px-4 sm:py-2 space-y-1.5 z-[1] bg-white/80 text-xs font-medium text-stone-700 rounded-custom">
                 <template v-for="(li, innerIndex) in slide.infos" :key="innerIndex">
                     <li class="marker:text-stone-700 sm:text-sm md:text-base" v-if="li"
                         :class="{ 'hidden': innerIndex > 0, 'sm:list-item': innerIndex >= 1 && innerIndex < 3, 'md:list-item': innerIndex >= 3 }">

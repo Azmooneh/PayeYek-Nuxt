@@ -66,7 +66,7 @@ export default {
             slidesPerView: 1,
             spaceBetween: 16,
             navigation: true,
-            speed: 750,
+            speed: 1000,
         };
         const openModal = ref(false);
         const desktopSliderSwiper = ref(null);

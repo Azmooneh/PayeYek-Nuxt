@@ -1,15 +1,16 @@
 <template>
     <section class="container mb-6 lg:mb-8" v-if="slides && slides.length > 0">
-        <Swiper v-bind="settings" :modules="[SwiperPagination, SwiperAutoplay, SwiperNavigation]" :class="'land_slider slider_type_1 ' + sliderStyle">
+        <Swiper v-bind="settings" :modules="[SwiperPagination, SwiperAutoplay, SwiperNavigation]"
+                :class="'land_slider slider_type_1 ' + sliderStyle">
             <SwiperSlide v-for="(slide, index) in slides" :key="index">
-                <Slide :slide="slide" />
+                <Slide :slide="slide"/>
             </SwiperSlide>
         </Swiper>
     </section>
 </template>
 
 <script>
-import { useCompanyData, useCommon } from '~/store/index';
+import {useCompanyData, useCommon} from '~/store/index';
 import Slide from './children/slide.vue';
 
 
@@ -24,11 +25,11 @@ export default {
             pagination: true,
             loop: true,
             autoplay: {
-                delay: 3500,
+                delay: 5000,
                 disableOnInteraction: false,
             },
             navigation: true,
-            speed: 750,
+            speed: 1000,
             pagination: {
                 clickable: true,
             },

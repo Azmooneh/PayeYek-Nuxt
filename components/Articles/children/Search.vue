@@ -1,8 +1,9 @@
 <template>
     <section class="relative w-full h-12 sm:w-72">
-        <input type="text"
+        <input type="text" v-model="searchValue"
                class="w-full h-full outline-none peer border-b border-x-0 border-t-0 border-b-dark-100 focus:border-b-stone-700 transition-[border] focus:ring-0 pl-10 pr-3 placeholder:text-[#888b93] text-sm font-normal text-stone-700"
                placeholder="جستجو مطلب" />
+        <!-- icon-->
         <div class="absolute flex-none w-8 h-8 left-2 top-2 flex_center text-stone-400 peer-focus:text-[#111827]">
             <svg class="size-6 stroke-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -14,7 +15,42 @@
 </template>
 
 <script>
+import { useCommon } from "~/store/index.js"
+
 export default {
     name: "Article Search",
+    setup(){
+        const layoutStore = useCommon();
+        const searchValue = ref("");
+        const activeFilters = {};
+        const str = ref("");
+        const landId = ref(layoutStore.footerData.styles.land_id);
+
+        const loadSearchData = async (word) => {
+            try {
+                activeFilters.land_id = landId.value;
+                activeFilters.keyword = word;
+                str.value = Object.keys(activeFilters).map(key => `${key}=${encodeURIComponent(activeFilters[key])}`).join("&");
+                const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/a/search?${str.value}`)
+                if (response.data.value.status == 200) {
+                    console.log(response.data.value)
+                    // await articlesStore.saveArticlesData(response.data.value.data.articles.data);
+                    // breadcrumbs.value = response.data.value.data.breadcrumbs;
+                    // await updateMetaTags(response.data.value.data.seo);
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        watch(() => searchValue.value, (n, o) => {
+            loadSearchData(n);
+        })
+
+
+        return {
+            searchValue,
+        }
+    }
 }
 </script>
