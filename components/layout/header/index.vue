@@ -26,7 +26,7 @@
                 <!-- term of sale -->
                 <NuxtLink
                     class="w-28 sm:w-32 h-10 px-0.5 text-sm sm:text-base font-normal text-white bg-normal hover:bg-focus focus:bg-focus focus:shadow-focus focus:shadow-shadowNormal rounded-custom flex_center"
-                    :to="`/l/${slug}/sale_notice`"> اطلاعیه فروش </NuxtLink>
+                    :to="`/l/${slug}/termsofsale`"> اطلاعیه فروش </NuxtLink>
             </section>
     
             <!-- visible on desktop -->
