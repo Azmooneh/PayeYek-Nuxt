@@ -1,8 +1,8 @@
 <template>
-    <section class="grid grid-cols-1 lg:grid-cols-9 gap-8 mb-16 lg:mb-36 lg:container 2xl:max-w-7xl">
+    <section class="grid grid-cols-1 lg:grid-cols-9 gap-8 mb-16 lg:mb-36 container 2xl:max-w-7xl">
         <SwiperCompoinent />
 
-        <section class="px-4 lg:col-span-3 lg:px-0">
+        <section class="lg:col-span-3 lg:px-0">
             <h1 class="text-base leading-7 sm:text-xl sm:leading-8 mb-8 lg:mb-12 text-center font-semibold text-normal xl:text-3xl xl:leading-10"> {{ productName }} </h1>
             <Attributes v-if="AttSkeleton" />
 
@@ -12,13 +12,26 @@
         </section>
     </section>
 
-    <Information />
 
-    <section class="grid grid-cols-1 gap-8 lg:gap-14 container">
-        <div class="">
-            <Specification v-if="SpecSkeleton" />
+    <section class="grid grid-cols-1 gap-8 lg:grid-cols-9 lg:gap-14 container">
+        <div class="lg:col-span-6">
+            <Information />
 
-            <Videos v-if="VideosSkeleton" />
+            <Specification v-if="SpecSkeleton && haveSpecification" />
+
+            <Videos v-if="VideosSkeleton && haveVideo" />
+
+            <Comments v-if="!CommentsSkeleton" />
+
+            <AddComment />
+
+            <Contact />
+        </div>
+
+        <div class="hidden lg:block col-span-3">
+            <div class="sticky w-full pt-[118%] top-40">
+                <div class="absolute top-0 right-0 size-full rounded-custom bg-normal"></div>
+            </div>
         </div>
     </section>
 
@@ -33,9 +46,12 @@ import HelpAndResources from "~/components/product/productType1/children/helpAnd
 import Information from "~/components/product/productType1/children/information/index.vue";
 import Specification from "~/components/product/productType1/children/specification/index.vue";
 import Videos from "~/components/product/productType1/children/videos/index.vue";
+import Comments from "~/components/product/productType1/children/comments/list.vue";
+import AddComment from "~/components/product/productType1/children/comments/addComment.vue";
+import Contact from "~/components/companyLanding/contact/index.vue";
 
 export default {
-    name: "ProductType1",
+    name: "Product Type 1",
     components: {
         SwiperCompoinent,
         Attributes,
@@ -44,6 +60,9 @@ export default {
         Information,
         Specification,
         Videos,
+        Comments,
+        AddComment,
+        Contact,
     },
     setup(){
         const productStore = useProduct();
@@ -51,6 +70,9 @@ export default {
         const AttSkeleton = ref(false);
         const SpecSkeleton = ref(false);
         const VideosSkeleton = ref(false);
+        const CommentsSkeleton = ref(false);
+        const haveSpecification = ref(false);
+        const haveVideo = ref(false);
 
         watch(() => productStore.AttributeSkeleton, (n, o) => {
             AttSkeleton.value = n;
@@ -64,11 +86,36 @@ export default {
             VideosSkeleton.value = n;
         })
 
+        watch(() => productStore.CommentsSkeleton, (n, o) => {
+            CommentsSkeleton.value = n;
+        })
+
+        watch(() => productStore.Specification, (n, o) => {
+            if(Object.keys(n).length === 0){
+                haveSpecification.value = false;
+            } else {
+                haveSpecification.value = true;
+            }
+        })
+
+        watch(() => productStore.Videos, (n, o) => {
+            if(Object.keys(n).length === 0){
+                haveVideo.value = false;
+            } else {
+                haveVideo.value = true;
+            }
+        })
+
+        // console.log(Object.keys(productStore.Specification).length === 0);
+
         return {
             AttSkeleton,
             productName,
             SpecSkeleton,
             VideosSkeleton,
+            CommentsSkeleton,
+            haveSpecification,
+            haveVideo,
         }
     }
 }

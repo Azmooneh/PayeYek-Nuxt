@@ -114,6 +114,8 @@ export const useProduct = defineStore('Product', {
             Specification: null,
             VideosSkeleton: false,
             Videos: null,
+            CommentsSkeleton: false,
+            Comments: null,
         }
     },
     actions: {
@@ -133,6 +135,12 @@ export const useProduct = defineStore('Product', {
             this.Videos = videos;
             // setTimeout(() => {
             this.VideosSkeleton = true;
+            // }, 300);
+        },
+        saveComments(comments){
+            this.Comments = comments;
+            // setTimeout(() => {
+            this.CommentsSkeleton = true;
             // }, 300);
         },
         saveCurrent(data){
