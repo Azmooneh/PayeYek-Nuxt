@@ -2,7 +2,7 @@
     <section :class="'mb-4 lg:mb-16 relative ' + parentStyle" v-if="articles.length">
         <section class="container">
             <!-- title -->
-            <Titles :landSlug="slug" :headerType="headerType" :title="'محصولات شرکت ' + companyName" section="a" />
+            <Titles :landSlug="slug" :headerType="headerType" :title="'مقالات شرکت ' + companyName" section="a" />
 
             <Articles :articleCardType="articleCardType" :slug="slug" :borderStyle="borderStyle" :evenOdd="evenOdd" />
         </section>
