@@ -16,16 +16,16 @@
         <section class="grid grid-cols-1 lg:grid-cols-12 lg:gap-4 xl:gap-5 mb-12">
             <!-- toc-->
             <div class="hidden lg:block lg:col-span-4" v-if="tocTitles.length">
-                <ul class="rounded-custom py-8 xl:py-10 px-6 xl:px-8 bg-stone-200 list-none sticky top-40">
-                    <li v-for="(title, index) in tocTitles" :key="index" :class="'mb-6 cursor-pointer last:mb-0 text-sm font-medium text-stone-700 pr-5 relative before:absolute before:top-1.5 before:right-0 before:size-2 before:rounded-full before:border-2 before:border-normal ' + (title.enter ? 'before:bg-normal' : '')" @click="scrollToElement(title.id)"> {{ title.title }} </li>
-                </ul>
+                <div class="rounded-custom py-8 xl:py-10 px-6 xl:px-8 bg-stone-200 list-none sticky top-40 flex flex-col">
+                    <a :href="`#section-${title.id}`" :id="`toc-title-${title.id}`" @click.prevent="scrollToElement(`toc-title-${title.id}`)" v-for="(title, index) in tocTitles" :key="index" :class="'mb-6 cursor-pointer last:mb-0 text-sm font-medium text-stone-700 pr-5 relative before:absolute before:top-1.5 before:right-0 before:size-2 before:rounded-full before:border-2 before:border-normal toc-link'" > {{ title.title }} </a>
+                </div>
             </div>
             <!-- details-->
             <article :class="'overflow-hidden custom_article_styles cursor-default custom_table_striped_container ' + (tocTitles.length ? 'lg:col-span-8' : 'lg:col-span-12')" v-html="body">
             </article>
         </section>
 
-        <!--        articles-->
+        <!-- articles-->
         <section class="relative flex flex-col pb-10 sm:pb-0">
             <div class="flex items-center gap-2 mb-4">
                 <div class="size-3 rounded-full bg-normal"></div>
@@ -81,7 +81,6 @@ export default {
         const layoutStore = useCommon();
         const slug = ref(layoutStore.footerData.slug);
         const tocTitles = ref([]);
-        const scrollTime = ref(null);
 
         const copyShareLink = () => {
             const tempInput = document.createElement('textarea');
@@ -109,7 +108,7 @@ export default {
 
                 // Output or manipulate the h3 elements as needed
                 titleElements.forEach((title, index) => {
-                    console.log(title.getBoundingClientRect().top);
+                    // console.log(title.getBoundingClientRect().top);
                     const titleObj = {
                         id: (index + 1),
                         title: title.textContent,
@@ -126,51 +125,43 @@ export default {
         })
 
         const scrollStopped = () => {
-            const windowOffsetTop = (window.top.scrollY + 128);
-            tocTitles.value.map(item => {
-                item.enter = false;
-            })
-            for (let i = 0; i < tocTitles.value.length; i++) {
-                if(tocTitles.value[i+1] != null){
-                    if(tocTitles.value[i].top < windowOffsetTop && tocTitles.value[i+1].top > windowOffsetTop){
-                        tocTitles.value[i].enter = true;
-                        return false;
-                    } else if(tocTitles.value[i].top > windowOffsetTop){
-                        tocTitles.value[i].enter = true;
-                        return false;
-                    } else {
-                        // console.log(windowOffsetTop)
+            const section = document.querySelector('.custom_article_styles');
+            if (section) {
+                const headings = section.querySelectorAll('h3, h2');
+                const scrollPosition = window.scrollY;
+
+                headings.forEach(function(heading) {
+                    var top = heading.offsetTop;
+                    var bottom = top + heading.offsetHeight;
+                    var id = heading.getAttribute('id');
+                    var tocLinks = document.querySelectorAll('.toc-link');
+
+                    if (scrollPosition >= top && scrollPosition < (bottom + 47)) {
+                        tocLinks.forEach(function(link) {
+                            link.classList.remove('before:bg-normal');
+                            if (link.getAttribute('href') === '#' + id) {
+                                link.classList.add('before:bg-normal');
+                            }
+                        });
                     }
-                } else {
-                    if(windowOffsetTop >= tocTitles.value[i].top){
-                        tocTitles.value[i].enter = true;
-                    }
-                }
+                });
+            } else {
+                console.error('Section with class "custom_article_styles" not found');
             }
         }
 
-        const handleScroll = () => {
-            clearTimeout(scrollTime.value);
-            scrollTime.value = setTimeout(() => {
-                scrollStopped();
-            }, 50)
-        }
-
-        handleScroll();
-
         onMounted(() => {
-            document.addEventListener('scroll', handleScroll);
+            scrollStopped();
+            document.addEventListener('scroll', scrollStopped);
         })
 
-        const scrollToElement = id => {
-            var element = document.getElementById(`section-${id}`);
-            var headerOffset = 160;
-            var elementPosition = element.getBoundingClientRect().top;
-            var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-            });
+        const scrollToElement = (event) => {
+            const targetId = document.getElementById(event).getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+            const yOffset = -160;
+            targetElement.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+            const finalY = window.scrollY + targetElement.getBoundingClientRect().top + yOffset;
+            window.scrollTo({ top: finalY, behavior: "smooth" });
         }
 
         return {
