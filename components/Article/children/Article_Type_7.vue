@@ -16,8 +16,10 @@
         <section class="grid grid-cols-1 lg:grid-cols-12 lg:gap-4 xl:gap-5 mb-12">
             <!-- toc-->
             <div class="hidden lg:block lg:col-span-4" v-if="tocTitles.length">
-                <div class="rounded-custom py-8 xl:py-10 px-6 xl:px-8 bg-stone-200 list-none sticky top-40 flex flex-col">
-                    <a :href="`#section-${title.id}`" :id="`toc-title-${title.id}`" @click.prevent="scrollToElement(`toc-title-${title.id}`)" v-for="(title, index) in tocTitles" :key="index" :class="'mb-6 cursor-pointer last:mb-0 text-sm font-medium text-stone-700 pr-5 relative before:absolute before:top-1.5 before:right-0 before:size-2 before:rounded-full before:border-2 before:border-normal toc-link'" > {{ title.title }} </a>
+                <div class="sticky top-40 max-h-[28rem] xl:max-h-[34rem] overflow-auto bg-stone-200 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+                    <div class="rounded-custom py-6 h-auto xl:py-8 px-4 xl:px-8 flex flex-col">
+                        <a :href="`#section-${title.id}`" :id="`toc-title-${title.id}`" @click.prevent="scrollToElement(`toc-title-${title.id}`)" v-for="(title, index) in tocTitles" :key="index" :class="'mb-6 cursor-pointer last:mb-0 text-sm font-medium text-stone-700 pr-5 relative before:absolute before:top-1.5 before:right-0 before:size-2 before:rounded-full before:border-2 before:border-normal toc-link'" > {{ title.title }} </a>
+                    </div>
                 </div>
             </div>
             <!-- details-->
