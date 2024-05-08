@@ -2,9 +2,9 @@
     <li>
         <section class="p-4 bg-stone-200 rounded-custom lg:px-8">
             <!-- title-->
-            <div class="flex items-center justify-between cursor-pointer">
+            <div class="flex items-center justify-between cursor-pointer" @click="toggleDropdown">
                 <h3 class="text-sm sm:text-base lg:lg font-medium"> {{ data.title }} </h3>
-                <button :class="'cursor-pointer size-8 duration-500 ' + (openDropdown ? 'rotate-180' : '')" @click="toggleDropdown">
+                <button :class="'size-8 duration-500 ' + (openDropdown ? 'rotate-180' : '')">
                     <i class="text-lg font-medium font-Icomoon icon-chevron-Down"></i>
                 </button>
             </div>

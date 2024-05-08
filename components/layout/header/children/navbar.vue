@@ -12,7 +12,7 @@
             :to="`/l/${slug}/sales`"> نمایندگی فروش </NuxtLink>
         <NuxtLink
             class="focus:bg-[#eaeaea] lg:hover:text-stone-900 lg:focus:bg-transparent font-medium lg:first:pr-0 lg:last:pl-0 lg:last:border-l-0"
-            :to="`/l/${slug}/a?f=sell`"> اطلاعیه </NuxtLink>
+            :to="`/l/${slug}/a`"> مقالات </NuxtLink>
         <NuxtLink
             class="focus:bg-[#eaeaea] lg:hover:text-stone-900 lg:focus:bg-transparent font-medium lg:first:pr-0 lg:last:pl-0 lg:last:border-l-0"
             :to="`/l/${slug}/facilities`"> تسهیلات </NuxtLink>

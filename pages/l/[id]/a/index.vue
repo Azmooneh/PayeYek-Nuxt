@@ -89,7 +89,7 @@ export default {
         loadData();
 
         watch(() => loading.value, (n, o) => {
-            watchLoading.value = n
+            watchLoading.value = n;
         })
 
         return {
