@@ -54,7 +54,6 @@ export default {
         const slug = ref(layoutStore.footerData.slug);
         const evenOdd = ref(layoutStore.footerData.styles.category_striped);
         const cardType = ref(layoutStore.footerData.styles.category_card_type);
-        // console.log(cardType.value)
         const filteredList = ref([]); // Filtered list of products
         const activeFilters = {};
         const str = ref("");
@@ -121,20 +120,11 @@ export default {
         });
 
         const loadData = async (filter = '') => {
-            // try {
-            // loading.value = true;
             const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/p${filter}`);
-            // console.log(response.data.value);
             if (response.data.value.status == 200) {
                 await categoriesStore.saveCategoriesData(response.data.value.data.categories, response.data.value.data.products); // Then save company data
-                console.log(categoriesStore.products);
-                // await updateMetaTags(response.data.value.data.seo);
+                // console.log(categoriesStore.products);
             }
-            // } catch (err) {
-            //     error.value = err.message || 'سرور به مشکل خورده است.'
-            // } finally {
-            //     loading.value = false
-            // }
         }
 
         const handlePageChange = (page) => {

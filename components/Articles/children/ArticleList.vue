@@ -1,11 +1,11 @@
 <template>
-    <ArticleTypeOne :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 1" :filteredArticles="filteredList" :borderStyle="borderStyle" />
-    <ArticleTypeTwo :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 2" :filteredArticles="filteredList" :borderStyle="borderStyle" />
-    <ArticleTypeThree :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 3" :filteredArticles="filteredList" :borderStyle="borderStyle" />
-    <ArticleTypeFour :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 4" :filteredArticles="filteredList" :borderStyle="borderStyle" />
-    <ArticleTypeFive :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 5" :filteredArticles="filteredList" :borderStyle="borderStyle" />
-    <ArticleTypeSix :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 6" :filteredArticles="filteredList" :borderStyle="borderStyle" />
-    <ArticleTypeSeven :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 7" :filteredArticles="filteredList" :borderStyle="borderStyle" />
+    <ArticleTypeOne :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 1" :filteredArticles="filteredList" :borderStyle="borderStyle" :articlesPagination="articlesPagination" :handlePageChange="handlePageChange" />
+    <ArticleTypeTwo :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 2" :filteredArticles="filteredList" :borderStyle="borderStyle" :articlesPagination="articlesPagination" :handlePageChange="handlePageChange" />
+    <ArticleTypeThree :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 3" :filteredArticles="filteredList" :borderStyle="borderStyle" :articlesPagination="articlesPagination" :handlePageChange="handlePageChange" />
+    <ArticleTypeFour :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 4" :filteredArticles="filteredList" :borderStyle="borderStyle" :articlesPagination="articlesPagination" :handlePageChange="handlePageChange" />
+    <ArticleTypeFive :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 5" :filteredArticles="filteredList" :borderStyle="borderStyle" :articlesPagination="articlesPagination" :handlePageChange="handlePageChange" />
+    <ArticleTypeSix :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 6" :filteredArticles="filteredList" :borderStyle="borderStyle" :articlesPagination="articlesPagination" :handlePageChange="handlePageChange" />
+    <ArticleTypeSeven :slug="slug" :evenOdd="evenOdd" v-if="articlesCardType == 7" :filteredArticles="filteredList" :borderStyle="borderStyle" :articlesPagination="articlesPagination" :handlePageChange="handlePageChange" />
     <EmptyFilters v-if="filteredList.length == 0" />
 </template>
 
@@ -32,6 +32,9 @@ export default {
         ArticleTypeSeven,
         EmptyFilters,
     },
+    props: {
+        handlePageChange: Function,
+    },
     setup(){
         const route = useRoute();
         const layoutStore = useCommon();
@@ -55,6 +58,7 @@ export default {
             }
         });
         const articlesList = ref(articlesStore.Articles);
+        const articlesPagination = ref(articlesStore.Pagination);
         const filteredList = ref([]);
         const filterState = ref(computed(() => {
             if (route.query.f) {
@@ -67,6 +71,7 @@ export default {
                 })
             }
         })); // Current filter state
+        // console.log(articlesStore.Pagination);
 
         const initialLoadFilter = () => {
             if (filterState.value === 'all') {
@@ -101,6 +106,7 @@ export default {
             slug,
             filteredList,
             borderStyle,
+            articlesPagination,
         }
     }
 }

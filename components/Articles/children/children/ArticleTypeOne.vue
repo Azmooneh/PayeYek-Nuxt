@@ -1,6 +1,6 @@
 <template>
-    <section>
-        <div class="mb-10 grid grid-cols-1 gap-4 container">
+    <section class="container">
+        <div class="mb-10 grid grid-cols-1 gap-4">
             <NuxtLink v-for="(article, index) in filteredArticles" :key="index" :to="'/l/' + slug + '/a/' + article.slug"
                       :class="'flex flex-col sm:flex-row rounded-custom bg-white overflow-hidden ' + borderStyle + (evenOdd == 1 ? ' evenOdd_cards ' : ' bg-white ')">
                 <!-- image -->
@@ -20,7 +20,7 @@
             </NuxtLink>
         </div>
 
-        <Pagination :landSlug="slug" :productPagination="productPagination" @page-change="handlePageChange" />
+        <Pagination :landSlug="slug" :productPagination="articlesPagination" @page-change="handlePageChange" />
     </section>
 </template>
 
@@ -36,6 +36,8 @@ export default {
         borderStyle: String,
         evenOdd: [String, Number],
         slug: String,
+        articlesPagination: Object,
+        handlePageChange: Function,
     },
     setup(){
         const layoutStore = useCommon();

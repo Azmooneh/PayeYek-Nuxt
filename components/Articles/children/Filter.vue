@@ -3,23 +3,29 @@
         class="flex items-center flex-wrap gap-x-2 gap-y-4 list-none text-base font-medium *:rounded-custom *:flex_center *:h-8 *:px-3 *:cursor-pointer *:border *:border-stone-700 *:text-stone-700">
         <li :class="filterState === 'all' ? '!border-normal !text-normal' : ''"
             @click="changeFilter('all')"> همه موارد </li>
-        <li :class="filterState === 'news' ? '!border-normal !text-normal' : ''"
-            @click="changeFilter('news')"> اخبار </li>
-        <li :class="filterState === 'sell' ? '!border-normal !text-normal' : ''"
-            @click="changeFilter('sell')"> اطلاعیه </li>
-        <li :class="filterState === 'blog' ? '!border-normal !text-normal' : ''"
-            @click="changeFilter('blog')"> وبلاگ </li>
+<!--        <li :class="filterState === 'news' ? '!border-normal !text-normal' : ''"-->
+<!--            @click="changeFilter('news')"> اخبار </li>-->
+<!--        <li :class="filterState === 'sell' ? '!border-normal !text-normal' : ''"-->
+<!--            @click="changeFilter('sell')"> اطلاعیه </li>-->
+<!--        <li :class="filterState === 'blog' ? '!border-normal !text-normal' : ''"-->
+<!--            @click="changeFilter('blog')"> وبلاگ </li>-->
+        <li v-for="(category, index) in categories" :key="index" :class="filterState === 'blog' ? '!border-normal !text-normal' : ''"
+            @click="changeFilter('blog')"> {{ category.title }} </li>
     </ul>
 </template>
 
 <script>
 import {ref} from "vue";
+import {useArticles} from "~/store/index.js";
 
 export default {
     name: 'Articles Filter',
     setup(){
         const route = useRoute();
         const router = useRouter();
+        const articlesStore = useArticles();
+        const categories = ref(articlesStore.Categories);
+        // console.log(articlesStore.Categories);
         // const categoryFilterState = ref('all');
         const initialArticleFilter = route.query.f || 'all';
         const filterState = ref(initialArticleFilter);
@@ -54,6 +60,7 @@ export default {
             // categoryFilterState,
             changeFilter,
             filterState,
+            categories,
         }
     }
 }

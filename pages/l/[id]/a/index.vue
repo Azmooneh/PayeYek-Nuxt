@@ -18,7 +18,7 @@
 
         <ArticlesFilter />
 
-        <FilterList />
+        <FilterList :handlePageChange="handlePageChange" />
 
     </main>
 </template>
@@ -38,12 +38,15 @@ export default {
     components: {ArticlesSkeleton, FilterList, Breadcrumbs, filterArticlesSkeleton, breadcrumbSkeleton, ArticlesFilter},
     setup(){
         const route = useRoute();
+        const router = useRouter();
         const articlesStore = useArticles();
         const companySlug = ref(route.params.id);
         const loading = ref(true);
         const error = ref(null);
         const watchLoading = ref(true);
         const breadcrumbs = ref([]);
+        const activeFilters = {};
+        const str = ref("");
 
         const updateMetaTags = (seo) =>{
             useHead({
@@ -69,13 +72,15 @@ export default {
             })
         }
 
-        const loadData = async () => {
+        const loadData = async (filter = '') => {
             try {
                 loading.value = true;
-                const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/a`)
+                const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/a${filter}`)
                 if (response.data.value.status == 200) {
-                    console.log(response.data.value)
-                    await articlesStore.saveArticlesData(response.data.value.data.articles.data);
+                    const articles = response.data.value.data.articles.data;
+                    const pagination = response.data.value.data.articles.pagination;
+                    const categories = response.data.value.data.categories;
+                    await articlesStore.saveArticlesData(articles, pagination, categories);
                     breadcrumbs.value = response.data.value.data.breadcrumbs;
                     await updateMetaTags(response.data.value.data.seo);
                 }
@@ -88,6 +93,13 @@ export default {
 
         loadData();
 
+        const handlePageChange = (page) => {
+            activeFilters.page = page;
+            str.value = Object.keys(activeFilters).map(key => `${key}=${encodeURIComponent(activeFilters[key])}`).join("&");
+            loadData(`?${str.value}`);
+            router.push({path: route.path, query: activeFilters});
+        };
+
         watch(() => loading.value, (n, o) => {
             watchLoading.value = n;
         })
@@ -97,6 +109,7 @@ export default {
             watchLoading,
             error,
             breadcrumbs,
+            handlePageChange,
         }
     }
 }

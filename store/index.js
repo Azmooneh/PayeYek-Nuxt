@@ -1,4 +1,6 @@
 import { defineStore } from 'pinia';
+import {Pagination} from "swiper/modules";
+import Categories from "~/components/layout/footer/children/categories/index.vue";
 
 export const useCompanyData = defineStore('Company', {
     state: () => {
@@ -78,11 +80,15 @@ export const useArticles = defineStore('Articles', {
     state: () => {
         return {
             Articles: [],
+            Pagination: {},
+            Categories: [],
         }
     },
     actions: {
-        saveArticlesData(Articles){
+        saveArticlesData(Articles, pagination, categories){
             this.Articles = Articles;
+            this.Pagination = pagination;
+            this.Categories = categories;
         }
     },
 })
@@ -121,27 +127,19 @@ export const useProduct = defineStore('Product', {
     actions: {
         saveAttributes(attributes){
             this.Attributes = attributes;
-            // setTimeout(() => {
-                this.AttributeSkeleton = true;
-            // }, 300);
+            this.AttributeSkeleton = true;
         },
         saveSpecification(specifications){
             this.Specification = specifications;
-            // setTimeout(() => {
             this.SpecificationSkeleton = true;
-            // }, 300);
         },
         saveVideos(videos){
             this.Videos = videos;
-            // setTimeout(() => {
             this.VideosSkeleton = true;
-            // }, 300);
         },
         saveComments(comments){
             this.Comments = comments;
-            // setTimeout(() => {
             this.CommentsSkeleton = true;
-            // }, 300);
         },
         saveCurrent(data){
             this.current = data;
