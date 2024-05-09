@@ -13,7 +13,7 @@
     <main v-else class="min-h-[calc(100vh-340px)] pt-4">
         <Breadcrumbs :breadcrumbs="breadcrumbs" />
 
-        <section class="relative container mb-8 sm:mb-24 lg:mb-28">
+        <section class="relative container mb-8 sm:mb-24 lg:mb-28" v-show="hasTerms">
             <div class="w-full relative pt-[56%] mb-4 sm:mb-6 lg:mb-8 rounded-custom overflow-hidden">
                 <NuxtImg :src="mainImage" :alt="`اطلاعیه فروش ${companyName}`" class="absolute top-0 left-0 w-full h-full" height="100%" width="100%"
                          format="webp"/>
@@ -50,9 +50,9 @@
             </section>
         </section>
 
-<!--        <section v-show="!hasTerms">-->
-<!--            اطلاعیه فروشی وجود ندارد-->
-<!--        </section>-->
+        <section v-show="!hasTerms">
+            اطلاعیه فروشی وجود ندارد
+        </section>
 
         <Contact />
     </main>
@@ -80,6 +80,7 @@ export default {
         const companyName = ref("");
         const tocTitles = ref([]);
         const articleList = ref([]);
+        const hasTerms = ref(false);
 
         watch(() => loading.value, (n, o) => {
             watchLoading.value = n;
@@ -151,8 +152,10 @@ export default {
                     articleList.value = response.data.value.data.sale_terms;
                     breadcrumbs.value = response.data.value.data.breadcrumbs;
                     await updateMetaTags(response.data.value.data.seo);
-                } else if(response.data.value && response.data.value.status == 200 && response.data.value.data.sale_terms.length == 0){{
-                }}
+                    hasTerms.value = true;
+                } else if(response.data.value && response.data.value.status == 200 && response.data.value.data.sale_terms.length == 0){
+                    hasTerms.value = false;
+                }
             } catch (err) {
                 error.value = err.message || 'سرور به مشکل خورده است.'
             } finally {
@@ -211,6 +214,7 @@ export default {
             scrollToElement,
             companyName,
             renderDate,
+            hasTerms,
         }
     },
 }
