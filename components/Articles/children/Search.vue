@@ -43,6 +43,7 @@ export default {
         const landId = ref(layoutStore.footerData.styles.land_id);
         const searchedList = ref([]);
         const noItem = ref(false);
+        const searchTimeout = ref(null);
 
         const loadSearchData = async (word) => {
             try {
@@ -68,12 +69,15 @@ export default {
         }
 
         watch(() => searchValue.value, (n, o) => {
-            if(n !== ""){
-                loadSearchData(n);
-            } else {
-                searchedList.value = [];
-                noItem.value = false;
-            }
+            clearTimeout(searchTimeout.value);
+            searchTimeout.value = setTimeout(() => {
+                if(n === ""){
+                    searchedList.value = [];
+                    noItem.value = false;
+                } else {
+                    loadSearchData(n);
+                }
+            }, 300);
         })
 
 

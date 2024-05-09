@@ -45,8 +45,10 @@ export default {
         const error = ref(null);
         const watchLoading = ref(true);
         const breadcrumbs = ref([]);
-        const activeFilters = {};
+        const activeFilters = ref(route.query);
         const str = ref("");
+
+        // console.log(route.query);
 
         const updateMetaTags = (seo) =>{
             useHead({
@@ -72,10 +74,11 @@ export default {
             })
         }
 
-        const loadData = async (filter = '') => {
+        const loadData = async () => {
             try {
                 loading.value = true;
-                const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/a${filter}`)
+                const filters = Object.keys(activeFilters.value).map(key => `${key}=${encodeURIComponent(activeFilters.value[key])}`).join("&");
+                const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/a?${filters}`)
                 if (response.data.value.status == 200) {
                     const articles = response.data.value.data.articles.data;
                     const pagination = response.data.value.data.articles.pagination;
@@ -83,6 +86,8 @@ export default {
                     await articlesStore.saveArticlesData(articles, pagination, categories);
                     breadcrumbs.value = response.data.value.data.breadcrumbs;
                     await updateMetaTags(response.data.value.data.seo);
+
+                    router.push({query: activeFilters.value});
                 }
             } catch (err) {
                 error.value = err.message || 'سرور به مشکل خورده است.'
@@ -94,10 +99,11 @@ export default {
         loadData();
 
         const handlePageChange = (page) => {
-            activeFilters.page = page;
-            str.value = Object.keys(activeFilters).map(key => `${key}=${encodeURIComponent(activeFilters[key])}`).join("&");
-            loadData(`?${str.value}`);
-            router.push({path: route.path, query: activeFilters});
+            activeFilters.value.page = page;
+            // str.value = Object.keys(activeFilters).map(key => `${key}=${encodeURIComponent(activeFilters[key])}`).join("&");
+            loadData();
+            // console.log(activeFilters.value)
+            // router.push({path: route.path, query: activeFilters.value});
         };
 
         watch(() => loading.value, (n, o) => {
