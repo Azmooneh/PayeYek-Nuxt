@@ -12,14 +12,14 @@
     <main v-else class="min-h-[calc(100vh-340px)] pt-4">
         <Breadcrumbs :breadcrumbs="breadcrumbs" />
 
-        <section class="relative container mb-8 sm:mb-24 lg:mb-28">
+        <section class="relative container mb-8 sm:mb-24 lg:mb-28" v-show="hasTerms">
             <div class="w-full relative pt-[56%] mb-4 sm:mb-6 lg:mb-8 rounded-custom overflow-hidden">
-                <NuxtImg :src="mainImage" alt="title" class="absolute top-0 left-0 w-full h-full" height="100%" width="100%"
+                <NuxtImg :src="mainImage" :alt="`اطلاعیه فروش ${companyName}`" class="absolute top-0 left-0 w-full h-full" height="100%" width="100%"
                          format="webp"/>
                 <div
                     class="absolute cursor-default z-[1] bottom-0 left-0 w-full h-full sm:h-1/3 bg-gradient-to-t from-black to-transparent p-4 sm:px-8 lg:px-12 lg:pb-8 sm:pb-6 text-white gap-2 flex items-end justify-between">
                     <div class="flex justify-end flex-col sm:gap-2 lg:gap-4">
-                        <h1 class="text-base font-medium sm:text-2xl lg:text-3xl"> title </h1>
+                        <h1 class="text-base font-medium sm:text-2xl lg:text-3xl"> اطلاعیه فروش {{ companyName }} </h1>
 <!--                        <p class="text-xs sm:text-sm font-normal"> {{ renderDate(dateCreated) }} </p>-->
                     </div>
                     <i class="cursor-pointer p-1 font-Icomoon icon-ic_baseline-share text-lg sm:text-xl lg:text-2xl text-white" @click="copyShareLink"></i>
@@ -38,9 +38,16 @@
 
                 <!-- details-->
                 <section :class="'custom_article_styles cursor-default custom_table_striped_container ' + (tocTitles.length ? 'lg:col-span-8' : 'lg:col-span-12')">
-                    <article v-for="(article, index) in articleList" :key="index" :id="`section-${index+1}`" class="overflow-hidden" v-html="article.body"></article>
+                    <section v-for="(article, index) in articleList" :key="index" :id="`section-${index+1}`">
+                        <h3> {{article.title}} : {{ renderDate(article.created_at) }} </h3>
+                        <article class="overflow-hidden" v-html="article.body"></article>
+                    </section>
                 </section>
             </section>
+        </section>
+
+        <section v-show="!hasTerms">
+            اطلاعیه فروشی وجود ندارد
         </section>
 
         <Contact />
@@ -66,12 +73,18 @@ export default {
         const watchLoading = ref(true);
         const breadcrumbs = ref([]);
         const mainImage = ref(null);
+        const companyName = ref("");
         const tocTitles = ref([]);
         const articleList = ref([]);
+        const hasTerms = ref(false);
 
         watch(() => loading.value, (n, o) => {
             watchLoading.value = n;
         })
+
+        const renderDate = (string) => {
+            return new Intl.DateTimeFormat('fa-IR', {dateStyle: 'medium'}).format(new Date(string));
+        };
 
         const updateMetaTags = (seo) =>{
             useHead({
@@ -101,14 +114,18 @@ export default {
             try {
                 loading.value = true;
                 const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/sale-terms`);
-                if (response.data.value.status == 200) {
                     console.log(response.data.value)
+                if (response.data.value && response.data.value.status == 200 && response.data.value.data.sale_terms.length > 0) {
+                    hasTerms.value = true;
                     mainImage.value = response.data.value.data.primary_image;
                     tocTitles.value = response.data.value.data.titles;
+                    companyName.value = response.data.value.data.land_name;
                     articleList.value = response.data.value.data.sale_terms;
-                    // breadcrumbs.value = response.data.value.data.breadcrumbs;
-                    // await updateMetaTags(response.data.value.data.seo);
-                }
+                    breadcrumbs.value = response.data.value.data.breadcrumbs;
+                    await updateMetaTags(response.data.value.data.seo);
+                } else if(response.data.value && response.data.value.status == 200 && response.data.value.data.sale_terms.length == 0){{
+                    hasTerms.value = false;
+                }}
             } catch (err) {
                 error.value = err.message || 'سرور به مشکل خورده است.'
             } finally {
@@ -133,7 +150,7 @@ export default {
         const scrollStopped = () => {
             const section = document.querySelector('.custom_article_styles');
             if (section) {
-                const headings = section.querySelectorAll('h3, h2');
+                const headings = section.querySelectorAll('article');
                 const scrollPosition = window.scrollY;
 
                 headings.forEach(function(heading) {
@@ -156,6 +173,13 @@ export default {
             }
         }
 
+        onMounted(() => {
+            // if(hasTerms.value){
+                scrollStopped();
+                document.addEventListener('scroll', scrollStopped);
+            // }
+        })
+
         const scrollToElement = (event) => {
             const targetId = document.getElementById(event).getAttribute("href");
             const targetElement = document.querySelector(targetId);
@@ -176,6 +200,9 @@ export default {
             tocTitles,
             articleList,
             scrollToElement,
+            hasTerms,
+            companyName,
+            renderDate,
         }
     }
 }
