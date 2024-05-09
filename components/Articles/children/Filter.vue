@@ -9,8 +9,8 @@
 <!--            @click="changeFilter('sell')"> اطلاعیه </li>-->
 <!--        <li :class="filterState === 'blog' ? '!border-normal !text-normal' : ''"-->
 <!--            @click="changeFilter('blog')"> وبلاگ </li>-->
-        <li v-for="(category, index) in categories" :key="index" :class="filterState === 'blog' ? '!border-normal !text-normal' : ''"
-            @click="changeFilter('blog')"> {{ category.title }} </li>
+<!--        <li v-for="(category, index) in categories" :key="index" :class="filterState === 'blog' ? '!border-normal !text-normal' : ''"-->
+<!--            @click="changeFilter('blog')"> {{ category.title }} </li>-->
     </ul>
 </template>
 
