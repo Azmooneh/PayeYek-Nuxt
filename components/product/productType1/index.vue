@@ -13,7 +13,7 @@
     </section>
 
 
-    <section class="grid grid-cols-1 gap-8 lg:grid-cols-9 lg:gap-14 container">
+    <section class="grid grid-cols-1 gap-8 lg:grid-cols-9 mb-8 lg:gap-14 container">
         <div class="lg:col-span-6">
             <Information />
 
@@ -25,7 +25,7 @@
 
             <AddComment />
 
-            <Contact />
+
         </div>
 
         <div class="hidden lg:block col-span-3">
@@ -35,6 +35,7 @@
         </div>
     </section>
 
+    <Contact />
 </template>
 
 <script>

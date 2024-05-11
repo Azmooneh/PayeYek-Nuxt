@@ -9,7 +9,7 @@
         <p class="text-base font-medium text-center caption_color"> ارور: {{ error }} </p>
     </section>
     <!-- Render your component content here -->
-    <main v-else class="min-h-[calc(100vh-340px)] pt-4 pb-10">
+    <main v-else class="min-h-[calc(100vh-340px)] pt-4">
         <Breadcrumbs :breadcrumbs="breadcrumbs"/>
 
         <Product />
