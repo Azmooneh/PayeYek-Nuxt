@@ -2,6 +2,7 @@
     <section class="min-h-[calc(100vh-340px)] pt-4" v-if="watchLoading">
         <breadcrumbSkeleton/>
 
+        <ProductSkeleton />
     </section>
     <!-- if we have error -->
     <section v-else-if="error" class="flex-col w-full h-screen gap-4 flex_center">
@@ -23,6 +24,7 @@ import Breadcrumbs from "~/components/common/breadcrumbs/index.vue";
 import {ref} from "vue";
 import Product from "~/components/product/index.vue";
 import { useProduct } from "~/store/index.js";
+import ProductSkeleton from "~/components/product/productSkeleton/index.vue";
 
 export default {
   name: 'Product Single',
@@ -30,6 +32,7 @@ export default {
         Breadcrumbs,
         breadcrumbSkeleton,
         Product,
+        ProductSkeleton,
     },
   setup() {
       const route = useRoute();

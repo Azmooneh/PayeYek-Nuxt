@@ -347,7 +347,7 @@
     }
 
     .bg_skeleton_smooth{
-        @apply bg-[#eee] animate-pulse;
+        @apply bg-[#f5f5f5] animate-pulse;
     }
 
     .evenOdd_cards{
