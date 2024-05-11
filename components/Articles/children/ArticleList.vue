@@ -59,46 +59,53 @@ export default {
         });
         const articlesList = ref(articlesStore.Articles);
         const articlesPagination = ref(articlesStore.Pagination);
-        const filteredList = ref([]);
+        const filteredList = ref(articlesList.value);
         const filterState = ref(computed(() => {
             if (route.query.f) {
                 return route.query.f;
             } else if (!!!route.query.f){
-                return 'all';
+                return '';
             } else {
                 watch(() => route.query.f, (n, o) => {
                     return n;
                 })
             }
         })); // Current filter state
+        watch(() => articlesStore.Articles, (n, o) => {
+            filteredList.value = n;
+        })
+        watch(() => articlesStore.Pagination, (n, o) => {
+            console.log(n)
+            articlesPagination.value = n;
+        })
         // console.log(articlesStore.Pagination);
 
-        const initialLoadFilter = () => {
-            if (filterState.value === 'all') {
-                filteredList.value = articlesList.value;
-            } else {
-                articlesList.value.filter(article => {
-                    if (article.type === filterState.value) {
-                        filteredList.value.push(article);
-                    }
-                })
-            }
-        }
+        // const initialLoadFilter = () => {
+        //     if (filterState.value === '') {
+        //         filteredList.value = articlesList.value;
+        //     } else {
+        //         articlesList.value.filter(article => {
+        //             if (article.type === filterState.value) {
+        //                 filteredList.value.push(article);
+        //             }
+        //         })
+        //     }
+        // }
 
-        initialLoadFilter();
+        // initialLoadFilter();
 
-        watch(() => route.query.f, (n, o) => {
-            if (n) {
-                filteredList.value = [];
-                if (filterState.value === 'all') {
-                    filteredList.value = articlesList.value;
-                } else {
-                    initialLoadFilter();
-                }
-            } else {
-                // Handle case when no category is selected
-            }
-        })
+        // watch(() => route.query.f, (n, o) => {
+        //     if (n) {
+        //         filteredList.value = [];
+        //         if (filterState.value === '') {
+        //             filteredList.value = articlesList.value;
+        //         } else {
+        //             initialLoadFilter();
+        //         }
+        //     } else {
+        //         // Handle case when no category is selected
+        //     }
+        // })
 
         return {
             evenOdd,

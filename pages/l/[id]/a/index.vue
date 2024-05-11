@@ -45,7 +45,7 @@ export default {
         const error = ref(null);
         const watchLoading = ref(true);
         const breadcrumbs = ref([]);
-        const activeFilters = ref(route.query);
+        const activeFilters = ref({...route.query});
         const str = ref("");
 
         // console.log(route.query);
@@ -76,18 +76,17 @@ export default {
 
         const loadData = async () => {
             try {
+
                 loading.value = true;
                 const filters = Object.keys(activeFilters.value).map(key => `${key}=${encodeURIComponent(activeFilters.value[key])}`).join("&");
                 const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/a?${filters}`)
                 if (response.data.value.status == 200) {
                     const articles = response.data.value.data.articles.data;
                     const pagination = response.data.value.data.articles.pagination;
-                    const categories = response.data.value.data.categories;
+                    const categories = response.data.value.data.article_types;
                     await articlesStore.saveArticlesData(articles, pagination, categories);
                     breadcrumbs.value = response.data.value.data.breadcrumbs;
                     await updateMetaTags(response.data.value.data.seo);
-
-                    router.push({query: activeFilters.value});
                 }
             } catch (err) {
                 error.value = err.message || 'سرور به مشکل خورده است.'
@@ -98,12 +97,11 @@ export default {
 
         loadData();
 
-        const handlePageChange = (page) => {
+        const handlePageChange = async (page) => {
+            activeFilters.value = {...route.query};
             activeFilters.value.page = page;
-            // str.value = Object.keys(activeFilters).map(key => `${key}=${encodeURIComponent(activeFilters[key])}`).join("&");
-            loadData();
-            // console.log(activeFilters.value)
-            // router.push({path: route.path, query: activeFilters.value});
+            await loadData();
+            router.push({query: activeFilters.value});
         };
 
         watch(() => loading.value, (n, o) => {
