@@ -145,6 +145,18 @@ export const useProduct = defineStore('Product', {
         },
         saveCurrent(data){
             this.current = data;
+        },
+        reset(){
+            this.Attributes = null;
+            this.AttributeSkeleton = false;
+            this.current = null;
+            this.specification = null;
+            this.SpecificationSkeleton = false;
+            this.VideosSkeleton = false;
+            this.Videos = null;
+            this.Comments = null;
+            this.CommentsPagination = null;
+            this.CommentsSkeleton = false;
         }
     },
 })

@@ -80,17 +80,33 @@ export default {
             AttSkeleton.value = n;
         })
 
+        if(productStore.AttributeSkeleton){
+            AttSkeleton.value = true;
+        }
+
         watch(() => productStore.SpecificationSkeleton, (n, o) => {
             SpecSkeleton.value = n;
         })
+
+        if(productStore.SpecificationSkeleton){
+            SpecSkeleton.value = true;
+        }
 
         watch(() => productStore.VideosSkeleton, (n, o) => {
             VideosSkeleton.value = n;
         })
 
+        if(productStore.VideosSkeleton){
+            VideosSkeleton.value = true;
+        }
+
         watch(() => productStore.CommentsSkeleton, (n, o) => {
             CommentsSkeleton.value = n;
         })
+
+        if(productStore.CommentsSkeleton){
+            CommentsSkeleton.value = true;
+        }
 
         watch(() => productStore.Specification, (n, o) => {
             if(Object.keys(n).length === 0){

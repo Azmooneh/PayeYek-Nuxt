@@ -72,6 +72,7 @@ export default {
       const loadData = async () => {
           try {
               loading.value = true;
+              // productStore.reset();
               const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/p/${productSlug.value}`);
               console.log(response.data.value);
               if (response.data.value.status == 200) {
@@ -87,6 +88,11 @@ export default {
       }
 
       loadData();
+
+      // onBeforeRouteLeave((to, from) => {
+      //     productStore.reset();
+          // console.log(to, from);
+      // })
 
       return {
           breadcrumbs,
