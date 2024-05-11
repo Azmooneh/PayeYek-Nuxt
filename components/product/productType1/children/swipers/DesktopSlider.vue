@@ -22,7 +22,15 @@
     </section>
 
     <!-- modal layer -->
-    <div class="hidden lg:block bg-black/60 fixed inset-0 z-[4]" v-show="openModal" @click="closeModal"></div>
+    <div class="hidden lg:block bg-black/60 fixed inset-0 z-[4]" v-show="openModal" @click="closeModal">
+        <!-- closeModal -->
+        <button type="button" class="cursor-pointer p-1 fixed top-4 left-5 z-[5]">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12L6 6M12 12L18 18M12 12L18 6M12 12L6 18" stroke="#fff" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+    </div>
 
     <section
         class="hidden lg:flex_center w-2/3 max-w-[640px] lg:max-w-[796px] xl:max-w-[900px] 2xl:max-w-[1024px] mx-auto translate-x-1/2 -translate-y-1/2 fixed top-1/2 right-1/2 z-[5]"
@@ -35,14 +43,8 @@
                 </div>
             </SwiperSlide>
         </Swiper>
+
     </section>
-    <!-- closeModal -->
-    <button type="button" class="cursor-pointer p-1 fixed top-4 left-5 z-[5]" v-show="openModal" @click="closeModal">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 12L6 6M12 12L18 18M12 12L18 6M12 12L6 18" stroke="#fff" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-    </button>
 </template>
 
 <script>
@@ -72,7 +74,8 @@ export default {
         const desktopSliderSwiper = ref(null);
 
         const closeModal = () => {
-            openModal.value = false
+            openModal.value = false;
+            document.body.classList.remove('h-full', 'overflow-hidden')
         }
 
         onMounted(() => {
@@ -83,8 +86,29 @@ export default {
         const showSliderWithSliderTo = (id) => {
             desktopSliderSwiper.value.slideTo(id);
             openModal.value = true;
+            document.body.classList.add('h-full', 'overflow-hidden')
         }
 
+        const handleArrows = (event) => {
+            if(openModal.value){
+                switch (event.keyCode) {
+                    case (27):
+                        openModal.value = false;
+                        document.body.classList.remove('h-full', 'overflow-hidden')
+                        break;
+                    case (37):
+                        desktopSliderSwiper.value.slideNext();
+                        break;
+                    case (39):
+                        desktopSliderSwiper.value.slidePrev();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        window.addEventListener("keydown", handleArrows);
 
         return {
             settings,
