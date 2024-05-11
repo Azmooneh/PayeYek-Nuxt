@@ -1,5 +1,5 @@
 <template>
-    <section class="flex_center gap-2.5 mb-12">
+    <section :class="'flex_center gap-2.5 mb-12 ' + classNames">
         <!-- prev page -->
         <button class="size-7 flex_center cursor-pointer" v-if="productPagination.currentPage > 1" @click="changePage(productPagination.currentPage - 1)">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 stroke-stone-700">
@@ -33,6 +33,14 @@ export default {
         },
         landSlug: String,
         handlePageChange: Function,
+        classNames: {
+            type: String,
+            default: "",
+        },
+        scrollToTop: {
+            type: Boolean,
+            default: true,
+        }
     },
     emits: ['page-change'],
     setup(props, { emit }){
@@ -48,7 +56,9 @@ export default {
 
         const changePage = (page) => {
             emit('page-change', page);
-            scrollToTopSmoothly();
+            if(props.scrollToTop){
+                scrollToTopSmoothly();
+            }
         };
 
         return {

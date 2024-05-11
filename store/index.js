@@ -122,6 +122,7 @@ export const useProduct = defineStore('Product', {
             Videos: null,
             CommentsSkeleton: false,
             Comments: null,
+            CommentsPagination: null,
         }
     },
     actions: {
@@ -137,8 +138,9 @@ export const useProduct = defineStore('Product', {
             this.Videos = videos;
             this.VideosSkeleton = true;
         },
-        saveComments(comments){
+        saveComments(comments, pagination){
             this.Comments = comments;
+            this.CommentsPagination = pagination;
             this.CommentsSkeleton = true;
         },
         saveCurrent(data){

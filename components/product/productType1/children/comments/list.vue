@@ -5,50 +5,84 @@
         </h3>
 
         <ul class="flex flex-col gap-6 text-stone-700">
-            <li>
+            <li v-for="(comment, index) in commentList" :key="index">
                 <!-- user name-->
-                <p class="block text-base font-medium mb-1.5 mr-2"> مهران محمودی </p>
+                <p class="block text-base font-medium mb-1.5 mr-2"> {{ comment.name }} </p>
 
                 <!-- user comment-->
                 <div :class="'rounded-custom p-4 ' + borderStype">
                     <div class="font-normal leading-6 lg:leading-7 text-justify text-sm lg:text-base">
-                        نظر اول سایت
+                        {{ comment.comment }}
                     </div>
                 </div>
             </li>
         </ul>
+
+        <Pagination classNames="mt-8" :scrollToTop="false" :landSlug="companySlug" :productPagination="pagination" @page-change="handlePageChange" />
     </section>
 </template>
 
 <script>
-import { useCommon } from "~/store/index.js";
+import { useCommon, useProduct } from "~/store/index.js";
+import Pagination from "~/components/common/pagination/index.vue";
+import {ref} from "vue";
 
 export default {
     name: "Comments List Type 1",
+    components: {Pagination},
     setup(){
+        const route = useRoute();
         const layoutStore = useCommon();
+        const productStore = useProduct();
+        const companySlug = ref(layoutStore.footerData.slug);
         const borderStype = ref("");
+        const commentList = ref(productStore.Comments);
+        const pagination = ref(productStore.CommentsPagination);
+        const landId = ref(layoutStore.footerData.styles.land_id);
+        const productSlug = ref(route.params.product);
+        const commentsFilter = {
+            landId: landId.value,
+            productSlug: productSlug.value,
+            perPage: 3,
+            page: 1,
+        }
 
         switch (layoutStore.footerData.styles.border_type) {
-            case (1):
-                borderStype.value = "border border-stone-400";
-                break;
             case (2):
                 borderStype.value = "drop-shadow-base";
                 break;
             default:
-                borderStype.value = "";
+                borderStype.value = "border border-stone-400";
         }
+
+        const handlePageChange = async (page) => {
+            commentsFilter.page = page;
+            const str = Object.keys(commentsFilter).map(key => `${key}=${encodeURIComponent(commentsFilter[key])}`).join("&");
+            const response = await $fetch(`${useRuntimeConfig().public.apiBase}/l/comment/get-comment?${str}`);
+            if(response != null){
+                if(response.status == 200) {
+                    const commentList = response.data;
+                    const pagination = response.pagination;
+                    productStore.saveComments(commentList, pagination);
+                }
+            }
+        }
+
+        watch(() => productStore.Comments, (newValue) => {
+            commentList.value = newValue;
+        })
+
+        watch(() => productStore.CommentsPagination, (newValue) => {
+            pagination.value = newValue;
+        })
 
         return {
             borderStype,
+            commentList,
+            pagination,
+            companySlug,
+            handlePageChange,
         }
-        // $borderStyle = match($land->styles->border_type) {
-        //     0  => 'bg-stone-700/5',
-        //         1  => 'border border-stone-400',
-        //         2  => 'drop-shadow-base',
-        // default => ''
-        // };
     }
 }
 </script>

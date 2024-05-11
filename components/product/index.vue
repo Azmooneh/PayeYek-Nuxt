@@ -24,6 +24,7 @@ export default {
             landId: landId.value,
             productSlug: productSlug.value,
             perPage: 3,
+            page: 1,
         }
 
         str.value = Object.keys(commentsFilter).map(key => `${key}=${encodeURIComponent(commentsFilter[key])}`).join("&");
@@ -61,12 +62,13 @@ export default {
                 }
             }
 
-            // if(comments && comments.data.value != null){
-            //     if(comments.data.value.status == 200) {
-            //         productStore.saveComments(videos.data.value.data);
-            //     }
-            // }
-            console.log(comments.data.value);
+            if(comments && comments.data.value != null){
+                if(comments.data.value.status == 200) {
+                    const commentList = comments.data.value.data;
+                    const pagination = comments.data.value.pagination;
+                    productStore.saveComments(commentList, pagination);
+                }
+            }
         });
 
         return {

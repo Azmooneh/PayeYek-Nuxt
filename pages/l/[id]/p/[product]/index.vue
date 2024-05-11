@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import {useCommon} from "~/store/index.js";
 import breadcrumbSkeleton from "~/components/common/breadcrumbs/breadcrumbSkeleton.vue";
 import Breadcrumbs from "~/components/common/breadcrumbs/index.vue";
 import {ref} from "vue";
@@ -34,7 +33,6 @@ export default {
     },
   setup() {
       const route = useRoute();
-      // const layoutStore = useCommon();
       const productStore = useProduct();
       const loading = ref(true);
       const error = ref(null);
@@ -42,7 +40,6 @@ export default {
       const companySlug = ref(route.params.id);
       const productSlug = ref(route.params.product);
       const breadcrumbs = ref([]);
-      // console.log(companySlug.value);
 
       const updateMetaTags = (seo) => {
           useHead({
@@ -78,7 +75,6 @@ export default {
               const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/p/${productSlug.value}`);
               console.log(response.data.value);
               if (response.data.value.status == 200) {
-                  // console.log(response.data.value)
                   productStore.saveCurrent(response.data.value.data);
                   updateMetaTags(response.data.value.data.seo);
                   breadcrumbs.value = response.data.value.data.breadcrumbs;

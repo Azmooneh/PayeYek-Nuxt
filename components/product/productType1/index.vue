@@ -21,7 +21,7 @@
 
             <Videos v-if="VideosSkeleton && haveVideo" />
 
-            <Comments v-if="!CommentsSkeleton" />
+            <Comments v-if="CommentsSkeleton && haveComment" />
 
             <AddComment />
 
@@ -74,6 +74,7 @@ export default {
         const CommentsSkeleton = ref(false);
         const haveSpecification = ref(false);
         const haveVideo = ref(false);
+        const haveComment = ref(false);
 
         watch(() => productStore.AttributeSkeleton, (n, o) => {
             AttSkeleton.value = n;
@@ -107,6 +108,14 @@ export default {
             }
         })
 
+        watch(() => productStore.Comments, (n, o) => {
+            if(Object.keys(n).length === 0){
+                haveComment.value = false;
+            } else {
+                haveComment.value = true;
+            }
+        })
+
         // console.log(Object.keys(productStore.Specification).length === 0);
 
         return {
@@ -117,6 +126,7 @@ export default {
             CommentsSkeleton,
             haveSpecification,
             haveVideo,
+            haveComment,
         }
     }
 }
