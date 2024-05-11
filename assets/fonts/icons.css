@@ -46,6 +46,18 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-ic_baseline-share:before {
+    content: "\e911";
+}
+.icon-chevron-Down1:before {
+    content: "\e912";
+}
+.icon-chevron-up1:before {
+    content: "\e913";
+}
+.icon-mage_phone:before {
+    content: "\e914";
+}
 .icon-chevron-Down:before {
     content: "\e90d";
 }
@@ -85,7 +97,7 @@
 .icon-i-mark:before {
     content: "\e907";
 }
-.icon-search:before {
+.icon-search-01:before {
     content: "\e908";
 }
 .icon-share:before {

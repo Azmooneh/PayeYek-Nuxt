@@ -2,6 +2,7 @@
     <section class="min-h-[calc(100vh-340px)] pt-4" v-if="watchLoading">
         <breadcrumbSkeleton />
 
+        <ArticleSkeleton />
     </section>
     <!-- if we have error -->
     <section v-else-if="error" class="flex-col w-full h-screen gap-4 flex_center">
@@ -23,10 +24,11 @@ import Breadcrumbs from "~/components/common/breadcrumbs/index.vue";
 import Article from "~/components/Article/index.vue";
 import {ref} from "vue";
 import { useArticle } from '~/store/index.js';
+import ArticleSkeleton from "~/components/Article/articleSkeleton.vue";
 
 export default {
     name: 'Article Single Page',
-    components: {Breadcrumbs, filterArticlesSkeleton, breadcrumbSkeleton, Article   },
+    components: {Breadcrumbs, filterArticlesSkeleton, breadcrumbSkeleton, Article, ArticleSkeleton},
     setup(){
         const route = useRoute();
         const articleStore = useArticle();
