@@ -2,6 +2,8 @@
     <section class="min-h-[calc(100vh-340px)] pt-4" v-if="watchLoading">
         <breadcrumbSkeleton/>
 
+        <CalculatorSkeleton />
+
     </section>
     <!-- if we have error -->
     <section v-else-if="error" class="flex-col w-full h-screen gap-4 flex_center">
@@ -363,6 +365,7 @@ import FormIconOne from "~/components/Facilities/Facilities/Icons/FormIconOne.vu
 import FormIconTwo from "~/components/Facilities/Facilities/Icons/FormIconTwo.vue";
 import breadcrumbSkeleton from "~/components/common/breadcrumbs/breadcrumbSkeleton.vue";
 import {toast} from 'vue3-toastify';
+import CalculatorSkeleton from "~/components/Facilities/Facilities/calculatorSkeleton.vue";
 
 export default {
     name: 'Facilities Page',
@@ -372,6 +375,7 @@ export default {
         Facilities,
         FormIconOne,
         FormIconTwo,
+        CalculatorSkeleton,
     },
     setup() {
         const route = useRoute();
