@@ -9,7 +9,7 @@
                     محصولات </div>
             </div>
         </NuxtLink>
-        <NuxtLink :to="`/l/${slug}/a?f=sell`"
+        <NuxtLink :to="`/l/${slug}/termsofsale`"
             class="relative w-full pt-[38%] md:pt-[128%] hover:drop-shadow-[0_4px_4px_rgba(0,0,0,0.2)] lg:hover:drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] hover:bottom-0.5 lg:hover:bottom-1.5 transition-all bottom-0 lg:duration-300 duration-200">
             <NuxtImg src="https://paye1.com/storage/media/land/files/K8g18Xr5FJJ2e3Ez7Xx92sscY4oYrRtT2x3bFdeJ.webp" alt="طرح های ویژه" class="absolute top-0 right-0 w-full h-full rounded-custom" format="webp"/>
             <div class="absolute top-0 left-0 w-full h-full flex items-center">
@@ -32,15 +32,13 @@
 
 <script>
 import { NuxtLink, NuxtImg } from "#components";
-import { useCommon } from '~/store/index';
 
 export default {
-    name: '',
-    setup() {
-        const layoutStore = useCommon();
-
-        return {
-            slug: layoutStore.footerData.slug
+    name: 'Panel Type 8',
+    props: {
+        slug: {
+            type: String,
+            default: "",
         }
     }
 }

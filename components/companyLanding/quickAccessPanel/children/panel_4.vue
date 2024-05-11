@@ -10,15 +10,19 @@
 
 <script>
 import { NuxtLink } from "#components";
-import { useCompanyData, useCommon } from '~/store/index';
+import { useCompanyData } from '~/store/index';
 
 export default {
-    name: '',
+    name: 'Panel Type 4',
+    props: {
+        slug: {
+            type: String,
+            default: "",
+        }
+    },
     setup() {
-        const layoutStore = useCommon();
         const companyStore = useCompanyData();
         return {
-            slug: layoutStore.footerData.slug,
             categories: companyStore.categories,
         }
     }

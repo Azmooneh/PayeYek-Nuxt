@@ -11,25 +11,23 @@
                 alt="آخرین اخبار" class="w-24 object-cover h-16" width="auto" height="auto" />
             <p> آخرین اخبار </p>
         </NuxtLink>
-        <NuxtLink :to="`/l/${slug}/a?f=sell`" class="w-full">
+        <NuxtLink :to="`/l/${slug}/termsofsale`" class="w-full">
             <img src="https://paye1.com/storage/media/land/files/AzFbYA9pwsk1JXCuNit48gIxfdJL9GNEURuTX3H9.png"
-                alt="شرایط فروش" class="w-24 object-cover h-16" width="auto" height="auto" />
-            <p> شرایط فروش </p>
+                alt="اطلاعیه فروش" class="w-24 object-cover h-16" width="auto" height="auto" />
+            <p> اطلاعیه فروش </p>
         </NuxtLink>
     </section>
 </template>
 
 <script>
 import { NuxtLink } from "#components";
-import { useCommon } from '~/store/index';
 
 export default {
-    name: '',
-    setup() {
-        const layoutStore = useCommon();
-
-        return {
-            slug: layoutStore.footerData.slug
+    name: 'Panel Type 2',
+    props: {
+        slug: {
+            type: String,
+            default: "",
         }
     }
 }

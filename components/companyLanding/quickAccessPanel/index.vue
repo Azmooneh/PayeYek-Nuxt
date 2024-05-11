@@ -1,12 +1,12 @@
 <template>
-    <AccessPanelTypeOne v-if="panelType == 1" />
-    <AccessPanelTypeTwo v-if="panelType == 2" />
-    <AccessPanelTypeThree v-if="panelType == 3" />
-    <AccessPanelTypeFour v-if="panelType == 4" />
-    <AccessPanelTypeFive v-if="panelType == 5" />
-    <AccessPanelTypeSix v-if="panelType == 6" />
-    <AccessPanelTypeSeven v-if="panelType == 7" />
-    <AccessPanelTypeEight v-if="panelType == 8" />
+    <AccessPanelTypeOne :slug="slug" v-if="panelType == 1" />
+    <AccessPanelTypeTwo :slug="slug" v-if="panelType == 2" />
+    <AccessPanelTypeThree :slug="slug" v-if="panelType == 3" />
+    <AccessPanelTypeFour :slug="slug" v-if="panelType == 4" />
+    <AccessPanelTypeFive :slug="slug" v-if="panelType == 5" />
+    <AccessPanelTypeSix :slug="slug" v-if="panelType == 6" />
+    <AccessPanelTypeSeven :slug="slug" v-if="panelType == 7" />
+    <AccessPanelTypeEight :slug="slug" v-if="panelType == 8" />
 </template>
 
 <script>
@@ -34,9 +34,12 @@ export default {
     },
     setup(){
         const layoutStore = useCommon();
+        const slug = ref(layoutStore.footerData.slug);
+        const panelType = ref(layoutStore.footerData.styles.quick_access_panel_type);
 
         return {
-            panelType: 1,
+            panelType,
+            slug,
         }
     }
 }

@@ -11,9 +11,9 @@
         <section
             class="rounded-custom relative w-full aspect-video bg-no-repeat bg-cover bg-center bg-[url('https://paye1.com/storage/media/land/files/V8Bmbyq7hQhrvNT2WGLQgwayvtVlLC9Hc5MXqNvo.png')]">
             <div class="size-full flex_center rounded-custom bg-black/75">
-                <NuxtLink :to="`/l/${slug}/a?f=sell`"
+                <NuxtLink :to="`/l/${slug}/termsofsale`"
                     class="h-11 w-52 flex_center border-x-2 border-[#FFD598] rounded-custom text-lg font-medium text-[#FFD598] bg-transparent hover:border-white hover:text-white">
-                شرایط فروش </NuxtLink>
+                اطلاعیه فروش </NuxtLink>
             </div>
         </section>
         <section
@@ -29,15 +29,13 @@
 
 <script>
 import { NuxtLink } from "#components";
-import { useCommon } from '~/store/index';
 
 export default {
-    name: '',
-    setup() {
-        const layoutStore = useCommon();
-
-        return {
-            slug: layoutStore.footerData.slug
+    name: 'Panel Type 3',
+    props: {
+        slug: {
+            type: String,
+            default: "",
         }
     }
 }

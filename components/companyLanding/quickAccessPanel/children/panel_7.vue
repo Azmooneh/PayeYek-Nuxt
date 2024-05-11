@@ -5,7 +5,7 @@
             <p> محصولات </p>
             <Curve />
         </NuxtLink>
-        <NuxtLink :to="`/l/${slug}/a?f=sell`"
+        <NuxtLink :to="`/l/${slug}/termsofsale`"
             class="relative overflow-hidden">
             <p> طرح های ویژه </p>
             <Curve />
@@ -20,19 +20,17 @@
 
 <script>
 import { NuxtLink } from "#components";
-import { useCommon } from '~/store/index';
 import Curve from "./Icons/curve.vue";
 
 export default {
-    name: '',
+    name: 'Panel Type 7',
     components: {
         Curve,
     },
-    setup() {
-        const layoutStore = useCommon();
-
-        return {
-            slug: layoutStore.footerData.slug
+    props: {
+        slug: {
+            type: String,
+            default: "",
         }
     }
 }
