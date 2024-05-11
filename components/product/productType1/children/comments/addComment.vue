@@ -40,8 +40,7 @@ export default {
         const email = ref("");
         const comment = ref("");
         const landId = ref(layoutStore.footerData.styles.land_id);
-        // console.log(layoutStore.footerData.styles.land_id);
-
+        const productId = ref(productStore.current.id);
         switch (layoutStore.footerData.styles.border_type) {
             case (2):
                 borderStyle.value = "drop-shadow-base border-0";
@@ -50,10 +49,17 @@ export default {
                 borderStyle.value = "border border-stone-400 focus:border-stone-400";
         }
 
+        const resetCommentValues = () => {
+            name.value = "";
+            phone.value = "";
+            email.value = "";
+            comment.value = "";
+        }
+
         const sendComment = () => {
             const body = {
                 land_id: landId.value,
-                product_id: 1,
+                product_id: productId.value,
                 comment: comment.value,
                 name: name.value,
                 phone: phone.value,
@@ -71,8 +77,17 @@ export default {
                     limit: 2,
                 });
             } else {
-                $fetch(``).then(response => {
-                    console.log(response);
+                $fetch(`${useRuntimeConfig().public.apiBase}/l/comment/submit-comment`, {
+                    method: "POST",
+                    body: body,
+                }).then(response => {
+                    if (response.status == 200) {
+                        toast.success("نظر شما با موفقیت ثبت شد.", {
+                            autoClose: 3000,
+                            limit: 2,
+                        });
+                        resetCommentValues();
+                    }
                 }).catch(error => console.log(error));
             }
         }

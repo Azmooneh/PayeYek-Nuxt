@@ -18,6 +18,15 @@ export default {
         const productStore = useProduct();
         const productType = ref(layoutStore.footerData.styles.product_list_type);
         const productSlug = ref(route.params.product);
+        const landId = ref(layoutStore.footerData.styles.land_id);
+        const str = ref("");
+        const commentsFilter = {
+            landId: landId.value,
+            productSlug: productSlug.value,
+            perPage: 3,
+        }
+
+        str.value = Object.keys(commentsFilter).map(key => `${key}=${encodeURIComponent(commentsFilter[key])}`).join("&");
 
         const { data } = useFetch(() =>
             `${useRuntimeConfig().public.apiBase}/l/p/${productSlug.value}/information`
@@ -29,6 +38,10 @@ export default {
 
         const videos = useFetch(() =>
             `${useRuntimeConfig().public.apiBase}/l/p/${productSlug.value}/videos`
+        );
+
+        const comments = useFetch(() =>
+            `${useRuntimeConfig().public.apiBase}/l/comment/get-comment?${str.value}`
         );
 
         watchEffect(() => {
@@ -47,6 +60,13 @@ export default {
                     productStore.saveVideos(videos.data.value.data.videos);
                 }
             }
+
+            // if(comments && comments.data.value != null){
+            //     if(comments.data.value.status == 200) {
+            //         productStore.saveComments(videos.data.value.data);
+            //     }
+            // }
+            console.log(comments.data.value);
         });
 
         return {
