@@ -87,9 +87,10 @@ export default {
                 loading.value = true;
                 const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/p${filter}`)
                 if (response.data.value.status == 200) {
-                    await categoriesStore.saveCategoriesData(response.data.value.data.categories, response.data.value.data.products);
-                    await updateMetaTags(response.data.value.data.seo);
-                    breadcrumbs.value = response.data.value.data.breadcrumbs;
+                    console.log(response.data.value)
+                    await categoriesStore.saveCategoriesData(response.data.value.data.products);
+                    await updateMetaTags(response.data.value.seo);
+                    breadcrumbs.value = response.data.value.breadcrumbs;
                 }
             } catch (err) {
                 error.value = err.message || 'سرور به مشکل خورده است.'

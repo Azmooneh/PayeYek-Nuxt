@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <Pagination :landSlug="landSlug" :productPagination="productPagination" @page-change="handlePageChange" />
+        <Pagination :landSlug="landSlug" :productPagination="productPagination" @page-change="handlePageChange" v-if="productList.length > 12" />
     </section>
 </template>
 

@@ -64,13 +64,11 @@ export const useCommon = defineStore('Common', {
 export const useCategory = defineStore('Category', {
     state: () => {
         return {
-            categories: [],
             products: [],
         }
     },
     actions: {
-        saveCategoriesData(categories, products){
-            this.categories = categories;
+        saveCategoriesData(products){
             this.products = products;
         }
     },
