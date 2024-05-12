@@ -31,8 +31,8 @@
                 </form>
 
                 <ul class="flex items-center flex-wrap gap-x-2 gap-y-4 list-none text-base font-medium *:rounded-custom *:flex_center *:h-8 *:px-3 *:cursor-pointer *:border *:border-stone-700 *:text-stone-700">
-                    <li :class="activeSort === 'asc' ? '!bg-normal !text-white' : ''" @click="activeFilter('sort', 'asc')"> جدید ترین </li>
-                    <li :class="activeSort === 'desc' ? '!bg-normal !text-white' : ''" @click="activeFilter('sort', 'desc')"> قدیمی ترین </li>
+                    <li :class="activeSort === 'asc' ? '!bg-normal !text-white !border-0' : ''" @click="activeFilter('sort', 'asc')"> جدید ترین </li>
+                    <li :class="activeSort === 'desc' ? '!bg-normal !text-white !border-0' : ''" @click="activeFilter('sort', 'desc')"> قدیمی ترین </li>
                 </ul>
             </section>
 
@@ -46,6 +46,8 @@
                     </div>
                 </li>
             </ul>
+
+            <Pagination :landSlug="companySlug" :productPagination="videoPagination" @page-change="handlePageChange" classNames="mt-8" v-if="videoList.length > 10" />
 
             <!-- video modal -->
             <section class="fixed flex_center inset-0 z-[4] bg-black/60" v-if="videoModal !== ''" @click="hideVideoByThumbnail">
@@ -64,10 +66,11 @@ import Breadcrumbs from "~/components/common/breadcrumbs/index.vue";
 import {ref, onMounted, onUnmounted} from "vue";
 import PlayIcon from "~/components/kit/Icons/PlayIcon.vue";
 import VideosSkeleton from "~/components/videos/videosSkeleton.vue";
+import Pagination from "~/components/common/pagination/index.vue";
 
 export default {
     name: 'Videos',
-    components: {PlayIcon, Breadcrumbs, Section, breadcrumbSkeleton, VideosSkeleton},
+    components: {Pagination, PlayIcon, Breadcrumbs, Section, breadcrumbSkeleton, VideosSkeleton},
     setup(){
         const route = useRoute();
         const router = useRouter();
@@ -78,6 +81,7 @@ export default {
         const companySlug = ref(route.params.id);
         const activeFilters = ref(computed(()=> route.query));
         const videoList = ref([]);
+        const videoPagination = ref({});
         const searchFilterState = ref(computed(() => {
             if(route.query.keyword){
                 return route.query.keyword;
@@ -134,9 +138,10 @@ export default {
                 const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/videos?${filters}`);
                 console.log(response.data.value);
                 if (response.data.value && response.data.value.status == 200) {
-                    // breadcrumbs.value = response.data.value.data.breadcrumbs;
-                    // await updateMetaTags(response.data.value.data.seo);
-                    videoList.value = response.data.value.data;
+                    breadcrumbs.value = response.data.value.breadcrumbs;
+                    await updateMetaTags(response.data.value.seo);
+                    videoList.value = response.data.value.data.videos;
+                    videoPagination.value = response.data.value.data.pagination;
                 }
             } catch (err) {
                 error.value = err.message || 'سرور به مشکل خورده است.'
@@ -167,6 +172,13 @@ export default {
             initialSearch.value = n;
         })
 
+        const handlePageChange = (page) => {
+            const obj = {...activeFilters.value};
+            obj.page = page;
+            loadData(obj);
+            router.push({ query: obj });
+        }
+
         return{
             error,
             watchLoading,
@@ -178,6 +190,9 @@ export default {
             hideVideoByThumbnail,
             videoModal,
             activeFilter,
+            companySlug,
+            handlePageChange,
+            videoPagination,
         }
     }
 }

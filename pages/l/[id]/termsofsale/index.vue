@@ -166,7 +166,7 @@ export default {
                         hasTerms.value = false;
                     }
                     breadcrumbs.value = response.data.value.data.breadcrumbs;
-                    await updateMetaTags(response.data.value.data.seo);
+                    // await updateMetaTags(response.data.value.data.seo);
                 }
             } catch (err) {
                 error.value = err.message || 'سرور به مشکل خورده است.'
@@ -197,13 +197,6 @@ export default {
             window.removeEventListener('scroll', scrollStopped);
         });
 
-                // scrollStopped();
-                // document.addEventListener('scroll', scrollStopped);
-
-        // onUnmounted(() => {
-        //     window.removeEventListener('scroll', scrollStopped);
-        // })
-
         const scrollToElement = (event) => {
             const targetId = document.getElementById(event).getAttribute("href");
             const targetElement = document.querySelector(targetId);
@@ -213,7 +206,6 @@ export default {
             const finalY = window.scrollY + targetElement.getBoundingClientRect().top + yOffset;
             window.scrollTo({ top: finalY, behavior: "smooth" });
         }
-
 
         return {
             watchLoading,

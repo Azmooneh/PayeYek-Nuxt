@@ -1,7 +1,7 @@
 <template>
     <section class="mb-16 lg:mb-36">
         <h3 class="relative text-xl mb-7 font-medium text-stone-700 before:size-3 before:bg-normal before:rounded-custom before:absolute before:content-[''] before:top-1/2 before:-translate-y-1/2 before:right-0 pr-6 lg:pr-8"> ویدیو
-            <NuxtLink class="inline-block text-normal text-lg font-medium" :to="`/l/${slug}/v`"> (مشاهده همه) </NuxtLink>
+            <NuxtLink class="inline-block text-normal text-lg font-medium" :to="`/l/${slug}/v?productId=${productId}`"> (مشاهده همه) </NuxtLink>
         </h3>
 
         <ul class="flex list-none lg:w-full flex-col gap-4">
@@ -40,6 +40,7 @@ export default {
         const VideosArray = ref([]);
         VideosArray.value = videos.value;
         const videoModal = ref("");
+        const productId = ref(productStore.current.id);
 
         const showVideoByThumbnail = (link) => {
             videoModal.value = link;
@@ -56,6 +57,7 @@ export default {
             showVideoByThumbnail,
             hideVideoByThumbnail,
             slug,
+            productId,
         }
     }
 }
