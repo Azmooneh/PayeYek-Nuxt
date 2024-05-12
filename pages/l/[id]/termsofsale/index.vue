@@ -53,7 +53,7 @@
         <section v-show="!hasTerms">
             <section class="relative flex-col gap-4 flex_center h-96 sm:h-[28rem] lg:h-[32rem]">
                 <p class="pb-4 text-base font-normal border-b sm:text-lg border-b-normal text-stone-700 mr-6"> اطلاعیه ای جهت نمایش وجود ندارد. </p>
-                <NuxtLink :to="`/l/${companySlug}`" class="text-sm font-normal sm:text-base text-white flex_center relative z-[1] h-11 w-40 rounded-custom bg-normal"> صفحه اصلی </NuxtLink>
+                <NuxtLink :to="`/l/${companySlug}`" class="text-sm -translate-x-2 font-normal sm:text-base text-white flex_center relative z-[1] h-11 w-40 rounded-custom bg-normal"> صفحه اصلی </NuxtLink>
 
                 <!-- icon -->
                 <svg class="absolute translate-x-1/2 -translate-y-1/2 size-80 sm:size-96 top-1/2 right-1/2" viewBox="0 0 362 362" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -155,17 +155,18 @@ export default {
             try {
                 loading.value = true;
                 const response = await useFetch(`${useRuntimeConfig().public.apiBase}/l/${companySlug.value}/sale-terms`);
-                    // console.log(response.data.value)
-                if (response.data.value && response.data.value.status == 200 && response.data.value.data.sale_terms.length > 0) {
-                    mainImage.value = response.data.value.data.primary_image;
-                    tocTitles.value = response.data.value.data.titles;
-                    companyName.value = response.data.value.data.land_name;
-                    articleList.value = response.data.value.data.sale_terms;
+                if (response.data.value && response.data.value.status == 200) {
+                    if(response.data.value.data.sale_terms.length > 0){
+                        mainImage.value = response.data.value.data.primary_image;
+                        tocTitles.value = response.data.value.data.titles;
+                        companyName.value = response.data.value.data.land_name;
+                        articleList.value = response.data.value.data.sale_terms;
+                        hasTerms.value = true;
+                    } else {
+                        hasTerms.value = false;
+                    }
                     breadcrumbs.value = response.data.value.data.breadcrumbs;
                     await updateMetaTags(response.data.value.data.seo);
-                    hasTerms.value = true;
-                } else if(response.data.value && response.data.value.status == 200 && response.data.value.data.sale_terms.length == 0){
-                    hasTerms.value = false;
                 }
             } catch (err) {
                 error.value = err.message || 'سرور به مشکل خورده است.'
