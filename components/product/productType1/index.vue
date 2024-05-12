@@ -29,7 +29,7 @@
         </div>
 
         <div class="hidden lg:block col-span-3">
-            <div class="sticky w-full pt-[118%] top-40">
+            <div class="sticky w-full pt-[130%] top-40">
                 <NuxtImg src="https://paye1.com/storage/media/land/files/kxHoy4SopVkrbIu4VooOIxxdkOPLa3nMEL9VF170.webp" class="absolute top-0 right-0 size-full rounded-custom" format="webp" />
             </div>
         </div>
