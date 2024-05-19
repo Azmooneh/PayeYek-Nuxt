@@ -7,6 +7,7 @@ export default {
     "./plugins/**/*.{js,ts}",
     "./error.vue",
   ],
+  darkMode: 'class',
   theme: {
     container: {
       center: true,
@@ -37,6 +38,7 @@ export default {
           950: "#1a1b1d", // footer bg
         },
         link: '#006FFF',
+        primary: { "50": "#eff6ff", "100": "#dbeafe", "200": "#bfdbfe", "300": "#93c5fd", "400": "#60a5fa", "500": "#3b82f6", "600": "#2563eb", "700": "#1d4ed8", "800": "#1e40af", "900": "#1e3a8a", "950": "#172554" },
       },
       borderRadius: {
         'custom': 'var(--theme-radius)',

@@ -1,6 +1,5 @@
-import { defineStore } from 'pinia';
-import {Pagination} from "swiper/modules";
-import Categories from "~/components/layout/footer/children/categories/index.vue";
+import {defineStore} from 'pinia';
+import UniversalCookie from 'universal-cookie';
 
 export const useCompanyData = defineStore('Company', {
     state: () => {
@@ -14,7 +13,7 @@ export const useCompanyData = defineStore('Company', {
         }
     },
     actions: {
-        saveCompanyData(data){
+        saveCompanyData(data) {
             this.companyData = {
                 title: data.title,
                 slug: data.slug,
@@ -37,7 +36,7 @@ export const useStyles = defineStore('Styles', {
         }
     },
     actions: {
-        saveStyles(data){
+        saveStyles(data) {
             this.styles = data;
         },
     },
@@ -52,10 +51,10 @@ export const useCommon = defineStore('Common', {
         }
     },
     actions: {
-        toggleMenuStatus(status){
+        toggleMenuStatus(status) {
             this.menuVisiblityStatus = status;
         },
-        saveFooterData(data){
+        saveFooterData(data) {
             this.footerData = data;
         },
     },
@@ -68,7 +67,7 @@ export const useCategory = defineStore('Category', {
         }
     },
     actions: {
-        saveCategoriesData(products){
+        saveCategoriesData(products) {
             this.products = products;
         }
     },
@@ -83,7 +82,7 @@ export const useArticles = defineStore('Articles', {
         }
     },
     actions: {
-        saveArticlesData(Articles, pagination, categories){
+        saveArticlesData(Articles, pagination, categories) {
             this.Articles = Articles;
             this.Pagination = pagination;
             this.Categories = categories;
@@ -99,10 +98,10 @@ export const useArticle = defineStore('Article', {
         }
     },
     actions: {
-        saveArticleData(Article){
+        saveArticleData(Article) {
             this.Article = Article;
         },
-        saveRelatedArticles(relatedArticles){
+        saveRelatedArticles(relatedArticles) {
             this.RelatedArticles = relatedArticles;
         }
     },
@@ -124,27 +123,27 @@ export const useProduct = defineStore('Product', {
         }
     },
     actions: {
-        saveAttributes(attributes){
+        saveAttributes(attributes) {
             this.Attributes = attributes;
             this.AttributeSkeleton = true;
         },
-        saveSpecification(specifications){
+        saveSpecification(specifications) {
             this.Specification = specifications;
             this.SpecificationSkeleton = true;
         },
-        saveVideos(videos){
+        saveVideos(videos) {
             this.Videos = videos;
             this.VideosSkeleton = true;
         },
-        saveComments(comments, pagination){
+        saveComments(comments, pagination) {
             this.Comments = comments;
             this.CommentsPagination = pagination;
             this.CommentsSkeleton = true;
         },
-        saveCurrent(data){
+        saveCurrent(data) {
             this.current = data;
         },
-        reset(){
+        reset() {
             this.Attributes = null;
             this.AttributeSkeleton = false;
             this.current = null;
@@ -158,3 +157,54 @@ export const useProduct = defineStore('Product', {
         }
     },
 })
+
+// function checkDarkmode(){
+//     if(localStorage.getItem("payeYekDarkmode") == null || localStorage.getItem("payeYekDarkmode") === "false"){
+//         return "false";
+//     } else {
+//         return "true";
+//     }
+// }
+
+export const usePayeYek = defineStore('PayeYek', {
+    state: () => {
+        const theme = useCookie('darkmode');
+        return {
+            openSidebar: false,
+            darkMode: theme.value != null ? theme.value : false,
+        }
+    },
+    actions: {
+        toggleSidebar() {
+            this.openSidebar = !this.openSidebar;
+        },
+        toggleDarkmode(){
+            this.darkMode = !this.darkMode;
+            const cookies = new UniversalCookie();
+            cookies.set('darkmode', this.darkMode);
+            if (this.darkMode) {
+                document.documentElement.classList.add("dark")
+            } else {
+                document.documentElement.classList.remove("dark")
+            }
+        }
+    },
+})
+
+// export const usePayeYek = defineStore('PayeYek', {
+//     state: () => {
+//         return {
+//             openSidebar: false,
+//             darkmode: localStorage.getItem("payeYekDarkmode") == null || localStorage.getItem("payeYekDarkmode") === "false" ? "false" : "true",
+//         }
+//     },
+//     actions:
+//         {
+//             toggleSidebar() {
+//                 this.openSidebar = !this.openSidebar;
+//             },
+//             toggleDarkmode(){
+//                 this.darkmode = !this.darkmode;
+//             }
+//         },
+// })
