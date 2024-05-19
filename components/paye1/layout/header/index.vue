@@ -3,7 +3,7 @@
         class="sticky top-0 start-0 end-0 bg-white border-b border-gray-200 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700">
         <div class="max-w-screen-xl mx-auto flex flex-wrap justify-between items-center">
             <div class="flex justify-start items-center">
-                <button @click.prevent="toggleSidebarOpen"
+                <button @click.prevent="toggleSidebar"
                         class="p-2 ltr:mr-2 rtl:ml-2 rtl:rotate-180 text-gray-600 rounded-lg cursor-pointer md:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                     <svg
                         aria-hidden="true"
@@ -37,10 +37,11 @@
                 </button>
 
                 <img
-                    src="https://paye1.com/storage/media/land/files/Z84oxhbvEB5EVqczASQgAyIeyuO8X8MFArFe5NUq.svg"
+                    src="https://paye1.com/storage/media/land/files/zpYWsElFaU9L8QBd0pNKXTHPSncR59ljC0NSaXJ4.svg"
                     class="ltr:mr-3 rtl:ml-3 h-7 hidden dark:flex"
                     alt="Logo"
                 />
+
                 <img
                     src="https://paye1.com/storage/media/land/files/Z84oxhbvEB5EVqczASQgAyIeyuO8X8MFArFe5NUq.svg"
                     class="ltr:mr-3 rtl:ml-3 h-7 dark:hidden"
