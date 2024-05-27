@@ -38,6 +38,7 @@ export default defineNuxtConfig({
     baseUrl: 'https://paye1.com/api',
     public: {
       apiBase: 'https://paye1.com/api', // can be overridden by NUXT_PUBLIC_API_BASE environment variable
+      imageUrl: 'https://paye1.com/',
     }
   },
 
@@ -50,6 +51,7 @@ export default defineNuxtConfig({
   plugins: [
     "~/plugins/Vue3Lottie.client.ts",
     {src: '~/plugins/vue3-toastify.ts'},
+    {src: '~/plugins/lottie-player.client.ts'},
   ],
 
 

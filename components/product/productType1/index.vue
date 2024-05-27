@@ -29,9 +29,23 @@
         </div>
 
         <div class="hidden lg:block col-span-3">
-            <div class="sticky w-full pt-[130%] top-40">
-                <NuxtImg src="https://paye1.com/storage/media/land/files/kxHoy4SopVkrbIu4VooOIxxdkOPLa3nMEL9VF170.webp" class="absolute top-0 right-0 size-full rounded-custom" format="webp" />
+            <div class="sticky top-40">
+                <client-only>
+                    <lottie-player
+                        src="https://lottie.host/cf7827b7-f586-4cd8-98c9-41cb7a213f04/Zhq1T8iHiN.json"
+                        background="transparent"
+                        speed="1"
+                        loop
+                        autoplay>
+                    </lottie-player>
+                </client-only>
+                <div class="flex justify-center mt-4">
+                    <p class="text-center font-medium text-xl"> محل تبلیغات شما </p>
+                </div>
             </div>
+<!--            <div class="sticky w-full pt-[130%] top-40">-->
+<!--                <NuxtImg src="https://paye1.com/storage/media/land/files/kxHoy4SopVkrbIu4VooOIxxdkOPLa3nMEL9VF170.webp" class="absolute top-0 right-0 size-full rounded-custom" format="webp" />-->
+<!--            </div>-->
         </div>
     </section>
 
@@ -50,6 +64,7 @@ import Videos from "~/components/product/productType1/children/videos/index.vue"
 import Comments from "~/components/product/productType1/children/comments/list.vue";
 import AddComment from "~/components/product/productType1/children/comments/addComment.vue";
 import Contact from "~/components/companyLanding/contact/index.vue";
+import { Vue3Lottie } from 'vue3-lottie'
 
 export default {
     name: "Product Type 1",

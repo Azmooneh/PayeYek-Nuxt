@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@lottiefiles/lottie-player": "^2.0.4",
     "@nuxt/image": "^1.6.0",
     "@pinia/nuxt": "^0.5.1",
     "cross-env": "^7.0.3",

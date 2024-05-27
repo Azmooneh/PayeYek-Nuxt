@@ -191,20 +191,23 @@ export const usePayeYek = defineStore('PayeYek', {
     },
 })
 
-// export const usePayeYek = defineStore('PayeYek', {
-//     state: () => {
-//         return {
-//             openSidebar: false,
-//             darkmode: localStorage.getItem("payeYekDarkmode") == null || localStorage.getItem("payeYekDarkmode") === "false" ? "false" : "true",
-//         }
-//     },
-//     actions:
-//         {
-//             toggleSidebar() {
-//                 this.openSidebar = !this.openSidebar;
-//             },
-//             toggleDarkmode(){
-//                 this.darkmode = !this.darkmode;
-//             }
-//         },
-// })
+export const usePayeYekAdvertiseSingle = defineStore('PayeYekAdvertiseSingle', {
+    state: () => {
+        return {
+            primaryImage: null,
+            thumbnailImages: null,
+            sliderCompact: null,
+            information: null,
+        }
+    },
+    actions: {
+        saveGallery(image, images, gallery){
+            this.primaryImage = image;
+            this.thumbnailImages = images;
+            this.sliderCompact = gallery;
+        },
+        saveInformation(info){
+            this.information = info;
+        }
+    },
+})
